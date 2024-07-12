@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="0" height="0" style="display:none;">
+<symbol viewBox="0 0 24 24" id="ri-arrow-right-s-line">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z"/>
+    </g>
+</symbol>
+<symbol viewBox="0 0 24 24" id="ri-arrow-up-s-line">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path d="M12 10.828l-4.95 4.95-1.414-1.414L12 8l6.364 6.364-1.414 1.414z"/>
+    </g>
+</symbol>
+<symbol viewBox="0 0 24 24" id="ri-arrow-left-s-line">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path d="M10.828 12l4.95 4.95-1.414 1.414L8 12l6.364-6.364 1.414 1.414z"/>
+    </g>
+</symbol>
+<symbol viewBox="0 0 24 24" id="ri-arrow-down-s-line">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"/>
+    </g>
+</symbol>
+<symbol viewBox="0 0 24 24" id="ri-check-fill">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"/>
+    </g>
+</symbol>
+<symbol viewBox="0 0 24 24" id="ri-check-line">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"/>
+    </g>
+</symbol>
+<symbol viewBox="0 0 24 24" id="ri-checkbox-blank-circle-fill">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <circle cx="12" cy="12" r="10"/>
+    </g>
+</symbol>
+<symbol viewBox="0 0 24 24" id="ri-checkbox-blank-circle-line">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/>
+    </g>
+</symbol>
+<symbol viewBox="0 0 24 24" id="ri-checkbox-blank-fill">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/>
+    </g>
+</symbol>
+<symbol viewBox="0 0 24 24" id="ri-checkbox-blank-line">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm1 2v14h14V5H5z"/>
+    </g>
+</symbol>
+<symbol viewBox="0 0 24 24" id="ri-checkbox-circle-fill">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-.997-6l7.07-7.071-1.414-1.414-5.656 5.657-2.829-2.829-1.414 1.414L11.003 16z"/>
+    </g>
+</symbol>
+<symbol viewBox="0 0 24 24" id="ri-checkbox-circle-line">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-.997-4L6.76 11.757l1.414-1.414 2.829 2.829 5.656-5.657 1.415 1.414L11.003 16z"/>
+    </g>
+</symbol>
+<symbol viewBox="0 0 24 24" id="ri-checkbox-fill">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm7.003 13l7.07-7.071-1.414-1.414-5.656 5.657-2.829-2.829-1.414 1.414L11.003 16z"/>
+    </g>
+</symbol>
+<symbol viewBox="0 0 24 24" id="ri-checkbox-indeterminate-fill">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm3 8v2h10v-2H7z"/>
+    </g>
+</symbol>
+<symbol viewBox="0 0 24 24" id="ri-checkbox-indeterminate-line">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm1 2v14h14V5H5zm2 6h10v2H7v-2z"/>
+    </g>
+</symbol>
+<symbol viewBox="0 0 24 24" id="ri-checkbox-line">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm1 2v14h14V5H5zm6.003 11L6.76 11.757l1.414-1.414 2.829 2.829 5.656-5.657 1.415 1.414L11.003 16z"/>
+    </g>
+</symbol><symbol viewBox="0 0 24 24" id="ri-close-circle-fill">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-11.414L9.172 7.757 7.757 9.172 10.586 12l-2.829 2.828 1.415 1.415L12 13.414l2.828 2.829 1.415-1.415L13.414 12l2.829-2.828-1.415-1.415L12 10.586z"/>
+    </g>
+</symbol><symbol viewBox="0 0 24 24" id="ri-close-circle-line">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm0-9.414l2.828-2.829 1.415 1.415L13.414 12l2.829 2.828-1.415 1.415L12 13.414l-2.828 2.829-1.415-1.415L10.586 12 7.757 9.172l1.415-1.415L12 10.586z"/>
+    </g>
+</symbol><symbol viewBox="0 0 24 24" id="ri-close-line">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z"/>
+    </g>
+</symbol>

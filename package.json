@@ -1,0 +1,64 @@
+{
+  "name": "blank-ui",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "user interface component API level",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/vue-blank-ui.es.js",
+  "module": "./dist/vue-blank-ui.umd.js",
+  "exports": {
+    "react": {
+      "import": "./dist/react-blank-ui.umd.js",
+      "require": "./dist/react-blank-ui.es.js"
+    },
+    "vue": {
+      "import": "./dist/vue-blank-ui.umd.js",
+      "require": "./dist/vue-blank-ui.es.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -b && vite build -c ./vue/vite.config.ts && vite build -c ./react/vite.config.ts",
+    "react": "storybook dev -p 6006 -c ./react/.storybook",
+    "vue": "storybook dev -p 7007 -c ./vue/.storybook"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@chromatic-com/storybook": "^1.6.1",
+    "@storybook/addon-essentials": "^8.1.11",
+    "@storybook/addon-interactions": "^8.1.11",
+    "@storybook/addon-links": "^8.1.11",
+    "@storybook/addon-onboarding": "^8.1.11",
+    "@storybook/blocks": "^8.1.11",
+    "@storybook/react": "^8.1.11",
+    "@storybook/react-vite": "^8.1.11",
+    "@storybook/test": "^8.1.11",
+    "@storybook/vue3": "^8.1.11",
+    "@storybook/vue3-vite": "^8.1.11",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^7.16.0",
+    "@typescript-eslint/parser": "^7.16.0",
+    "@vanilla-extract/vite-plugin": "^4.0.13",
+    "@vitejs/plugin-react": "^4.3.1",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "@vitejs/plugin-vue-jsx": "^4.0.0",
+    "cheerio": "^1.0.0-rc.12",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.7",
+    "eslint-plugin-storybook": "^0.8.0",
+    "storybook": "^8.1.11",
+    "typescript": "^5.5.3",
+    "vite": "^5.3.3",
+    "vue-tsc": "^2.0.26"
+  },
+  "dependencies": {
+    "@vanilla-extract/css": "^1.15.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "vue": "^3.4.31"
+  }
+}
