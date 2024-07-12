@@ -23,6 +23,14 @@ export const TableBody = defineComponent({
 			(tableProps.rows && tableProps.columns)
 				? tableProps.rows.map((row, index) => (
 					<TableRow
+						rowBoxStyle={tableProps.rowBoxStyle}
+						rowBoxVariants={tableProps.rowBoxVariants}
+						mainRowStyle={tableProps.mainRowStyle}
+						mainRowVariants={tableProps.mainRowVariants}
+						subRowStyle={tableProps.subRowStyle}
+						actionsStyle={tableProps.actionsStyle}
+						expanderStyle={tableProps.expanderStyle}
+						expanderVariants={tableProps.expanderVariants}
 						key={`row-${index}`}
 						rowIndex={index}
 						selected={isSelected(row.id as string)}
@@ -30,7 +38,11 @@ export const TableBody = defineComponent({
 					>
 						{tableProps.columns?.length
 							? tableProps.columns.map((column) => (
-								<TableCell key={column.key} colKey={column.key}>
+								<TableCell
+									cellStyle={tableProps.cellStyle}
+									cellVariants={tableProps.cellVariants}
+									key={column.key}
+									colKey={column.key}>
 									{/*@ts-expect-error */}
 									{tableSlots[column.key]({ column, row })}
 								</TableCell>

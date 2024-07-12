@@ -6,7 +6,11 @@ export const tableHeaderCellStyle = style({
 	alignItems: 'center',
 	padding: '0 12px',
 	borderTop: '1px solid var(--zinc-100)',
-	borderBottom: '1px solid var(--zinc-100)'
+	borderBottom: '1px solid var(--zinc-100)',
+	borderRight: '1px solid var(--zinc-100)',
+	':last-of-type': {
+		borderRight: '0'
+	}
 })
 
 export const tableHeaderCellVariants = styleVariants({
@@ -18,7 +22,7 @@ export const tableHeaderCellVariants = styleVariants({
 export const tableHeaderCellLabelStyle = style({
 	display: 'flex',
 	alignItems: 'center',
-	fontSize: 'var(--font-md)',
+	fontSize: 'var(--font-sm)',
 	fontWeight: 'bold',
 })
 

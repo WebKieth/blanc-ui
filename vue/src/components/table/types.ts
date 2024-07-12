@@ -6,8 +6,7 @@ export type Column = {
 	key: ColumnKey
 	label: string
 	sortable?: boolean
-	width?: number,
-	style?: string
+	width?: number
 }
 
 export type TableSize = 'small' | 'medium' | 'large'
@@ -29,6 +28,23 @@ export type ProvidedTableConfig = {
 	provided: TableControlsProvided
 }
 export type WhenSelect = ((ids: string | Array<string>) => void) | null
+
+export type TableRowStylingProps = {
+	rowBoxStyle: string
+	rowBoxVariants: object
+	mainRowStyle: string
+	mainRowVariants: object
+	subRowStyle: string
+	actionsStyle: string
+	expanderStyle: string
+	expanderVariants: object
+}
+
+export type TableCellStylingProps = {
+	cellStyle: string
+	cellVariants: object
+}
+
 export type _TableProps = {
 	size: TableSize
 	columns: Columns | null
@@ -36,7 +52,7 @@ export type _TableProps = {
 	expandRows: boolean
 	selected: string | Array<string>
 	whenSelect: WhenSelect
-}
+} & TableRowStylingProps & TableCellStylingProps
 
 export type TableControlsProvided = {
 	hiddenColumnKeys: Ref<ColumnKey[]>

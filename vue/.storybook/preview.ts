@@ -1,6 +1,6 @@
 import type { Preview } from "@storybook/vue3";
 import { setup } from '@storybook/vue3'
-import { globals } from '../src/styles/variables.css'
+import { globals, reset } from '../src/styles/variables.css'
 
 const preview: Preview = {
   parameters: {
@@ -13,6 +13,9 @@ const preview: Preview = {
   },
 };
 
-setup(() => globals)
+setup(() => {
+  globals
+  reset
+})
 
 export default preview;

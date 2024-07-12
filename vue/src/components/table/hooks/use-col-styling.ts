@@ -39,15 +39,9 @@ export const useColStyling = (props: _TableProps, hiddenColumnKeys: Ref<ColumnKe
 		return `${remainder / (props.columns.length - (columnsWithWidth.value ? columnsWithWidth.value.length : 0))}%`
 	}
 
-	const computeShrink = (colKey: ColumnKey) => (
-		props.columns?.some((col) => col.key === colKey && col.width)
-			? '0'
-			: '1'
-	)
 
 	const computeColumnStyles = (colKey: ColumnKey) => ({
 		width: computeWidth(colKey),
-		flexShrink: computeShrink(colKey),
 	})
 
 	return {

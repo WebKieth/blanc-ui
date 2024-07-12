@@ -1,6 +1,7 @@
 export {
 	TableCell,
 	type TableCellProps,
+	tableCellStylingProps,
 	tableCellStyle,
 	tableCellVariants,
 } from './cell'
@@ -8,10 +9,11 @@ export {
 export {
 	TableRow,
 	type TableRowProps,
+	tableRowStylingProps,
 	tableMainRowStyle,
 	tableMainRowVariants,
-	tableRowStyle,
-	tableRowVariants,
+	tableRowBoxStyle,
+	tableRowBoxVariants,
 	tableSubRowStyle,
 	tableRowActionsStyle,
 	tableRowExpanderStyle,

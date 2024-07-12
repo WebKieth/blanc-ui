@@ -1,12 +1,12 @@
 import { style, styleVariants } from "@vanilla-extract/css";
 
-export const tableRowStyle = style({
+export const tableRowBoxStyle = style({
 	display: 'flex',
 	flexDirection: 'column',
 	borderBottom: '1px solid var(--zinc-100)',
 })
 
-export const tableRowVariants = styleVariants({
+export const tableRowBoxVariants = styleVariants({
 	selected: {},
 	notSelected: {},
 	selectable: {}

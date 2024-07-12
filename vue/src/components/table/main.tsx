@@ -1,12 +1,19 @@
 import { ExtractPublicPropTypes, defineComponent, inject, provide } from 'vue'
 import { Columns, Rows, TableSize, ProvidedTableConfig, WhenSelect, TableControlsProvided } from './types'
-import { TableBody } from './modules'
 import { defaultTableControlsProvided, tableConfigSymbol, tableControlsProvidedSymbol } from './common'
 import { definePropType } from '../../utils'
 
 import { tableStyle } from './styles.css'
 
+import {
+	TableBody,
+	tableRowStylingProps,
+	tableCellStylingProps
+} from './modules'
+
 const tableProps = {
+	...tableRowStylingProps,
+	...tableCellStylingProps,
 	style: {
 		type: definePropType<string>(String),
 		default: tableStyle

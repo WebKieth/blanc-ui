@@ -6,15 +6,19 @@ import { definePropType } from '../../../../utils'
 
 import { tableCellStyle, tableCellVariants } from './styles.css'
 
-export const tableCellProps = {
-	style: {
+export const tableCellStylingProps = {
+	cellStyle: {
 		type: String,
 		default: tableCellStyle,
 	},
-	variants: {
+	cellVariants: {
 		type: Object,
 		default: tableCellVariants,
 	},
+}
+
+export const tableCellProps = {
+	...tableCellStylingProps,
 	colKey: {
 		type: definePropType<ColumnKey>(String),
 		default: ''
@@ -47,9 +51,9 @@ export const TableCell = defineComponent({
 				: <td
 					{...attrs}
 					class={`
-						${props.style}
-						${props.variants[tableProps.size]}
-						${rowProps.selected.value && props.variants.selected}
+						${props.cellStyle}
+						${props.cellVariants[tableProps.size]}
+						${rowProps.selected.value && props.cellVariants.selected}
 					`}
 					style={colStyles.value}
 				>

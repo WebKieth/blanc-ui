@@ -1,5 +1,10 @@
 import { globalStyle } from '@vanilla-extract/css'
 
+export const reset = globalStyle('html', {
+	boxSizing: 'border-box',
+	fontFamily: 'sans-serif',
+})
+
 export const globals = globalStyle(':root', {
 	vars: {
 		'--font-xs': '10px',

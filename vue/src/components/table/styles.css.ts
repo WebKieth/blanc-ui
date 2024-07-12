@@ -2,7 +2,8 @@ import { style } from '@vanilla-extract/css'
 
 export const tableStyle = style({
 	display: 'flex',
-	flexDirection: 'column'
+	flexDirection: 'column',
+	width: '100%'
 })
 
 export const heightsBySize = {

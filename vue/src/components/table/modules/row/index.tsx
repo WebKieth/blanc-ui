@@ -9,22 +9,22 @@ import { definePropType } from '../../../../../src/utils'
 import {
 	tableMainRowStyle,
 	tableMainRowVariants,
-	tableRowStyle,
-	tableRowVariants,
+	tableRowBoxStyle,
+	tableRowBoxVariants,
 	tableSubRowStyle,
 	tableRowActionsStyle,
 	tableRowExpanderStyle,
 	tableRowExpanderVariants
 } from './styles.css'
 
-export const tableRowProps = {
-	style: {
+export const tableRowStylingProps = {
+	rowBoxStyle: {
 		type: String,
-		default: tableRowStyle
+		default: tableRowBoxStyle
 	},
-	variants: {
+	rowBoxVariants: {
 		type: Object,
-		default: tableRowVariants
+		default: tableRowBoxVariants
 	},
 	mainRowStyle: {
 		type: String,
@@ -49,7 +49,11 @@ export const tableRowProps = {
 	expanderVariants: {
 		type: Object,
 		default: tableRowExpanderVariants
-	},
+	}
+}
+
+export const tableRowProps = {
+	...tableRowStylingProps,
 	rowIndex: {
 		type: definePropType<number>(Number),
 		default: -1,
@@ -166,8 +170,8 @@ export const TableRow = defineComponent({
 					row={childNode}
 					rowIndex={index}
 					expanded={tableProps.expandRows}
-					style={props.style}
-					variants={props.variants}
+					rowBoxStyle={props.rowBoxStyle}
+					rowBoxVariants={props.rowBoxVariants}
 					mainRowStyle={props.mainRowStyle}
 					mainRowVariants={props.mainRowVariants}
 					actionsStyle={props.actionsStyle}
@@ -221,11 +225,11 @@ export const TableRow = defineComponent({
 				<div
 					{...attrs}
 					class={`
-						${props.style}
-						${selectable.value && props.variants.selectable}
+						${props.rowBoxStyle}
+						${selectable.value && props.rowBoxVariants.selectable}
 						${selected.value
-							? props.variants.selected
-							: props.variants.notSelected
+							? props.rowBoxVariants.selected
+							: props.rowBoxVariants.notSelected
 						}
 					`}
 					onClick={handleRowClick}
@@ -261,8 +265,8 @@ export const TableRow = defineComponent({
 export {
 	tableMainRowStyle,
 	tableMainRowVariants,
-	tableRowStyle,
-	tableRowVariants,
+	tableRowBoxStyle,
+	tableRowBoxVariants,
 	tableSubRowStyle,
 	tableRowActionsStyle,
 	tableRowExpanderStyle,
