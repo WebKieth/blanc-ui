@@ -3,7 +3,7 @@ import { style, styleVariants } from "@vanilla-extract/css";
 export const tableRowBoxStyle = style({
 	display: 'flex',
 	flexDirection: 'column',
-	borderBottom: '1px solid var(--zinc-100)',
+	borderBottom: '1px solid var(--zinc-200)',
 })
 
 export const tableRowBoxVariants = styleVariants({
@@ -27,7 +27,7 @@ export const tableMainRowVariants = styleVariants({
 		backgroundColor: 'var(--blue-700)'
 	},
 	notSelected: {
-		backgroundColor: 'var(--slate-50)'
+		backgroundColor: 'var(--white)'
 	}
 })
 

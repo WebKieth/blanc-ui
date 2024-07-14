@@ -13,6 +13,9 @@ export const globals = globalStyle(':root', {
 		'--font-lg': '18px',
 		'--font-xl': '24px',
 
+		'--white': '#FFF',
+		'--black': '#000',
+
 		'--red-50': '#FEF2F2',
 		'--red-100': '#FEE2E2',
 		'--red-200': '#FECACA',

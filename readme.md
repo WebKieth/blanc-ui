@@ -13,5 +13,5 @@ Package in active development
 | modal    | ready    | none          |
 | dropdown | planning | none          |
 | select   | planning | none          |
-| button   | planning | none          |
+| button   | ready    | storybooked   |
 | icon/cli | in dev   | storybooked   |

@@ -5,9 +5,9 @@ export const tableHeaderCellStyle = style({
 	display: 'flex',
 	alignItems: 'center',
 	padding: '0 12px',
-	borderTop: '1px solid var(--zinc-100)',
-	borderBottom: '1px solid var(--zinc-100)',
-	borderRight: '1px solid var(--zinc-100)',
+	borderTop: '1px solid var(--zinc-200)',
+	borderBottom: '1px solid var(--zinc-200)',
+	borderRight: '1px solid var(--zinc-200)',
 	':last-of-type': {
 		borderRight: '0'
 	}
