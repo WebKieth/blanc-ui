@@ -20,6 +20,10 @@ const buttonProps = {
 	size: {
 		type: definePropType<ButtonSize>(String),
 		default: 'medium'
+	},
+	whenClick: {
+		type: definePropType<(e: Event) => {}>(Function),
+		default: () => {}
 	}
 } as const
 
@@ -37,6 +41,7 @@ export const Button = defineComponent({
 						${props.variants && props.variants[props.variant]}
 						${props.variants && props.variants[props.size]}
 					`}
+					onClick={props.whenClick}
 				>
 					{slots.default && slots.default()}
 				</button>
