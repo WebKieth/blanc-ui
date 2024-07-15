@@ -3,7 +3,7 @@
 Fully redesignable vanilla-extract based component modules and plugins  
 
 
-### In active development
+### Vue implements in active development
 Package in active development  
 | module   | status   | documentation |
 |----------|----------|---------------|
@@ -14,4 +14,7 @@ Package in active development
 | dropdown | planning | none          |
 | select   | planning | none          |
 | button   | ready    | storybooked   |
+| input    | ready    | storybooked   |
 | icon/cli | in dev   | storybooked   |
+
+### React implements planned
