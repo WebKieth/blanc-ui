@@ -65,59 +65,174 @@ export const Dropdown = defineComponent({
 		const setPosition = (placement = props.placement) => {
 			if (!agent.value || !body.value) return
 			const { gutter } = props
-			const { x: agentX, y, width: agentWidth, height: agentHeight } = (agent.value as HTMLElement).getBoundingClientRect()
-			const { scrollTop } = scrollParent || document.documentElement
-			const agentY = scrollTop + y
+			const { x: agentX, y: agentY, width: agentWidth, height: agentHeight } = (agent.value as HTMLElement).getBoundingClientRect()
 			const { width: bodyWidth, height: bodyHeight } = (body.value as HTMLElement).getBoundingClientRect()
-
+			const { clientHeight: docClientHeight, clientWidth: docClientWidth } = document.body
+			let leftOffset
+			let topOffset
+			console.log((agent.value as HTMLElement).getBoundingClientRect())
 			switch (placement) {
 				case 'left':
-					body.value.style.left = `${agentX - bodyWidth - gutter}px`
-					body.value.style.top = `${agentY + (agentHeight - bodyHeight) / 2}px`
+					leftOffset = agentX - bodyWidth - gutter
+					topOffset = agentY + (agentHeight - bodyHeight) / 2
+					if (leftOffset < 0) {
+						setPosition('right')
+						break
+					}
+					body.value.style.left = `${leftOffset}px`
+					body.value.style.top = `${topOffset}px`
 					break
+
 				case 'left-top':
-					body.value.style.left = `${agentX - bodyWidth - gutter}px`
-					body.value.style.top = `${agentY - bodyHeight + gutter}px`
+					leftOffset = agentX - bodyWidth - gutter
+					topOffset = agentY - bodyHeight + gutter
+					if (leftOffset < 0) {
+						setPosition('right-top')
+						break
+					}
+					if (topOffset < 0) {
+						setPosition('left-bottom')
+						break
+					}
+					body.value.style.left = `${leftOffset}px`
+					body.value.style.top = `${topOffset}px`
 					break
+
 				case 'left-bottom':
-					body.value.style.left = `${agentX - bodyWidth - gutter}px`
-					body.value.style.top = `${agentY + agentHeight - gutter}px`
+					console.log(agentX, agentY)
+					leftOffset = agentX - bodyWidth - gutter
+					topOffset = agentY + agentHeight - gutter
+					if (leftOffset < 0) {
+						setPosition('right-bottom')
+						break
+					}
+					if (topOffset > docClientHeight) {
+						setPosition('left-top')
+						break
+					}
+					body.value.style.left = `${leftOffset}px`
+					body.value.style.top = `${topOffset}px`
 					break
+
 				case 'right':
-					body.value.style.left = `${agentX + agentWidth + gutter}px`
-					body.value.style.top = `${agentY + (agentHeight - bodyHeight) / 2}px`
+					leftOffset = agentX + agentWidth + gutter
+					topOffset = agentY + (agentHeight - bodyHeight) / 2
+					if (leftOffset > docClientWidth) {
+						setPosition('left')
+						break
+					}
+					body.value.style.left = `${leftOffset}px`
+					body.value.style.top = `${topOffset}px`
 					break
+
 				case 'right-top':
-					body.value.style.left = `${agentX + agentWidth + gutter}px`
-					body.value.style.top = `${agentY - bodyHeight + gutter}px`
+					leftOffset = agentX + agentWidth + gutter
+					topOffset = agentY - bodyHeight + gutter
+					if (leftOffset > docClientWidth) {
+						setPosition('left-top')
+						break
+					}
+					if (topOffset < 0) {
+						setPosition('right-bottom')
+						break
+					}
+					body.value.style.left = `${leftOffset}px`
+					body.value.style.top = `${topOffset}px`
 					break
+
 				case 'right-bottom':
-					body.value.style.left = `${agentX + agentWidth + gutter}px`
-					body.value.style.top = `${agentY + agentHeight - gutter}px`
+					leftOffset = agentX + agentWidth + gutter
+					topOffset = agentY + agentHeight - gutter
+					if (leftOffset > docClientWidth) {
+						setPosition('left-bottom')
+						break
+					}
+					if (topOffset > docClientHeight) {
+						setPosition('right-top')
+						break
+					}
+					body.value.style.left = `${leftOffset}px`
+					body.value.style.top = `${topOffset}px`
 					break
+
 				case 'top':
-					body.value.style.top = `${agentY - bodyHeight - gutter}px`
-					body.value.style.left = `${agentX + (agentWidth - bodyWidth) / 2}px`
+					topOffset = agentY - bodyHeight - gutter
+					leftOffset = agentX + (agentWidth - bodyWidth) / 2
+					if (topOffset < 0) {
+						setPosition('bottom')
+						break
+					}
+					body.value.style.top = `${topOffset}px`
+					body.value.style.left = `${leftOffset}px`
 					break
+
 				case 'top-left':
-					body.value.style.top = `${agentY - bodyHeight - gutter}px`
-					body.value.style.left = `${agentX - bodyWidth + gutter}px`
+					leftOffset = agentX - bodyWidth + gutter
+					topOffset = agentY - bodyHeight - gutter
+					if (leftOffset < 0) {
+						setPosition('top-right')
+						break
+					}
+					if (topOffset < 0) {
+						setPosition('bottom-left')
+						break
+					}
+					body.value.style.top = `${topOffset}px`
+					body.value.style.left = `${leftOffset}px`
 					break
+
 				case 'top-right':
-					body.value.style.top = `${agentY - bodyHeight - gutter}px`
-					body.value.style.left = `${agentX + agentWidth - gutter}px`
+					leftOffset = agentX + agentWidth - gutter
+					topOffset = agentY - bodyHeight - gutter
+					if (topOffset < 0) {
+						setPosition('bottom-right')
+						break
+					}
+					if (leftOffset > docClientWidth) {
+						setPosition('top-left')
+						break
+					}
+					body.value.style.top = `${topOffset}px`
+					body.value.style.left = `${leftOffset}px`
 					break
+
 				case 'bottom':
-					body.value.style.top = `${agentY + agentHeight + gutter}px`
-					body.value.style.left = `${agentX + (agentWidth - bodyWidth) / 2}px`
+					topOffset = agentY + agentHeight + gutter
+					leftOffset = agentX + (agentWidth - bodyWidth) / 2
+					if (topOffset > docClientHeight) {
+						setPosition('top')
+						break
+					}
+					body.value.style.top = `${topOffset}px`
+					body.value.style.left = `${leftOffset}px`
 					break
 				case 'bottom-left':
-					body.value.style.top = `${agentY + agentHeight + gutter}px`
-					body.value.style.left = `${agentX - bodyWidth + gutter}px`
+					topOffset = agentY + agentHeight + gutter
+					leftOffset = agentX - bodyWidth + gutter
+					if (topOffset > docClientHeight) {
+						setPosition('top-left')
+						break
+					}
+					if (leftOffset < 0) {
+						setPosition('bottom-right')
+						break
+					}
+					body.value.style.top = `${topOffset}px`
+					body.value.style.left = `${leftOffset}px`
 					break
 				case 'bottom-right':
-					body.value.style.top = `${agentY + agentHeight + gutter}px`
-					body.value.style.left = `${agentX + agentWidth - gutter}px`
+					topOffset = agentY + agentHeight + gutter
+					leftOffset = agentX + agentWidth - gutter
+					if (topOffset > docClientHeight) {
+						setPosition('top-right')
+						break
+					}
+					if (leftOffset > docClientWidth) {
+						setPosition('bottom-left')
+						break
+					}
+					body.value.style.top = `${topOffset}px`
+					body.value.style.left = `${leftOffset}px`
 					break
 			}
 		}
@@ -162,7 +277,6 @@ export const Dropdown = defineComponent({
 			setTimeout(() => setPosition())
 			observeAndUpdatePosition()
 			scrollParent = getScrollParent(root.value as HTMLElement) || document.body
-			console.log(scrollParent)
 			document.addEventListener('click', handleOutsideClick)
 			scrollParent.addEventListener('scroll', handleScroll)
 			window.addEventListener('resize', handleResize)

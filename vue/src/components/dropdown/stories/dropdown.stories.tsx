@@ -48,9 +48,9 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 /**
- * Ready: automatically position reset 
+ * Features: automatically position reset 
  * on parent mutation or window resize  
- * TODO: automatically limit and reset current placement 
+ * Automatically limit and reset current placement 
  * when dropdown body goes beyond boundaries of document body
  */
 export const Basic: Story = {
@@ -60,12 +60,17 @@ export const Basic: Story = {
 			Button
 		},
 		setup() {
-			const gap = ref(12)
-			const updateGap = () => gap.value === 12 ? gap.value = 128 : gap.value = 12
+			const justify = ref('flex-start')
+			const updateJustify = () => justify.value === 'flex-start' ? justify.value = 'space-between' : justify.value = 'flex-start'
 			return () => (
-				<div style={{height: '100px', overflow: 'auto'}}>
-					<Button whenClick={updateGap}>update gap</Button>
-					<div style={{display: 'flex', gap: `${gap.value}px`}}>
+				<div>
+					<Button whenClick={updateJustify}>update justify</Button>
+					<span>{'Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique exercitationem incidunt impedit iusto, ullam ratione molestiae ipsa nulla fugiat ab praesentium, corrupti unde dolores quidem, atque harum sapiente quae. Neque.'}</span>
+					<span>{'Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique exercitationem incidunt impedit iusto, ullam ratione molestiae ipsa nulla fugiat ab praesentium, corrupti unde dolores quidem, atque harum sapiente quae. Neque.'}</span>
+					<span>{'Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique exercitationem incidunt impedit iusto, ullam ratione molestiae ipsa nulla fugiat ab praesentium, corrupti unde dolores quidem, atque harum sapiente quae. Neque.'}</span>
+					<span>{'Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique exercitationem incidunt impedit iusto, ullam ratione molestiae ipsa nulla fugiat ab praesentium, corrupti unde dolores quidem, atque harum sapiente quae. Neque.'}</span>
+					<span>{'Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique exercitationem incidunt impedit iusto, ullam ratione molestiae ipsa nulla fugiat ab praesentium, corrupti unde dolores quidem, atque harum sapiente quae. Neque.'}</span>
+					<div style={{display: 'flex', justifyContent: justify.value}}>
 						<Dropdown
 							placement={args.placement}
 							size={args.size}
@@ -87,11 +92,6 @@ export const Basic: Story = {
 							}}
 						</Dropdown>
 					</div>
-					<span>{'Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique exercitationem incidunt impedit iusto, ullam ratione molestiae ipsa nulla fugiat ab praesentium, corrupti unde dolores quidem, atque harum sapiente quae. Neque.'}</span>
-					<span>{'Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique exercitationem incidunt impedit iusto, ullam ratione molestiae ipsa nulla fugiat ab praesentium, corrupti unde dolores quidem, atque harum sapiente quae. Neque.'}</span>
-					<span>{'Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique exercitationem incidunt impedit iusto, ullam ratione molestiae ipsa nulla fugiat ab praesentium, corrupti unde dolores quidem, atque harum sapiente quae. Neque.'}</span>
-					<span>{'Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique exercitationem incidunt impedit iusto, ullam ratione molestiae ipsa nulla fugiat ab praesentium, corrupti unde dolores quidem, atque harum sapiente quae. Neque.'}</span>
-					<span>{'Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique exercitationem incidunt impedit iusto, ullam ratione molestiae ipsa nulla fugiat ab praesentium, corrupti unde dolores quidem, atque harum sapiente quae. Neque.'}</span>
 				</div>
 				
 			)
