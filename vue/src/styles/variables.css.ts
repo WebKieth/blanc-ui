@@ -7,11 +7,24 @@ export const reset = globalStyle('html', {
 
 export const globals = globalStyle(':root', {
 	vars: {
+		'--zi-backdrop': '5',
+		'--zi-dropdown': '10',
+		'--zi-modal-provided': '12',
+		'--zi-modal-level-1': '14',
+		'--zi-modal-level-2': '16',
+		'--zi-notification': '20',
+
 		'--font-xs': '10px',
 		'--font-sm': '12px',
 		'--font-md': '14px',
 		'--font-lg': '18px',
 		'--font-xl': '24px',
+		'--font-xxl': '32px',
+
+		'--dark-16': 'rgba(24, 24, 24, 0.16)',
+
+		'--shadow-dark-sm': '0 0 3px 0px var(--dark-16)',
+		'--shadow-dark-md': '0 0 6px 0px var(--dark-16)',
 
 		'--white': '#FFF',
 		'--black': '#000',

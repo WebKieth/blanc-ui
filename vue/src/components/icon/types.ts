@@ -1,4 +1,4 @@
-export type IconSize = 'sm' | 'md' | 'lg'
+export type IconSize = 'small' | 'medium' | 'large'
 export type _IconProps = {
 	width: number
 	height: number
@@ -24,3 +24,14 @@ export type IconName =
 	| 'ri-close-circle-fill'
 	| 'ri-close-circle-line'
 	| 'ri-close-line'
+	| 'ri-attachment-2'
+	| 'ri-attachment-fill'
+	| 'ri-attachment-line'
+	| 'ri-message-fill'
+	| 'ri-message-line'
+	| 'ri-error-warning-fill'
+	| 'ri-error-warning-line'
+	| 'ri-alert-fill'
+	| 'ri-alert-line'
+	| 'ri-alarm-warning-fill'
+	| 'ri-alarm-warning-line'

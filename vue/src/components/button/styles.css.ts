@@ -9,7 +9,7 @@ export const buttonStyle = style({
 export const buttonVariants = styleVariants({
 	primary: {
 		backgroundColor: 'var(--blue-700)',
-		color: 'var(--white)',
+		color: 'var(--neutral-50)',
 		':hover': {
 			backgroundColor: 'var(--blue-800)'
 		},
@@ -19,21 +19,34 @@ export const buttonVariants = styleVariants({
 	},
 	secondary: {
 		backgroundColor: 'var(--neutral-300)',
+		color: 'var(--slate-950)',
 		':hover': {
 			backgroundColor: 'var(--neutral-400)'
+		},
+		':focus': {
+			backgroundColor: 'var(--neutral-500)'
 		}
 	},
 	outlined: {
 		backgroundColor: 'var(--white)',
 		border: '1px solid var(--zinc-300)',
+		color: 'var(--slate-950)',
 		':hover': {
 			border: '1px solid var(--zinc-400)'
+		},
+		':focus': {
+			border: '1px solid var(--zinc-500)',
+			backgroundColor: 'var(--neutral-100)'
 		}
 	},
 	clean: {
 		backgroundColor: 'var(--white)',
+		color: 'var(--slate-950)',
 		':hover': {
 			backgroundColor: 'var(--zinc-100)'
+		},
+		':focus': {
+			backgroundColor: 'var(--zinc-200)'
 		}
 	},
 	small: {
@@ -50,5 +63,25 @@ export const buttonVariants = styleVariants({
 		height: '40px',
 		padding: '0 16px',
 		fontSize: 'var(--font-lg)'
+	},
+	disabled: {
+		cursor: 'not-allowed',
+	},
+	disabled_primary: {
+		backgroundColor: 'var(--gray-200)',
+		color: 'var(--gray-500)'
+	},
+	disabled_secondary: {
+		backgroundColor: 'var(--gray-100)',
+		color: 'var(--gray-400)'
+	},
+	disabled_outlined: {
+		backgroundColor: 'var(--white)',
+		border: '1px solid var(--zinc-100)',
+		color: 'var(--gray-400)'
+	},
+	disabled_clean: {
+		backgroundColor: 'var(--white)',
+		color: 'var(--gray-400)'
 	}
 })

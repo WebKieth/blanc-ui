@@ -1,15 +1,15 @@
 import { style, styleVariants } from "@vanilla-extract/css";
 
-export const rootStyle = style({
+export const dropdownRootStyle = style({
 	position: 'relative'
 })
 
-export const agentStyle = style({
+export const dropdownAgentStyle = style({
 	width: 'fit-content',
 	cursor: 'pointer'
 })
 
-export const bodyStyle = style({
+export const dropdownBodyStyle = style({
 	position: 'absolute',
 	zIndex: '3',
 	width: 'fit-content',
@@ -20,7 +20,7 @@ export const bodyStyle = style({
   pointerEvents: 'none',
 })
 
-export const bodyVariants = styleVariants({
+export const dropdownBodyVariants = styleVariants({
 	opened: {
 		opacity: '1',
 		pointerEvents: 'auto',

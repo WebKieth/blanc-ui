@@ -83,11 +83,6 @@ export const Input = defineComponent({
 	setup(props, { slots, attrs }) {
 		const hover = ref(false)
 		const focus = ref(false)
-		const handleMouseIn = () => {
-			if (props.disabled) return
-			hover.value = true
-		}
-		const handleMouseOut = () => hover.value = false
 
 		const handleFocus = () => {
 			if (props.disabled) return
@@ -105,8 +100,6 @@ export const Input = defineComponent({
 					${hover.value && props.variants.hover}
 					${focus.value && props.variants.focus}
 				`}
-				onMouseenter={handleMouseIn}
-				onMouseleave={handleMouseOut}
 			>
 				{props.label
 					? <label
@@ -162,3 +155,13 @@ export const Input = defineComponent({
 		)
 	}
 })
+export {
+	inputFieldBoxStyle,
+	inputFieldBoxVariants,
+	inputFieldStyle,
+	inputFieldVariants,
+	inputLabelStyle,
+	inputLabelVariants,
+	inputStyle,
+	inputVariants
+}

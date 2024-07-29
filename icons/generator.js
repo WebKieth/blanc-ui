@@ -63,7 +63,7 @@ export default defineComponent({
 		})
 	})
 
-	const typingsContent = `export type IconSize = 'sm' | 'md' | 'lg'
+	const typingsContent = `export type IconSize = 'small' | 'medium' | 'large'
 export type _IconProps = {
 	width: number
 	height: number
@@ -106,7 +106,7 @@ export const iconProps = {
 	},
 	size: {
 		type: definePropType<IconSize>(String),
-		default: 'md',
+		default: 'medium',
 	},
 } as const
 
@@ -126,17 +126,17 @@ export const Icon = defineComponent({
 	props: iconProps,
 	setup(props) {
 		const sizes: Record<IconSize, _IconProps> = {
-			sm: {
+			small: {
 				width: 16,
 				height: 16,
 				stroke: 1.8, // (reproportion from viewbox: (24 / 16) * 1.2)
 			},
-			md: {
+			medium: {
 				width: 20,
 				height: 20,
 				stroke: 1.68, // (reproportion from viewbox: (24 / 20) * 1.4)
 			},
-			lg: {
+			large: {
 				width: 24,
 				height: 24,
 				stroke: 1.6,
@@ -188,8 +188,8 @@ const meta: Meta<typeof Icon> = {
 			control: {
 				type: 'select',
 			},
-			options: ['sm', 'md', 'lg'],
-			default: 'md',
+			options: ['small', 'medium', 'large'],
+			default: 'medium',
 		},
 	},
 }

@@ -3,28 +3,28 @@ import { definePropType } from '../../utils'
 import { PopoverPlacement, PopoverSize } from './types'
 import { useDomNativeUtils } from '../../utils/use-dom-native-utils'
 import {
-	agentStyle,
-	bodyStyle,
-	bodyVariants,
-	rootStyle
+	dropdownAgentStyle,
+	dropdownBodyStyle,
+	dropdownBodyVariants,
+	dropdownRootStyle
 } from './styles.css'
 
 export const dropdownProps = {
 	rootStyle: {
 		type: String,
-		default: rootStyle
+		default: dropdownRootStyle
 	},
 	agentStyle: {
 		type: String,
-		default: agentStyle
+		default: dropdownAgentStyle
 	},
 	bodyStyle: {
 		type: String,
-		default: bodyStyle
+		default: dropdownBodyStyle
 	},
 	bodyVariants: {
 		type: Object,
-		default: bodyVariants
+		default: dropdownBodyVariants
 	},
 	gutter: {
 		type: Number,
@@ -318,3 +318,10 @@ export const Dropdown = defineComponent({
 		)
 	}
 })
+
+export {
+	dropdownAgentStyle,
+	dropdownBodyStyle,
+	dropdownBodyVariants,
+	dropdownRootStyle
+}

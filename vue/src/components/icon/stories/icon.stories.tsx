@@ -29,7 +29,18 @@ const meta: Meta<typeof Icon> = {
 				'ri-checkbox-line',
 				'ri-close-circle-fill',
 				'ri-close-circle-line',
-				'ri-close-line'
+				'ri-close-line',
+				'ri-attachment-2',
+				'ri-attachment-fill',
+				'ri-attachment-line',
+				'ri-message-fill',
+				'ri-message-line',
+				'ri-error-warning-fill',
+				'ri-error-warning-line',
+				'ri-alert-fill',
+				'ri-alert-line',
+				'ri-alarm-warning-fill',
+				'ri-alarm-warning-line'
 			],
 			default: 'x',
 		},
@@ -37,8 +48,8 @@ const meta: Meta<typeof Icon> = {
 			control: {
 				type: 'select',
 			},
-			options: ['sm', 'md', 'lg'],
-			default: 'md',
+			options: ['small', 'medium', 'large'],
+			default: 'medium',
 		},
 	},
 }
@@ -142,6 +153,50 @@ export const FullKit: Story = {
 					<div style='width: 10%; display: flex; flex-direction: column; align-items: center; margin-bottom: 12px; gap: 8px;'>
 						<Icon name={'ri-close-line'} size={args.size} />
 						<span style='font-size: 12px'>ri-close-line</span>
+					</div>
+					<div style='width: 10%; display: flex; flex-direction: column; align-items: center; margin-bottom: 12px; gap: 8px;'>
+						<Icon name={'ri-attachment-2'} size={args.size} />
+						<span style='font-size: 12px'>ri-attachment-2</span>
+					</div>
+					<div style='width: 10%; display: flex; flex-direction: column; align-items: center; margin-bottom: 12px; gap: 8px;'>
+						<Icon name={'ri-attachment-fill'} size={args.size} />
+						<span style='font-size: 12px'>ri-attachment-fill</span>
+					</div>
+					<div style='width: 10%; display: flex; flex-direction: column; align-items: center; margin-bottom: 12px; gap: 8px;'>
+						<Icon name={'ri-attachment-line'} size={args.size} />
+						<span style='font-size: 12px'>ri-attachment-line</span>
+					</div>
+					<div style='width: 10%; display: flex; flex-direction: column; align-items: center; margin-bottom: 12px; gap: 8px;'>
+						<Icon name={'ri-message-fill'} size={args.size} />
+						<span style='font-size: 12px'>ri-message-fill</span>
+					</div>
+					<div style='width: 10%; display: flex; flex-direction: column; align-items: center; margin-bottom: 12px; gap: 8px;'>
+						<Icon name={'ri-message-line'} size={args.size} />
+						<span style='font-size: 12px'>ri-message-line</span>
+					</div>
+					<div style='width: 10%; display: flex; flex-direction: column; align-items: center; margin-bottom: 12px; gap: 8px;'>
+						<Icon name={'ri-error-warning-fill'} size={args.size} />
+						<span style='font-size: 12px'>ri-error-warning-fill</span>
+					</div>
+					<div style='width: 10%; display: flex; flex-direction: column; align-items: center; margin-bottom: 12px; gap: 8px;'>
+						<Icon name={'ri-error-warning-line'} size={args.size} />
+						<span style='font-size: 12px'>ri-error-warning-line</span>
+					</div>
+					<div style='width: 10%; display: flex; flex-direction: column; align-items: center; margin-bottom: 12px; gap: 8px;'>
+						<Icon name={'ri-alert-fill'} size={args.size} />
+						<span style='font-size: 12px'>ri-alert-fill</span>
+					</div>
+					<div style='width: 10%; display: flex; flex-direction: column; align-items: center; margin-bottom: 12px; gap: 8px;'>
+						<Icon name={'ri-alert-line'} size={args.size} />
+						<span style='font-size: 12px'>ri-alert-line</span>
+					</div>
+					<div style='width: 10%; display: flex; flex-direction: column; align-items: center; margin-bottom: 12px; gap: 8px;'>
+						<Icon name={'ri-alarm-warning-fill'} size={args.size} />
+						<span style='font-size: 12px'>ri-alarm-warning-fill</span>
+					</div>
+					<div style='width: 10%; display: flex; flex-direction: column; align-items: center; margin-bottom: 12px; gap: 8px;'>
+						<Icon name={'ri-alarm-warning-line'} size={args.size} />
+						<span style='font-size: 12px'>ri-alarm-warning-line</span>
 					</div>
 				</div>
 			)

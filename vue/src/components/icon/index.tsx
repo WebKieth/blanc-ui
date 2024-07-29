@@ -21,6 +21,17 @@ import riCheckboxLine from './generated/ri-checkbox-line.tsx'
 import riCloseCircleFill from './generated/ri-close-circle-fill.tsx'
 import riCloseCircleLine from './generated/ri-close-circle-line.tsx'
 import riCloseLine from './generated/ri-close-line.tsx'
+import riAttachment2 from './generated/ri-attachment-2.tsx'
+import riAttachmentFill from './generated/ri-attachment-fill.tsx'
+import riAttachmentLine from './generated/ri-attachment-line.tsx'
+import riMessageFill from './generated/ri-message-fill.tsx'
+import riMessageLine from './generated/ri-message-line.tsx'
+import riErrorWarningFill from './generated/ri-error-warning-fill.tsx'
+import riErrorWarningLine from './generated/ri-error-warning-line.tsx'
+import riAlertFill from './generated/ri-alert-fill.tsx'
+import riAlertLine from './generated/ri-alert-line.tsx'
+import riAlarmWarningFill from './generated/ri-alarm-warning-fill.tsx'
+import riAlarmWarningLine from './generated/ri-alarm-warning-line.tsx'
 
 export const iconProps = {
 	name: {
@@ -29,7 +40,7 @@ export const iconProps = {
 	},
 	size: {
 		type: definePropType<IconSize>(String),
-		default: 'md',
+		default: 'medium',
 	},
 } as const
 
@@ -55,6 +66,17 @@ const components = {
 	riCloseCircleFill,
 	riCloseCircleLine,
 	riCloseLine,
+	riAttachment2,
+	riAttachmentFill,
+	riAttachmentLine,
+	riMessageFill,
+	riMessageLine,
+	riErrorWarningFill,
+	riErrorWarningLine,
+	riAlertFill,
+	riAlertLine,
+	riAlarmWarningFill,
+	riAlarmWarningLine,
 }
 
 export const Icon = defineComponent({
@@ -63,17 +85,17 @@ export const Icon = defineComponent({
 	props: iconProps,
 	setup(props) {
 		const sizes: Record<IconSize, _IconProps> = {
-			sm: {
+			small: {
 				width: 16,
 				height: 16,
 				stroke: 1.8, // (reproportion from viewbox: (24 / 16) * 1.2)
 			},
-			md: {
+			medium: {
 				width: 20,
 				height: 20,
 				stroke: 1.68, // (reproportion from viewbox: (24 / 20) * 1.4)
 			},
-			lg: {
+			large: {
 				width: 24,
 				height: 24,
 				stroke: 1.6,

@@ -19,6 +19,7 @@
     }
   },
   "scripts": {
+    "prepublish": "tsc --build --dry",
     "build": "tsc -b && vite build -c ./vue/vite.config.ts && vite build -c ./react/vite.config.ts",
     "react": "storybook dev -p 6006 -c ./react/.storybook",
     "vue": "storybook dev -p 7007 -c ./vue/.storybook"
@@ -52,7 +53,6 @@
     "eslint-plugin-storybook": "^0.8.0",
     "storybook": "^8.1.11",
     "typescript": "^5.5.3",
-    "uuid": "^10.0.0",
     "vite": "^5.3.3",
     "vue-tsc": "^2.0.26"
   },
@@ -60,6 +60,7 @@
     "@vanilla-extract/css": "^1.15.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "vue": "^3.4.31"
+    "vue": "^3.4.31",
+    "uuid": "^10.0.0"
   }
 }

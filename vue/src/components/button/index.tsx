@@ -21,6 +21,10 @@ const buttonProps = {
 		type: definePropType<ButtonSize>(String),
 		default: 'medium'
 	},
+	disabled: {
+		type: definePropType<boolean>(Boolean),
+		default: false
+	},
 	whenClick: {
 		type: definePropType<(e: Event) => {}>(Function),
 		default: () => {}
@@ -38,13 +42,20 @@ export const Button = defineComponent({
 					{...attrs}
 					class={`
 						${props.style}
-						${props.variants && props.variants[props.variant]}
+						${(props.variants && !props.disabled) && props.variants[props.variant]}
 						${props.variants && props.variants[props.size]}
+						${props.disabled && `${props.variants.disabled} ${props.variants[`disabled_${props.variant}`]}`}
 					`}
-					onClick={props.whenClick}
+					disabled={props.disabled}
+					onClick={(e: Event) => !props.disabled && props.whenClick(e)}
 				>
 					{slots.default && slots.default()}
 				</button>
 			)
 	},
 })
+
+export {
+	buttonStyle,
+	buttonVariants
+}
