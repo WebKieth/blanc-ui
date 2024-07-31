@@ -1,4 +1,5 @@
 import type { Preview } from "@storybook/react";
+import { applyCssReset, applyCssVariables } from '../src/styles'
 
 const preview: Preview = {
   parameters: {
@@ -10,5 +11,8 @@ const preview: Preview = {
     },
   },
 };
+
+applyCssReset()
+applyCssVariables()
 
 export default preview;

@@ -5,7 +5,7 @@ export const reset = globalStyle('html', {
 	fontFamily: 'sans-serif',
 })
 
-export const globals = globalStyle(':root', {
+export const variables = globalStyle(':root', {
 	vars: {
 		'--zi-backdrop': '5',
 		'--zi-dropdown': '10',

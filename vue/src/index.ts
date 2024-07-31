@@ -1,4 +1,9 @@
 export {
+	applyCssReset,
+	applyCssVariables
+} from './styles'
+
+export {
 	Button,
 	type ButtonProps,
 	buttonStyle,
@@ -120,4 +125,7 @@ export {
 	type NotifyPosition
 } from './plugins/notify'
 
-export { $eventBus, EventBus } from './plugins/event-bus'
+export {
+	$eventBus,
+	EventBus
+} from './plugins/event-bus'
