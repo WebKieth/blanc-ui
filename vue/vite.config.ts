@@ -3,6 +3,7 @@ import { resolve } from 'path'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin'
+import alias from '@rollup/plugin-alias'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -12,10 +13,20 @@ export default defineConfig({
 		lib: {
 			entry: resolve(__dirname, 'src/index.ts'),
 			name: 'vue-blank-ui',
-			fileName: (format) => `blank-ui.${format}.js`,
+			fileName: (format) => `vue-blank-ui.${format}.js`,
 		},
 		outDir: './dist/vue',
 		emptyOutDir: true
 	},
-	plugins: [vue(), vueJsx(), vanillaExtractPlugin()],
+	plugins: [
+		vue(),
+		vueJsx(),
+		vanillaExtractPlugin(),
+		alias({
+			entries: [{
+				find: '@shared',
+				replacement: resolve(__dirname, '..', 'shared')
+			}]
+		})
+	],
 })

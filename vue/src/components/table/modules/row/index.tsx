@@ -205,7 +205,7 @@ export const TableRow = defineComponent({
 						>
 						<Icon
 							name={isExpanded.value ? 'ri-arrow-down-s-line' : 'ri-arrow-right-s-line'}
-							size={'sm'}
+							size={'small'}
 						/>
 					</div>
 					: null}

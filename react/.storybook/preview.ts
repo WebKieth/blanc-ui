@@ -1,5 +1,6 @@
 import type { Preview } from "@storybook/react";
-import { applyCssReset, applyCssVariables } from '../src/styles'
+//@ts-ignore
+import { applyCssReset, applyCssVariables } from '@shared/styles'
 
 const preview: Preview = {
   parameters: {

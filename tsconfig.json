@@ -7,6 +7,9 @@
     {
       "path": "./vue/tsconfig.json"
     },
+    {
+      "path": "./shared/tsconfig.json"
+    },
 		{
       "path": "./tsconfig.node.json"
     }

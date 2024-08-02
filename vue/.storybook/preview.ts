@@ -1,6 +1,7 @@
 import type { Preview } from "@storybook/vue3";
 import { setup } from '@storybook/vue3'
-import { applyCssReset, applyCssVariables } from '../src/styles'
+//@ts-ignore
+import { applyCssReset, applyCssVariables } from '@shared/styles'
 import { Notify, $notify } from '../src/plugins/notify'
 import { EventBus, $eventBus } from '../src/plugins/event-bus'
 

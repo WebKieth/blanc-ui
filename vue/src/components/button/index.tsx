@@ -1,8 +1,12 @@
 import { definePropType } from '../../utils'
 import { ExtractPublicPropTypes, defineComponent } from 'vue'
 
-import { buttonStyle, buttonVariants } from './styles.css'
-import { ButtonSize, ButtonVariant } from './types'
+import {
+	buttonStyle,
+	buttonVariants,
+	type ButtonSize,
+	type ButtonVariant
+} from '@shared/components/button'
 
 const buttonProps = {
 	style: {

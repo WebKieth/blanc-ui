@@ -103,7 +103,7 @@ export const Icon = defineComponent({
 		}
 		const currentSize = computed(() => {
 			const size = sizes[props.size]
-			return size ? size : sizes.md
+			return size ? size : sizes.medium
 		})
 
 		const camelize = (s: IconName) => s.replace(/-./g, (x) => x[1].toUpperCase()) as keyof typeof components

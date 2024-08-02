@@ -1,8 +1,11 @@
 import { ButtonHTMLAttributes, ReactNode, SyntheticEvent } from "react"
-import { buttonStyle, buttonVariants } from "./styles.css"
 
-type ButtonVariant = 'primary' | 'secondary' | 'outlined' | 'clean'
-export type ButtonSize = 'small' | 'medium' | 'large'
+import {
+	buttonStyle,
+	buttonVariants,
+	type ButtonVariant,
+	type ButtonSize
+} from "@shared/components/button"
 
 export type ButtonProps = {
 	style?: string,

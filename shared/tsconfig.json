@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "composite": true,
+        "tsBuildInfoFile": "../../node_modules/.tmp/tsconfig.node.tsbuildinfo",
+        "target": "ES2020",
+        "moduleResolution": "Bundler",
+        "useDefineForClassFields": true,
+        "module": "ESNext",
+        "lib": ["ES2020", "DOM", "DOM.Iterable"],
+        "skipLibCheck": true,
+        "allowImportingTsExtensions": true,
+        "moduleDetection": "force",
+        "noEmit": true,
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true,
+        "baseUrl": "./"
+    },
+    "include": ["./**/*.ts"]
+}

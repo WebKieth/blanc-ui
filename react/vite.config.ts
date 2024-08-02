@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import { resolve } from 'path'
 import react from '@vitejs/plugin-react'
 import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin'
+import alias from '@rollup/plugin-alias'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -16,5 +17,14 @@ export default defineConfig({
 		outDir: './dist/react',
 		emptyOutDir: true
 	},
-	plugins: [react(), vanillaExtractPlugin()],
+	plugins: [
+		react(),
+		vanillaExtractPlugin(),
+		alias({
+			entries: [{
+				find: '@shared',
+				replacement: resolve(__dirname, '..', 'shared')
+			}]
+		})
+	],
 })
