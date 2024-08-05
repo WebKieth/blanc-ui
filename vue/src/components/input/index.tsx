@@ -1,6 +1,6 @@
 import { definePropType } from '../../utils'
 import { ExtractPublicPropTypes, defineComponent, ref } from 'vue'
-import { Emitter, InputSize, InputType } from './types'
+import { v4 as uuid } from 'uuid'
 import {
 	inputFieldBoxStyle,
 	inputFieldBoxVariants,
@@ -9,8 +9,13 @@ import {
 	inputLabelStyle,
 	inputLabelVariants,
 	inputStyle,
-	inputVariants
-} from './styles.css'
+	inputVariants,
+	type InputEmitter,
+	type InputSize,
+	type InputValue,
+	type InputType, 
+	type InputId
+} from '@shared/components/input'
 
 const inputProps = {
 	style: {
@@ -45,16 +50,20 @@ const inputProps = {
 		type: Object,
 		default: inputFieldVariants
 	},
+	id: {
+		type: definePropType<InputId>(String),
+		default: ''
+	},
 	type: {
 		type: definePropType<InputType>(String),
-		default: 'string'
+		default: 'text'
 	},
 	label: {
 		type: definePropType<string>(String),
 		default: ''
 	},
 	value: {
-		type: definePropType<string | number>(String),
+		type: definePropType<InputValue>(String),
 		default: ''
 	},
 	disabled: {
@@ -66,11 +75,11 @@ const inputProps = {
 		default: 'medium'
 	},
 	whenChange: {
-		type: definePropType<Emitter>(Function),
+		type: definePropType<InputEmitter>(Function),
 		default: () => {}
 	},
 	whenInput: {
-		type: definePropType<Emitter>(Function),
+		type: definePropType<InputEmitter>(Function),
 		default: () => {}
 	}
 }
@@ -81,8 +90,16 @@ export const Input = defineComponent({
 	name: 'Input',
 	props: inputProps,
 	setup(props, { slots, attrs }) {
+		const id = props.id ? props.id : uuid()
+
 		const hover = ref(false)
 		const focus = ref(false)
+
+		const handleMouseIn = () => {
+			if (props.disabled) return
+			hover.value = true
+		}
+		const handleMouseOut = () => hover.value = false
 
 		const handleFocus = () => {
 			if (props.disabled) return
@@ -100,9 +117,12 @@ export const Input = defineComponent({
 					${hover.value && props.variants.hover}
 					${focus.value && props.variants.focus}
 				`}
+				onMouseenter={handleMouseIn}
+				onMouseleave={handleMouseOut}
 			>
 				{props.label
 					? <label
+							for={id}
 							class={`
 								${props.labelStyle}
 								${props.labelVariants[props.size]}
@@ -134,6 +154,7 @@ export const Input = defineComponent({
 						>
 							{slots.prefix && slots.prefix()}
 							<input
+								id={id}
 								class={`
 									${props.fieldStyle}
 									${props.fieldVariants[props.size]}

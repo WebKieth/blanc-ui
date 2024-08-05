@@ -35,7 +35,7 @@ Fully redesignable vanilla-extract based component modules and plugins
 | button   | ready    | storybooked   |
 | checkbox | planning | planning      |
 | dropdown | planning | planning      |
-| input    | planning | planning      |
+| input    | ready    | storybooked   |
 | modal    | planning | planning      |
 | table    | planning | planning      |
 | toast    | planning | planning      |

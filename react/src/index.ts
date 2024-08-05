@@ -9,3 +9,16 @@ export {
     buttonStyle,
     buttonVariants
 } from './components/button'
+
+export {
+    Input,
+    type InputProps,
+    inputStyle,
+	inputVariants,
+	inputLabelStyle,
+	inputLabelVariants,
+	inputFieldBoxStyle,
+	inputFieldBoxVariants,
+	inputFieldStyle,
+	inputFieldVariants
+} from './components/input'

@@ -1,22 +1,9 @@
-import { ButtonHTMLAttributes, ReactNode, SyntheticEvent } from "react"
-
+import { SyntheticEvent } from "react"
+import { ButtonProps } from "./types"
 import {
 	buttonStyle,
 	buttonVariants,
-	type ButtonVariant,
-	type ButtonSize
 } from "@shared/components/button"
-
-export type ButtonProps = {
-	style?: string,
-	variants?: Record<string, string>
-	variant?: ButtonVariant
-	size?: ButtonSize
-	disabled?: boolean
-	attributes?: ButtonHTMLAttributes<HTMLButtonElement>
-	children?: ReactNode
-	onClick?: (e: SyntheticEvent) => void
-}
 
 export const Button = ({
 	style = buttonStyle,
@@ -27,8 +14,8 @@ export const Button = ({
 	attributes = {},
 	children = null,
 	onClick = () => false
-}: ButtonProps) => {
-	return <button
+}: ButtonProps) => (
+	<button
 		{...attributes}
 		className={`
 			${style}
@@ -41,6 +28,10 @@ export const Button = ({
 	>
 		{children}
 	</button>
-}
+)
 
-export { buttonStyle, buttonVariants }
+export {
+	buttonStyle,
+	buttonVariants,
+	type ButtonProps
+}

@@ -75,7 +75,7 @@ export const inputFieldBoxVariants = styleVariants({
 		borderBottom: '1px solid var(--zinc-400)',
 	},
 	hover: {
-		borderBottom: '1px solid var(--zinc-700)'
+		borderBottom: '1px solid var(--zinc-700)',
 	},
 	focus: {
 		borderBottom: '1px solid var(--zinc-800)'
