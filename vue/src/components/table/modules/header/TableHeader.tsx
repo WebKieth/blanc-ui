@@ -42,7 +42,6 @@ export const TableHeader = defineComponent({
 	setup(props, { attrs, slots }) {
 		provide<TableHeaderProps>(tableHeaderPropsSymbol, props)
 		const { props: tableProps } = inject<ProvidedTableConfig>(tableConfigSymbol, { ...defaultProvidedTableOptions })
-		console.log(tableProps.size, props)
 		return () => (
 			<tr
 				{...attrs}
@@ -57,6 +56,7 @@ export const TableHeader = defineComponent({
 						// @ts-expect-error
 							? slots[column.key](column)
 							: <TableHeaderCell
+									key={column.key}
 									colKey={column.key}
 									whenChangeSort={props.whenChangeSort}
 								>

@@ -9,13 +9,13 @@ import {
 	tableRowActionsStyle,
 	tableRowExpanderStyle,
 	tableRowExpanderVariants
-} from './index';
+} from '@shared/components/table/row/styles.css';
 import { ColumnKey, Row, Rows } from "@shared/components/table/types";
 import { TableRowStylingProps } from "../../types";
 import { useTablePropsProvided } from "../../hooks/use-table-props-provided";
 import { TableCell } from "../cell";
-import { Checkbox } from "src/components/checkbox";
-import { Icon } from "src/components/icon";
+import { Checkbox } from "../../../checkbox";
+import { Icon } from "../../../icon";
 
 
 
@@ -113,7 +113,7 @@ export const TableRow: FC<TableRowProps> = ({
   const renderBasicActions = () => (
     <div
       className={rowActionsStyle}
-      style={{paddingLeft: `${16 * depth}px;`}}
+      style={{paddingLeft: `${16 * depth}px`}}
     >
       {selectMulti && currentRow?.id
         ? <Checkbox
@@ -149,6 +149,7 @@ export const TableRow: FC<TableRowProps> = ({
     const column = tableProps.columns.find((col) => col.key === colKey)
     if (!cellRender || !column || !currentRow) return null
     const fn = cellRender[colKey]
+    if (!fn) return null
     return fn(column, currentRow)
   }
 
@@ -175,6 +176,7 @@ export const TableRow: FC<TableRowProps> = ({
         rowActionsStyle={rowActionsStyle}
         expanderStyle={expanderStyle}
         expanderVariants={expanderVariants}
+        last={currentRow?.nodes && index === currentRow.nodes.length - 1}
       />
     ))
   }

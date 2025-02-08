@@ -28,6 +28,7 @@ export const TableBody: FC<PropsWithChildren> = ({ children }) => {
           rowIndex={index}
           selected={isSelected(row.id)}
           expanded={tableProps.expandRows}
+          last={Boolean(tableProps.rows && index === tableProps.rows.length - 1 && tableProps.footer)}
         >
           {tableProps.columns?.length
             ? tableProps.columns.map((column) => (

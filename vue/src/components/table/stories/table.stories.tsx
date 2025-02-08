@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/vue3'
 import { v4 as uuidv4 } from 'uuid'
-import { Table } from '../table.tsx'
+import { Table } from '../Table.tsx'
 import {
 	TableHeader,
 	TableFooter,
@@ -128,6 +128,7 @@ export const DefaultTable: Story = {
 						size={args.size}>
 							{{
 								header: () => <TableHeader />,
+								footer: () => <TableFooter>table footer</TableFooter>,
 								id: (scope: Row<ColumnKey>) => scope.id,
 								name: (scope: Row<ColumnKey>) => scope.name,
 								createdAt: (scope: Row<ColumnKey>) => new Date(scope.createdAt as number).toLocaleString('en-GB', { timeZone: 'UTC' })

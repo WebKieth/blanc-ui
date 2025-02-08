@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/vue3'
-import { Input } from '../index'
+import { Input } from '../Input'
 import { ref } from 'vue'
 
 const meta: Meta<typeof Input> = {

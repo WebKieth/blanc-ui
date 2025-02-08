@@ -2,7 +2,7 @@ import { TableSize } from "@shared/components/table/types"
 import {
   tableHeaderStyle,
   tableHeaderVariants
-} from './index'
+} from '@shared/components/table/header/styles.css'
 import { FC, ReactNode } from "react"
 import { useTableColStyling } from "../../hooks/use-col-styling"
 import { useTablePropsProvided } from "../../hooks/use-table-props-provided"
@@ -24,7 +24,7 @@ export const TableHeader: FC<TableHeaderProps> = ({
 }) => {
   const { columns, renderHeaderCell } = useTablePropsProvided()
   const { sizeType } = useTableColStyling()
-  return <tr
+  return <div
     className={`${style} ${variants[sizeType]}`}
   >
     {columns
@@ -32,6 +32,7 @@ export const TableHeader: FC<TableHeaderProps> = ({
         renderHeaderCell
           ? renderHeaderCell[column.key](column)
           : <TableHeaderCell
+            key={column.key}
             colKey={column.key}
             onChangeSort={onChangeSort}
           >
@@ -40,5 +41,5 @@ export const TableHeader: FC<TableHeaderProps> = ({
       ))
       : children
     }
-  </tr>
+  </div>
 }

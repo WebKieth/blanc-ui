@@ -23,7 +23,7 @@ export const TableCell: FC<TableCellProps> = ({
   return (
     isHidden
       ? <></>
-      : <td
+      : <div
         className={cn(
           cellStyle,
           cellVariants[tableProps.size || 'medium']
@@ -31,6 +31,6 @@ export const TableCell: FC<TableCellProps> = ({
         style={{width: computeWidth(colKey)}}
       >
         {children}
-      </td>
+      </div>
   )
 }

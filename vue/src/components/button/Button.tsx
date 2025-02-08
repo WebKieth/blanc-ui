@@ -58,8 +58,3 @@ export const Button = defineComponent({
 			)
 	},
 })
-
-export {
-	buttonStyle,
-	buttonVariants
-}

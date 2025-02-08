@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/vue3'
-import { Button } from '../index'
+import { Button } from '../Button'
 
 const meta: Meta<typeof Button> = {
 	title: 'Components/Button',

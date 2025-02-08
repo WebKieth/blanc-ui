@@ -10,7 +10,9 @@ export const tableRowBoxVariants = styleVariants({
 	selected: {},
 	notSelected: {},
 	selectable: {},
-	last: {}
+	last: {
+		borderBottom: '0'
+	}
 })
 
 export const tableMainRowStyle = style({

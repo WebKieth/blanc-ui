@@ -52,7 +52,7 @@ export {
 	inputLabelVariants,
 	inputStyle,
 	inputVariants
-} from './components/input'
+} from './components/input/Input'
 
 export {
 	Modal,

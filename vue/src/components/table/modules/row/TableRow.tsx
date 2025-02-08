@@ -176,7 +176,9 @@ export const TableRow = defineComponent({
 					mainRowVariants={props.mainRowVariants}
 					actionsStyle={props.actionsStyle}
 					expanderStyle={props.expanderStyle}
-					expanderVariants={props.expanderVariants} />
+					expanderVariants={props.expanderVariants}
+					last={childNodes.value && index === childNodes.value.length - 1}
+				/>
 			))
 		}
 

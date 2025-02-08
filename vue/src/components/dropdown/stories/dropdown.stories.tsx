@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/vue3'
-import { Dropdown } from '../index'
+import { Dropdown } from '../Dropdown'
 import { ref } from 'vue'
 import { Button } from '../../button'
 

@@ -318,10 +318,3 @@ export const Dropdown = defineComponent({
 		)
 	}
 })
-
-export {
-	dropdownAgentStyle,
-	dropdownBodyStyle,
-	dropdownBodyVariants,
-	dropdownRootStyle
-}

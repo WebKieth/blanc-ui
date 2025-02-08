@@ -63,7 +63,7 @@ export const TableHeaderCell: FC<TableHeaderCellProps> = ({
   const handleSort = () => isColumnSortable && sort()
   return isHidden
     ? null
-    : <th
+    : <div
       className={`${style} ${sortable ? variants.sortable : ''}`}
       style={{width: computeWidth(colKey)}}
       onClick={handleSort}
@@ -85,5 +85,5 @@ export const TableHeaderCell: FC<TableHeaderCellProps> = ({
           : null
         }
       </div>
-    </th>
+    </div>
 }

@@ -68,7 +68,10 @@ export const Table: FC<PropsWithChildren<TableProps>> = ({
       expanderStyle,
       expanderVariants,
       cellStyle,
-      cellVariants
+      cellVariants,
+      header,
+      footer,
+      loader,
     }}>
       <div className={style}>
         {header}

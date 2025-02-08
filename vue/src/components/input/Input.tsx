@@ -13,7 +13,7 @@ import {
 	type InputEmitter,
 	type InputSize,
 	type InputValue,
-	type InputType, 
+	type InputType,
 	type InputId
 } from '@shared/components/input'
 
@@ -176,13 +176,3 @@ export const Input = defineComponent({
 		)
 	}
 })
-export {
-	inputFieldBoxStyle,
-	inputFieldBoxVariants,
-	inputFieldStyle,
-	inputFieldVariants,
-	inputLabelStyle,
-	inputLabelVariants,
-	inputStyle,
-	inputVariants
-}

@@ -23,7 +23,7 @@ Fully redesignable vanilla-extract based component modules and plugins
 | name     | status   | documentation |
 |----------|----------|---------------|
 | notify   | ready    | storybooked   |
-| event-bus| ready    | planning      |
+| eventBus | ready    | documenting   |
 
 -----------------------------------------
 
@@ -33,18 +33,18 @@ Fully redesignable vanilla-extract based component modules and plugins
 | name     | status   | documentation |
 |----------|----------|---------------|
 | button   | ready    | storybooked   |
-| checkbox | in test  | documenting   |
+| checkbox | ready    | storybooked   |
 | dropdown | planning | planning      |
 | input    | ready    | storybooked   |
 | modal    | planning | planning      |
-| table    | in test  | documenting   |
+| table    | ready    | storybooked   |
 | toast    | planning | planning      |
 | radio    | planning | planning      |
 | select   | planning | planning      |
-| icon     | in test  | documenting   |
+| icon     | ready    | storybooked   |
 
 ### providers
 | name     | status   | documentation |
 |----------|----------|---------------|
-| event-bus| planning | planning      |
+| eventBus | planning | planning      |
 | notify   | planning | planning      |

@@ -1,7 +1,5 @@
 import { defineComponent, ExtractPublicPropTypes } from 'vue'
-
-
-import { tableFooterStyle } from './styles.css'
+import { tableFooterStyle } from '@shared/components/table/footer/styles.css'
 
 const tableFooterProps = {
 	style: {
@@ -17,14 +15,12 @@ export const TableFooter = defineComponent({
 	props: tableFooterProps,
 	setup(props, { attrs, slots }) {
 		return () => (
-			<div
+			<tfoot
 				{...attrs}
 				class={props.style}
 			>
 				{slots.default && slots.default()}
-			</div>
+			</tfoot>
 		)
 	}
 })
-
-export { tableFooterStyle }

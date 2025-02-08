@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/vue3'
-import { Checkbox } from '../index'
+import { Checkbox } from '../Checkbox'
 import { ref } from 'vue'
 
 const meta: Meta<typeof Checkbox> = {
@@ -13,8 +13,32 @@ const meta: Meta<typeof Checkbox> = {
 			},
 			options: ['small', 'medium', 'large'],
 			default: 'medium',
+		},
+		label: {
+			control: {
+				type: 'text'
+			},
+			default: 'label'
+		},
+		caption: {
+			control: {
+				type: 'text'
+			},
+			default: 'caption'
+		},
+		disabled: {
+			control: {
+				type: 'boolean'
+			},
+			default: false
 		}
-	}
+	},
+	args: {
+    size: 'medium',
+    label: 'label',
+    caption: 'caption',
+    disabled: false
+  }
 }
 export default meta
 
@@ -30,10 +54,11 @@ export const Basic: Story = {
 			const handleCheck = (newValue: boolean) => checked.value = newValue
 			return () => (
 				<Checkbox
-					label={'label'}
-					caption={'caption text'}
+					label={args.label}
+					caption={args.caption}
 					value={checked.value}
 					size={args.size}
+					disabled={args.disabled}
 					whenChange={handleCheck}
 				/>
 			)
