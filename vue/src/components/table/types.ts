@@ -1,26 +1,12 @@
+import { ColumnKey, Columns, Rows, Sorting, TableSize } from "@shared/components/table/types"
 import { ComputedRef, Ref, Slots } from "vue"
 
-export type Columns = Array<Column>
-export type ColumnKey = string
 export type Column = {
 	key: ColumnKey
 	label: string
 	sortable?: boolean
 	width?: number
 }
-
-export type TableSize = 'small' | 'medium' | 'large'
-
-export type Sorting = {
-	key: ColumnKey
-	value: 'asc' | 'desc' | ''
-}
-
-export type Rows = Array<Row<string>>
-export type Row<K extends ColumnKey> = {
-	id: string | number,
-	nodes?: Rows
-} & Record<K, unknown>
 
 export type ProvidedTableConfig = {
 	props: _TableProps
@@ -68,5 +54,3 @@ export type TableRowProps = {
 	selected: ComputedRef<boolean>
 	depth: number
 }
-
-export type ColumnConfig = Record<ColumnKey, boolean>

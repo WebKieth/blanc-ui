@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/vue3'
-import { Icon } from '../index.tsx'
+import { Icon } from '../index'
+import { iconList } from '@shared/components/icon/list'
 
 const meta: Meta<typeof Icon> = {
 	title: 'Components/Icon',
@@ -10,38 +11,7 @@ const meta: Meta<typeof Icon> = {
 			control: {
 				type: 'select',
 			},
-			options: [
-				'ri-arrow-right-s-line',
-				'ri-arrow-up-s-line',
-				'ri-arrow-left-s-line',
-				'ri-arrow-down-s-line',
-				'ri-check-fill',
-				'ri-check-line',
-				'ri-checkbox-blank-circle-fill',
-				'ri-checkbox-blank-circle-line',
-				'ri-checkbox-blank-fill',
-				'ri-checkbox-blank-line',
-				'ri-checkbox-circle-fill',
-				'ri-checkbox-circle-line',
-				'ri-checkbox-fill',
-				'ri-checkbox-indeterminate-fill',
-				'ri-checkbox-indeterminate-line',
-				'ri-checkbox-line',
-				'ri-close-circle-fill',
-				'ri-close-circle-line',
-				'ri-close-line',
-				'ri-attachment-2',
-				'ri-attachment-fill',
-				'ri-attachment-line',
-				'ri-message-fill',
-				'ri-message-line',
-				'ri-error-warning-fill',
-				'ri-error-warning-line',
-				'ri-alert-fill',
-				'ri-alert-line',
-				'ri-alarm-warning-fill',
-				'ri-alarm-warning-line'
-			],
+			options: [...iconList],
 			default: 'x',
 		},
 		size: {
@@ -64,8 +34,8 @@ export const View: Story = {
 		setup() {
 			return () => (
 				<Icon
-					name={args.name}
-					size={args.size}
+					name={args.name || iconList[0]}
+					size={args.size || 'medium'}
 				/>
 			)
 		},

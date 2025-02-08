@@ -13,7 +13,7 @@ export const buttonVariants = styleVariants({
 		':hover': {
 			backgroundColor: 'var(--blue-800)'
 		},
-		':focus': {
+		':active': {
 			backgroundColor: 'var(--blue-900)'
 		},
 	},
@@ -23,7 +23,7 @@ export const buttonVariants = styleVariants({
 		':hover': {
 			backgroundColor: 'var(--neutral-400)'
 		},
-		':focus': {
+		':active': {
 			backgroundColor: 'var(--neutral-500)'
 		}
 	},
@@ -34,7 +34,7 @@ export const buttonVariants = styleVariants({
 		':hover': {
 			border: '1px solid var(--zinc-400)'
 		},
-		':focus': {
+		':active': {
 			border: '1px solid var(--zinc-500)',
 			backgroundColor: 'var(--neutral-100)'
 		}
@@ -45,7 +45,7 @@ export const buttonVariants = styleVariants({
 		':hover': {
 			backgroundColor: 'var(--zinc-100)'
 		},
-		':focus': {
+		':active': {
 			backgroundColor: 'var(--zinc-200)'
 		}
 	},

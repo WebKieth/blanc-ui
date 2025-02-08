@@ -8,7 +8,7 @@ export {
     type ButtonProps,
     buttonStyle,
     buttonVariants
-} from './components/button'
+} from './components/button/Button'
 
 export {
     Input,

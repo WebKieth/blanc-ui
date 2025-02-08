@@ -28,5 +28,5 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["./src/**/*.ts", "./src/**/*.tsx", "../shared/**/*.ts"]
+  "include": ["./src/**/*.ts", "./src/**/*.tsx", "../shared/**/*.ts", "../vue/src/components/icon/components.ts"]
 }

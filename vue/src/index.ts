@@ -39,7 +39,7 @@ export {
 export {
 	Icon,
 	type IconProps
-} from './components/icon'
+} from './components/icon/Icon'
 
 export {
 	Input,

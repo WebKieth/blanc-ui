@@ -2,7 +2,7 @@ export {
     Table,
     type TableProps,
     tableStyle
-} from './main'
+} from './table'
 
 export {
     TableBody,

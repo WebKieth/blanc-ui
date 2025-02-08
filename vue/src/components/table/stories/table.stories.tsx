@@ -1,11 +1,11 @@
 import { Meta, StoryObj } from '@storybook/vue3'
 import { v4 as uuidv4 } from 'uuid'
-import { Table } from '../main.tsx'
+import { Table } from '../table.tsx'
 import {
 	TableHeader,
 	TableFooter,
 } from '../modules/index.ts'
-import { ColumnKey, Row } from '../types.ts'
+import { ColumnKey, Row } from '@shared/components/table/types.ts'
 
 
 const meta: Meta<typeof Table> = {

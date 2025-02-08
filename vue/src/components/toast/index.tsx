@@ -20,7 +20,7 @@ import {
     toastCloseVariants
 } from "./styles.css"
 import { ToastSize } from "./types"
-import { Icon } from "../icon"
+import { Icon } from "../icon/Icon"
 
 const toastProps = {
     style: {

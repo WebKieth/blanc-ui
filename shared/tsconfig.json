@@ -15,7 +15,8 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "noFallthroughCasesInSwitch": true,
-        "baseUrl": "./"
+        "baseUrl": "./",
+        "jsx": "preserve",
     },
-    "include": ["./**/*.ts"]
+    "include": ["./**/*.ts", "./**/*.tsx", "../vue/src/components/icon/components.ts"]
 }

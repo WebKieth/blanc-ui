@@ -33,15 +33,15 @@ Fully redesignable vanilla-extract based component modules and plugins
 | name     | status   | documentation |
 |----------|----------|---------------|
 | button   | ready    | storybooked   |
-| checkbox | planning | planning      |
+| checkbox | in test  | documenting   |
 | dropdown | planning | planning      |
 | input    | ready    | storybooked   |
 | modal    | planning | planning      |
-| table    | planning | planning      |
+| table    | in test  | documenting   |
 | toast    | planning | planning      |
 | radio    | planning | planning      |
 | select   | planning | planning      |
-| icon     | planning | planning      |
+| icon     | in test  | documenting   |
 
 ### providers
 | name     | status   | documentation |

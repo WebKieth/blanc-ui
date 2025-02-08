@@ -1,8 +1,11 @@
 import { Ref, computed } from 'vue'
-import { ColumnKey, _TableProps } from '../types'
+import { _TableProps } from '../types'
+import { ColumnKey, TableSize } from '@shared/components/table/types'
+
 
 export const useColStyling = (props: _TableProps, hiddenColumnKeys: Ref<ColumnKey[]>) => {
 
+	const { clientWidth } = document.documentElement;
 	const isHidden = (key: ColumnKey) => (
 		hiddenColumnKeys.value.includes(key)
 	)
@@ -10,6 +13,9 @@ export const useColStyling = (props: _TableProps, hiddenColumnKeys: Ref<ColumnKe
 	const columnsWithWidth = computed(() => {
 		return props.columns?.filter((item) => item.width && !isHidden(item.key))
 	})
+
+	const sizeType: TableSize =
+	clientWidth < 1440 ? 'small' : clientWidth >= 1440 && clientWidth < 1900 ? 'medium' : 'large';
 
 	const computeWidth = (colKey: ColumnKey) => {
 		const DEFAULT = 'auto'
@@ -45,6 +51,7 @@ export const useColStyling = (props: _TableProps, hiddenColumnKeys: Ref<ColumnKe
 	})
 
 	return {
+		sizeType,
 		columnsWithWidth,
 		computeColumnStyles,
 	}

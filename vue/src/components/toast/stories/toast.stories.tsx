@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/vue3'
 import { Toast } from '../index'
-import { iconList } from '../../icon/constants'
+import { iconList } from '@shared/components/icon/list'
 
 const meta: Meta<typeof Toast> = {
 	title: 'Components/Toast',
