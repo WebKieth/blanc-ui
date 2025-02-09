@@ -1,11 +1,11 @@
-import { definePropType } from '../../utils'
+import { definePropType } from '../../utils/index.ts'
 import { ExtractPublicPropTypes, defineComponent } from 'vue'
 import {
 	modalBackdropStyle,
 	modalWindowStyle
 } from './styles.css.ts'
 
-const modalProps = {
+export const modalProps = {
 	backdropStyle: {
 		type: definePropType<string>(String),
 		default: modalBackdropStyle
@@ -13,6 +13,14 @@ const modalProps = {
 	windowStyle: {
 		type: definePropType<string>(String),
 		default: modalWindowStyle
+	},
+	isCloseByBackdropClick: {
+		type: definePropType<boolean>(Boolean),
+		default: true
+	},
+	zIndex: {
+		type: definePropType<number>(Number),
+		default: 1
 	},
 	whenClose: {
 		type: definePropType<() => void>(Function),
@@ -29,10 +37,12 @@ export const Modal = defineComponent({
 			<>
 				<div
 					{...attrs}
-					style={props.backdropStyle}
+					class={props.backdropStyle}
+					style={`z-index: ${props.zIndex}`}
 				></div>
 				<div
-					style={props.windowStyle}
+					class={props.windowStyle}
+					style={`z-index: ${props.zIndex}`}
 				>
 					{slots.default && slots.default(props.whenClose)}
 				</div>
@@ -40,8 +50,3 @@ export const Modal = defineComponent({
 		)
 	}
 })
-
-export {
-	modalBackdropStyle,
-	modalWindowStyle
-}

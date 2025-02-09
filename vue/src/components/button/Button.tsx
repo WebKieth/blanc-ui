@@ -8,7 +8,7 @@ import {
 	type ButtonVariant
 } from '@shared/components/button'
 
-const buttonProps = {
+export const buttonProps = {
 	style: {
 		type: String,
 		default: buttonStyle
@@ -30,7 +30,7 @@ const buttonProps = {
 		default: false
 	},
 	whenClick: {
-		type: definePropType<(e: Event) => {}>(Function),
+		type: definePropType<(e: Event) => void>(Function),
 		default: () => {}
 	}
 } as const

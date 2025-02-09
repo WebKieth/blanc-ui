@@ -1,5 +1,6 @@
 import {
   TableHeaderCell,
+  tableHeaderCellProps,
   type TableHeaderCellProps,
 } from './TableHeaderCell'
 
@@ -13,6 +14,7 @@ import {
 
 export {
   TableHeaderCell,
+  tableHeaderCellProps,
   type TableHeaderCellProps,
   tableHeaderCellStyle,
   tableHeaderCellVariants,

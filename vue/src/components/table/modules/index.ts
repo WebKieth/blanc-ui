@@ -1,5 +1,6 @@
 export {
   TableCell,
+  tableCellProps,
   type TableCellProps,
   tableCellStylingProps,
   tableCellStyle,
@@ -8,6 +9,7 @@ export {
 
 export {
   TableRow,
+  tableRowProps,
   type TableRowProps,
   tableRowStylingProps,
   tableMainRowStyle,
@@ -22,6 +24,7 @@ export {
 
 export {
   TableHeader,
+  tableHeaderProps,
   type TableHeaderProps,
   tableHeaderStyle,
   tableHeaderVariants
@@ -29,6 +32,7 @@ export {
 
 export {
   TableHeaderCell,
+  tableHeaderCellProps,
   type TableHeaderCellProps,
   tableHeaderCellStyle,
   tableHeaderCellVariants,
@@ -41,6 +45,7 @@ export { TableBody } from './body'
 
 export {
   TableFooter,
+  tableFooterProps,
   type TableFooterProps,
   tableFooterStyle,
 } from './footer'

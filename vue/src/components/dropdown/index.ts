@@ -1,17 +1,21 @@
 import {
-  Dropdown
+  Dropdown,
+  dropdownProps,
+  type DropdownProps
 } from './Dropdown'
 import {
-	dropdownAgentStyle,
-	dropdownBodyStyle,
-	dropdownBodyVariants,
-	dropdownRootStyle
+  dropdownAgentStyle,
+  dropdownBodyStyle,
+  dropdownBodyVariants,
+  dropdownRootStyle
 } from './styles.css'
 
 export {
   Dropdown,
-	dropdownAgentStyle,
-	dropdownBodyStyle,
-	dropdownBodyVariants,
-	dropdownRootStyle
+  dropdownProps,
+  type DropdownProps,
+  dropdownAgentStyle,
+  dropdownBodyStyle,
+  dropdownBodyVariants,
+  dropdownRootStyle
 }

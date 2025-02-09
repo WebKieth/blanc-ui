@@ -7,7 +7,7 @@ import { notificatorStyles, notificatorVariants } from './styles.css'
 
 export { type NotifyOptions, type NotifyPosition }
 
-export const $notify = 'notify'
+export const $notify = Symbol('notify')
 export class Notify {
 	app: Application
 	roots: Roots = {
@@ -66,7 +66,7 @@ export class Notify {
 			message: options.summary,
 		}
 		const Component = options.renderer?.component ? options.renderer.component : Toast
-		// @ts-expect-error types incompatibility of DefineComponent
+		// @ts-expect-error
 		const { vNode, destroy } = mount(Component, {
 			props: {
 				...rendererProps,

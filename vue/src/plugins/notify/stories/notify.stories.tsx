@@ -6,6 +6,7 @@ import { Input } from '../../../components/input/Input'
 // import Select from '@/components/select/index.vue'
 import { inject, ref } from 'vue'
 import { NotifyPosition } from '../types'
+import { wrapperStyle } from './styles.css'
 
 const meta: Meta<typeof Notify> = {
 	title: 'Plugins/Notify',
@@ -66,27 +67,16 @@ export const Default: Story = {
 				notify?.remove(lastToastId)
 				toastList.value.splice(toastList.value.length - 1, 1)
 			}
-			return {
-				autoHide,
-				setAutoHide,
-				closable,
-				setClosable,
-				title,
-				setTitle,
-				text,
-				setText,
-				call,
-				remove,
-			}
-		},
-		template: `
-		<div style='display: flex; flex-direction: column; align-items: flex-start; gap: 8px'>
-			<Input :value='title' :whenChange='setTitle' />
-			<Input :value='text' :whenChange='setText' />
-			<Checkbox label='autoHide' :value="autoHide" :whenChange="setAutoHide" />
-			<Checkbox label='closable' :value="closable" :whenChange="setClosable" />
-			<Button :whenClick="() => call()">show toast</Button>
-			<Button :whenClick="() => remove()">hide toast</Button>
-		</div>`,
-	}),
+			return () => (
+				<div class={wrapperStyle}>
+					<Input value={title.value} whenChange={(value) => setTitle(`${value}`)} />
+					<Input value={text.value} whenChange={(value) => setText(`${value}`)} />
+					<Checkbox label='autoHide' value={autoHide.value} whenChange={setAutoHide} />
+					<Checkbox label='closable' value={closable.value} whenChange={setClosable} />
+					<Button whenClick={() => call()}>show toast</Button>
+					<Button whenClick={() => remove()}>hide toast</Button>
+				</div>
+			)
+		}
+	})
 }

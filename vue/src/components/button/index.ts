@@ -1,4 +1,4 @@
-import { Button } from './Button'
+import { Button, type ButtonProps, buttonProps } from './Button'
 import {
   buttonStyle,
   buttonVariants,
@@ -8,6 +8,8 @@ import {
 
 export {
   Button,
+  buttonProps,
+  type ButtonProps,
   buttonStyle,
   buttonVariants,
   type ButtonSize,

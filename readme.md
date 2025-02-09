@@ -20,10 +20,11 @@ Fully redesignable vanilla-extract based component modules and plugins
 | icon     | ready    | storybooked   |
 
 ### Plugins
-| name     | status   | documentation |
-|----------|----------|---------------|
-| notify   | ready    | storybooked   |
-| eventBus | ready    | documenting   |
+| name        | status   | documentation |
+|-------------|----------|---------------|
+| notify      | ready    | storybooked   |
+| eventBus    | ready    | documenting   |
+| view-layers | ready    | storybooked   |
 
 -----------------------------------------
 
@@ -44,7 +45,8 @@ Fully redesignable vanilla-extract based component modules and plugins
 | icon     | ready    | storybooked   |
 
 ### providers
-| name     | status   | documentation |
-|----------|----------|---------------|
-| eventBus | planning | planning      |
-| notify   | planning | planning      |
+| name        | status   | documentation |
+|-------------|----------|---------------|
+| eventBus    | planning | planning      |
+| notify      | planning | planning      |
+| view-layers | planning | planning      |

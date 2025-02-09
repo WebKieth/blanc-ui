@@ -1,7 +1,7 @@
 import { defineComponent, ExtractPublicPropTypes } from 'vue'
 import { tableFooterStyle } from '@shared/components/table/footer/styles.css'
 
-const tableFooterProps = {
+export const tableFooterProps = {
 	style: {
 		type: String,
 		default: tableFooterStyle

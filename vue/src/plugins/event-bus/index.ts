@@ -1,6 +1,6 @@
 type TEventsMap = Array<(...args: unknown[]) => void>
 type TEventName = string
-export const $eventBus = '$ebus'
+export const $eventBus = Symbol('event-bus')
 export class EventBus {
 	bus: Map<TEventName, TEventsMap>
 	constructor() {

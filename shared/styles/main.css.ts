@@ -7,12 +7,8 @@ export const reset = globalStyle('html', {
 
 export const variables = globalStyle(':root', {
 	vars: {
-		'--zi-backdrop': '5',
-		'--zi-dropdown': '10',
-		'--zi-modal-provided': '12',
-		'--zi-modal-level-1': '14',
-		'--zi-modal-level-2': '16',
 		'--zi-notification': '20',
+		'--zi-layers-root': '10',
 
 		'--font-xs': '10px',
 		'--font-sm': '12px',

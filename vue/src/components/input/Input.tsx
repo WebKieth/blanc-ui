@@ -17,7 +17,7 @@ import {
 	type InputId
 } from '@shared/components/input'
 
-const inputProps = {
+export const inputProps = {
 	style: {
 		type: String,
 		default: inputStyle

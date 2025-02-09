@@ -1,6 +1,7 @@
 import {
   TableHeader,
   type TableHeaderProps,
+  tableHeaderProps
 } from './TableHeader'
 
 import {
@@ -10,6 +11,7 @@ import {
 
 export {
   TableHeader,
+  tableHeaderProps,
   type TableHeaderProps,
   tableHeaderStyle,
   tableHeaderVariants

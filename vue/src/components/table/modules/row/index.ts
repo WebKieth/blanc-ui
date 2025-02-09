@@ -1,6 +1,7 @@
 import {
   TableRow,
   type TableRowProps,
+	tableRowProps,
   tableRowStylingProps,
 } from "./TableRow";
 import {
@@ -16,6 +17,7 @@ import {
 
 export {
   TableRow,
+	tableRowProps,
   type TableRowProps,
   tableRowStylingProps,
   tableMainRowStyle,

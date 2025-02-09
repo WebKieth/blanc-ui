@@ -11,7 +11,6 @@ export const modalBackdropStyle = style({
 
 export const modalWindowStyle = style({
 	position: 'absolute',
-	zIndex: 1000,
 	inset: 0,
 	margin: 'auto',
 	backgroundColor: 'white',

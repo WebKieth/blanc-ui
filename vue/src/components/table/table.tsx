@@ -12,7 +12,7 @@ import { tableRowStylingProps } from './modules/row'
 import { tableCellStylingProps } from './modules/cell'
 import { Columns, Rows, TableSize } from '@shared/components/table/types'
 
-const tableProps = {
+export const tableProps = {
 	...tableRowStylingProps,
 	...tableCellStylingProps,
 	style: {
