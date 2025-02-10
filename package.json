@@ -16,7 +16,9 @@
       "require": "./dist/vue/blanc-ui.es.js"
     },
     "./react/css": "./dist/react/index.css",
-    "./vue/css": "./dist/vue/style.css"
+    "./vue/css": "./dist/vue/style.css",
+    "./react/types": "./dist/react/blanc-ui.es.d.ts",
+    "./vue/types": "./dist/vue/blanc-ui.es.d.ts"
   },
   "scripts": {
     "prepublish": "tsc -b",
@@ -55,6 +57,7 @@
     "storybook": "^8.1.11",
     "typescript": "^5.5.3",
     "vite": "^5.3.3",
+    "vite-plugin-dts": "^4.5.0",
     "vue-tsc": "^2.0.26"
   },
   "dependencies": {
