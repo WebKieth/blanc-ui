@@ -16,7 +16,7 @@
       "require": "./dist/vue/blanc-ui.es.js"
     },
     "./react/css": "./dist/react/index.css",
-    "./vue/css": "./dist/vue/style.css",
+    "./vue/css": "./dist/vue/index.css",
     "./react/types": "./dist/react/blanc-ui.es.d.ts",
     "./vue/types": "./dist/vue/blanc-ui.es.d.ts"
   },
