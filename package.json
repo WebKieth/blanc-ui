@@ -6,8 +6,6 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/vue/blanc-ui.es.js",
-  "module": "./dist/vue/blanc-ui.umd.js",
   "exports": {
     "./react": {
       "import": "./react/src/index.ts",
