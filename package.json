@@ -9,12 +9,12 @@
   "main": "./dist/vue/blanc-ui.es.js",
   "module": "./dist/vue/blanc-ui.umd.js",
   "exports": {
-    "react": {
-      "import": "./dist/react/blanc-ui.umd.js",
+    "./react": {
+      "import": "./react/src/index.ts",
       "require": "./dist/react/blanc-ui.es.js"
     },
-    "vue": {
-      "import": "./dist/vue/blanc-ui.umd.js",
+    "./vue": {
+      "import": "./vue/src/index.ts",
       "require": "./dist/vue/blanc-ui.es.js"
     }
   },
