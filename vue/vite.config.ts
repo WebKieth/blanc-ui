@@ -12,8 +12,8 @@ export default defineConfig({
 		target: 'esnext',
 		lib: {
 			entry: resolve(__dirname, 'src/index.ts'),
-			name: 'vue-blank-ui',
-			fileName: (format) => `vue-blank-ui.${format}.js`,
+			name: 'blank-ui',
+			fileName: (format) => `blank-ui.${format}.js`,
 		},
 		outDir: './dist/vue',
 		emptyOutDir: true

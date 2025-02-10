@@ -1,12 +1,12 @@
 import {
-  IconSize,
-  IconProps,
-  IconName
+  type IconSize,
+  type IconProps,
+  type IconName
 } from './types'
 
 
 export {
-  IconSize,
-  IconProps,
-  IconName
+  type IconSize,
+  type IconProps,
+  type IconName
 }

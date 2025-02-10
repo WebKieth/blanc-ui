@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/vue3'
-import { $viewLayers, ViewLayers } from '..'
+import { $viewLayers, ViewLayers } from '../main'
 import { Button } from '../../../components/button'
 import { Modal, modalProps } from '../../../components/modal'
 import { defineComponent, inject, onMounted } from 'vue'

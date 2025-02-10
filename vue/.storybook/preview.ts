@@ -2,9 +2,9 @@ import type { Preview } from "@storybook/vue3";
 import { setup } from '@storybook/vue3'
 //@ts-ignore
 import { applyCssReset, applyCssVariables } from '@shared/styles'
-import { Notify, $notify } from '../src/plugins/notify'
-import { ViewLayers, $viewLayers } from '../src/plugins/view-layers'
-import { EventBus, $eventBus } from '../src/plugins/event-bus'
+import { Notify, $notify } from '../src/plugins/notify/main'
+import { ViewLayers, $viewLayers } from '../src/plugins/view-layers/main'
+import { EventBus, $eventBus } from '../src/plugins/event-bus/main'
 
 const preview: Preview = {
   parameters: {

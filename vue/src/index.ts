@@ -135,11 +135,23 @@ export {
 export {
   $notify,
   Notify,
+  NotifyPlugin,
   type NotifyOptions,
   type NotifyPosition
 } from './plugins/notify'
 
 export {
   $eventBus,
-  EventBus
+  EventBus,
+  EventBusPlugin,
+  type EventName,
+  type EventsMap,
+  type EventBusMap
 } from './plugins/event-bus'
+
+export {
+  $viewLayers,
+  ViewLayers,
+  ViewLayersPlugin,
+  type LayerView
+} from './plugins/view-layers'

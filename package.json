@@ -6,20 +6,20 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/vue-blank-ui.es.js",
-  "module": "./dist/vue-blank-ui.umd.js",
+  "main": "./dist/vue/blank-ui.es.js",
+  "module": "./dist/vue/blank-ui.umd.js",
   "exports": {
     "react": {
-      "import": "./dist/react-blank-ui.umd.js",
-      "require": "./dist/react-blank-ui.es.js"
+      "import": "./dist/react/blank-ui.umd.js",
+      "require": "./dist/react/blank-ui.es.js"
     },
     "vue": {
-      "import": "./dist/vue-blank-ui.umd.js",
-      "require": "./dist/vue-blank-ui.es.js"
+      "import": "./dist/vue/blank-ui.umd.js",
+      "require": "./dist/vue/blank-ui.es.js"
     }
   },
   "scripts": {
-    "prepublish": "tsc --build --dry",
+    "prepublish": "tsc -b",
     "build": "tsc -b && vite build -c ./vue/vite.config.ts && vite build -c ./react/vite.config.ts",
     "react": "storybook dev -p 6006 -c ./react/.storybook",
     "vue": "storybook dev -p 7007 -c ./vue/.storybook"

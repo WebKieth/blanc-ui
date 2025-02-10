@@ -1,34 +1,14 @@
-type TEventsMap = Array<(...args: unknown[]) => void>
-type TEventName = string
-export const $eventBus = Symbol('event-bus')
-export class EventBus {
-	bus: Map<TEventName, TEventsMap>
-	constructor() {
-		this.bus = new Map()
-	}
+export {
+  $eventBus,
+  EventBus
+} from './main'
 
-	$un(id: TEventName, callback: (...args: unknown[]) => void) {
-		if (!this.bus.has(id)) return
-		const listeners = this.bus.get(id)
-		if (listeners === undefined) return
-		this.bus.set(
-			id,
-			listeners.filter((listener) => listener !== callback),
-		)
-	}
+export {
+  EventBusPlugin
+} from './plugin'
 
-	$on(id: TEventName, callback: (...args: unknown[]) => void) {
-		const callbacks = this.bus.get(id)
-		if (callbacks === undefined) {
-			this.bus.set(id, [callback])
-		} else {
-			this.bus.set(id, [callback, ...callbacks])
-		}
-	}
-
-	$emit(id: TEventName, ...params: unknown[]) {
-		const callbacks = this.bus.get(id)
-		if (callbacks === undefined) return
-		callbacks.forEach((cb) => cb(...params))
-	}
-}
+export {
+  type EventName,
+  type EventsMap,
+  type EventBusMap
+} from './types'

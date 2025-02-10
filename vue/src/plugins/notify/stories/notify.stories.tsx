@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/vue3'
-import { Notify, $notify } from '..'
+import { Notify, $notify } from '../main'
 import { Button } from '../../../components/button'
 import { Checkbox } from '../../../components/checkbox'
 import { Input } from '../../../components/input/Input'
