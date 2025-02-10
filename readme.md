@@ -1,4 +1,4 @@
-# Blank UI
+# Blanc UI
 
 Fully redesignable vanilla-extract based component modules and plugins  
 **Package in active development**
