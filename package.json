@@ -3,9 +3,6 @@
   "type": "module",
   "version": "0.0.3",
   "description": "User interface component API level",
-  "files": [
-    "dist"
-  ],
   "exports": {
     "./react": {
       "import": "./react/src/index.ts",
