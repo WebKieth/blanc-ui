@@ -9,8 +9,8 @@ import {
 	tableRowActionsStyle,
 	tableRowExpanderStyle,
 	tableRowExpanderVariants
-} from '@shared/components/table/row/styles.css';
-import { ColumnKey, Row, Rows } from "@shared/components/table/types";
+} from '../../../../../../shared/components/table/row/styles.css';
+import { ColumnKey, Row, Rows } from "../../../../../../shared/components/table/types";
 import { TableRowStylingProps } from "../../types";
 import { useTablePropsProvided } from "../../hooks/use-table-props-provided";
 import { TableCell } from "../cell";

@@ -1,6 +1,6 @@
 import { createContext, FC, PropsWithChildren } from "react";
 import { TableProps } from "./types";
-import { tableStyle } from "@shared/components/table/styles.css";
+import { tableStyle } from "../../../../shared/components/table/styles.css";
 import {
   tableMainRowStyle,
   tableMainRowVariants,

@@ -1,4 +1,4 @@
-import { IconProps } from "@shared/components/icon";
+import { IconProps } from "../../../../../shared/components/icon";
 import { FC } from "react";
 
 export const riAlertLine: FC<IconProps> = ({

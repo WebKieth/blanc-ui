@@ -10,7 +10,7 @@ import {
 	tableHeaderCellIconVariants,
 	tableHeaderCellLabelStyle
 } from './index'
-import { ColumnKey, Sorting } from '@shared/components/table/types'
+import { ColumnKey, Sorting } from '../../../../../../shared/components/table/types'
 
 export const tableHeaderCellProps = {
 	style: {

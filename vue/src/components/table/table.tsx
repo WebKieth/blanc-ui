@@ -3,14 +3,14 @@ import { ProvidedTableConfig, WhenSelect, TableControlsProvided } from './types'
 import { defaultTableControlsProvided, tableConfigSymbol, tableControlsProvidedSymbol } from './common'
 import { definePropType } from '../../utils'
 
-import { tableStyle } from '@shared/components/table/styles.css'
+import { tableStyle } from '../../../../shared/components/table/styles.css'
 
 import {
 	TableBody,
 } from './modules'
 import { tableRowStylingProps } from './modules/row'
 import { tableCellStylingProps } from './modules/cell'
-import { Columns, Rows, TableSize } from '@shared/components/table/types'
+import { Columns, Rows, TableSize } from '../../../../shared/components/table/types'
 
 export const tableProps = {
 	...tableRowStylingProps,

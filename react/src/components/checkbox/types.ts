@@ -1,6 +1,6 @@
-import { CheckboxSizes } from "@shared/components/checkbox/types"
+import { CheckboxSizes } from "../../../../shared/components/checkbox/types"
 import { StyleVariants } from "../types"
-import { IconName } from "@shared/components/icon"
+import { IconName } from "../../../../shared/components/icon"
 import { ReactNode } from "react"
 
 export type CheckboxProps = {

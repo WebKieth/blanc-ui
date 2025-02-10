@@ -10,7 +10,7 @@ import {
 	checkboxLabelVariants,
 	checkboxCaptionStyle,
 	checkboxCaptionVariants
-} from '@shared/components/checkbox/styles.css'
+} from '../../../../shared/components/checkbox/styles.css'
 import { Checkbox, type CheckboxProps, checkboxProps } from './Checkbox'
 
 export {

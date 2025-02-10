@@ -6,8 +6,8 @@ import { tableConfigSymbol, tableHeaderPropsSymbol, defaultProvidedTableOptions 
 import {
 	tableHeaderStyle,
 	tableHeaderVariants
-} from '@shared/components/table/header/styles.css'
-import { ColumnKey, Sorting } from '@shared/components/table/types'
+} from '../../../../../../shared/components/table/header/styles.css'
+import { ColumnKey, Sorting } from '../../../../../../shared/components/table/types'
 
 
 export const tableHeaderProps = {

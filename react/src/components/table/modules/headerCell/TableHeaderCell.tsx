@@ -1,4 +1,4 @@
-import { ColumnKey, Sorting } from "@shared/components/table/types";
+import { ColumnKey, Sorting } from "../../../../../../shared/components/table/types";
 import { FC, ReactNode } from "react";
 import cn from 'classnames';
 import { StyleVariants } from "src/components/types";
@@ -9,7 +9,7 @@ import {
 	tableHeaderCellIconStyle,
 	tableHeaderCellIconVariants,
 	tableHeaderCellLabelStyle
-} from '@shared/components/table/headerCell/styles.css'
+} from '../../../../../../shared/components/table/headerCell/styles.css'
 import { useTablePropsProvided } from "../../hooks/use-table-props-provided";
 import { useTableColStyling } from "../../hooks/use-col-styling";
 

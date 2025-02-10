@@ -1,6 +1,6 @@
 import { defineComponent, computed, ExtractPublicPropTypes } from 'vue'
 import { definePropType } from '../../utils/index.ts'
-import { IconSize, IconName, IconProps as _IconProps } from '@shared/components/icon'
+import { IconSize, IconName, IconProps as _IconProps } from '../../../../shared/components/icon'
 
 import * as components from './components'
 

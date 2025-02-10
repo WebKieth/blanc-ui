@@ -1,8 +1,8 @@
 import { defineComponent, ExtractPublicPropTypes, ref } from 'vue'
 import { Icon } from '../icon/Icon'
-import { CheckboxSizes } from '@shared/components/checkbox/types'
+import { CheckboxSizes } from '../../../../shared/components/checkbox/types'
 import { definePropType } from '../../utils'
-import { IconName } from '@shared/components/icon/types'
+import { IconName } from '../../../../shared/components/icon/types'
 
 import {
 	checkboxStyle,

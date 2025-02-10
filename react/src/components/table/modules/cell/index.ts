@@ -1,4 +1,4 @@
-import { tableCellStyle, tableCellVariants } from "@shared/components/table/cell/styles.css";
+import { tableCellStyle, tableCellVariants } from "../../../../../../shared/components/table/cell/styles.css";
 import { TableCell } from "./TableCell";
 
 export {

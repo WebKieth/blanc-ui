@@ -1,6 +1,6 @@
 import { Ref, computed } from 'vue'
 import { _TableProps } from '../types'
-import { ColumnKey, TableSize } from '@shared/components/table/types'
+import { ColumnKey, TableSize } from '../../../../../shared/components/table/types'
 
 
 export const useColStyling = (props: _TableProps, hiddenColumnKeys: Ref<ColumnKey[]>) => {

@@ -14,7 +14,7 @@ import {
   checkboxLabelVariants,
   checkboxStyle,
   checkboxTextContainerStyle
-} from "@shared/components/checkbox";
+} from "../../../../shared/components/checkbox";
 import { Icon } from "../icon";
 
 export const Checkbox: FC<CheckboxProps> = ({

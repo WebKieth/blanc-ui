@@ -1,4 +1,4 @@
-import { Column, ColumnKey, TableSize } from "@shared/components/table/types";
+import { Column, ColumnKey, TableSize } from "../../../../../shared/components/table/types";
 import { useTablePropsProvided } from "./use-table-props-provided";
 
 export const useTableColStyling = () => {

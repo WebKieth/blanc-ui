@@ -6,8 +6,8 @@ import {
   InputSize,
   InputType,
   InputValue
-} from "@shared/components/input"
-import { Nullable } from "@shared/types"
+} from "../../../../shared/components/input"
+import { Nullable } from "../../../../shared/types"
 
 export type InputStyleProps = {
   style?: string

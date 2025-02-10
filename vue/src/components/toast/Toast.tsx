@@ -1,6 +1,6 @@
 import { defineComponent, ExtractPublicPropTypes } from "vue"
 import { definePropType } from "../../utils"
-import { IconName } from "@shared/components/icon/types"
+import { IconName } from "../../../../shared/components/icon/types"
 import {
   toastStyle,
   toastVariants,

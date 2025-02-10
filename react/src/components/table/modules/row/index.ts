@@ -8,7 +8,7 @@ import {
   tableRowActionsStyle,
   tableRowExpanderStyle,
   tableRowExpanderVariants
-} from '@shared/components/table/row/styles.css'
+} from '../../../../../../shared/components/table/row/styles.css'
 
 export {
   TableRow,

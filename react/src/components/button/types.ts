@@ -1,4 +1,4 @@
-import { ButtonSize, ButtonVariant } from "@shared/components/button"
+import { ButtonSize, ButtonVariant } from "../../../../shared/components/button"
 import { StyleVariants } from "../types"
 import { ButtonHTMLAttributes, ReactNode, SyntheticEvent } from "react"
 

@@ -1,5 +1,5 @@
 import { defineComponent, ExtractPublicPropTypes } from 'vue'
-import { tableFooterStyle } from '@shared/components/table/footer/styles.css'
+import { tableFooterStyle } from '../../../../../../shared/components/table/footer/styles.css'
 
 export const tableFooterProps = {
 	style: {

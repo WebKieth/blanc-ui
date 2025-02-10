@@ -6,7 +6,7 @@ import {
 	buttonVariants,
 	type ButtonSize,
 	type ButtonVariant
-} from '@shared/components/button'
+} from '../../../../shared/components/button'
 
 export const buttonProps = {
 	style: {

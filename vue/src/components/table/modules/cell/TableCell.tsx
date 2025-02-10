@@ -3,8 +3,8 @@ import { useColStyling } from '../../hooks/use-col-styling'
 import { defaultProvidedTableOptions, tableConfigSymbol, tableRowPropsSymbol } from '../../common'
 import { ProvidedTableConfig, TableRowProps } from '../../types'
 import { definePropType } from '../../../../utils'
-import { tableCellStyle, tableCellVariants } from '@shared/components/table/cell/styles.css'
-import { ColumnKey } from '@shared/components/table/types'
+import { tableCellStyle, tableCellVariants } from '../../../../../../shared/components/table/cell/styles.css'
+import { ColumnKey } from '../../../../../../shared/components/table/types'
 
 export const tableCellStylingProps = {
 	cellStyle: {

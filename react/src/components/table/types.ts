@@ -1,4 +1,4 @@
-import { ColumnKey, Columns, Sorting, TableSize } from "@shared/components/table/types"
+import { ColumnKey, Columns, Sorting, TableSize } from "../../../../shared/components/table/types"
 import { ReactNode } from "react"
 import { StyleVariants } from "../types"
 

@@ -7,7 +7,7 @@ import {
   inputLabelVariants,
   inputStyle,
   inputVariants
-} from '@shared/components/input'
+} from '../../../../shared/components/input'
 import { type InputProps } from './types'
 import { Input } from './Input'
 

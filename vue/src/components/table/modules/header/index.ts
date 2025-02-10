@@ -7,7 +7,7 @@ import {
 import {
   tableHeaderStyle,
   tableHeaderVariants
-} from '@shared/components/table/header/styles.css'
+} from '../../../../../../shared/components/table/header/styles.css'
 
 export {
   TableHeader,

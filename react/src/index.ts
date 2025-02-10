@@ -1,7 +1,7 @@
 export {
     applyCssReset,
     applyCssVariables
-} from '@shared/styles'
+} from '../../shared/styles'
 
 export {
     Button,

@@ -14,8 +14,8 @@ import {
 	tableRowActionsStyle,
 	tableRowExpanderStyle,
 	tableRowExpanderVariants
-} from '@shared/components/table/row/styles.css'
-import { ColumnKey, Row } from '@shared/components/table/types'
+} from '../../../../../../shared/components/table/row/styles.css'
+import { ColumnKey, Row } from '../../../../../../shared/components/table/types'
 
 export const tableRowStylingProps = {
 	rowBoxStyle: {

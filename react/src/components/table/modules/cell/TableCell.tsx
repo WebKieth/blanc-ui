@@ -1,8 +1,8 @@
-import { ColumnKey } from "@shared/components/table/types";
+import { ColumnKey } from "../../../../../../shared/components/table/types";
 import { FC, ReactNode } from "react";
 import cn from 'classnames';
 import { TableCellStylingProps } from "../../types";
-import { tableCellStyle, tableCellVariants } from "@shared/components/table/cell/styles.css";
+import { tableCellStyle, tableCellVariants } from "../../../../../../shared/components/table/cell/styles.css";
 import { useTablePropsProvided } from "../../hooks/use-table-props-provided";
 import { useTableColStyling } from "../../hooks/use-col-styling";
 

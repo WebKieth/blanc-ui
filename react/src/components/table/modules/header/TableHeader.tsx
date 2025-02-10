@@ -1,8 +1,8 @@
-import { TableSize } from "@shared/components/table/types"
+import { TableSize } from "../../../../../../shared/components/table/types"
 import {
   tableHeaderStyle,
   tableHeaderVariants
-} from '@shared/components/table/header/styles.css'
+} from '../../../../../../shared/components/table/header/styles.css'
 import { FC, ReactNode } from "react"
 import { useTableColStyling } from "../../hooks/use-col-styling"
 import { useTablePropsProvided } from "../../hooks/use-table-props-provided"

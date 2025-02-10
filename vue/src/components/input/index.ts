@@ -12,7 +12,7 @@ import {
   type InputValue,
   type InputType,
   type InputId
-} from '@shared/components/input'
+} from '../../../../shared/components/input'
 import { Input, inputProps, type InputProps } from './Input'
 
 export {

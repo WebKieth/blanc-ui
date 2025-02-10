@@ -5,7 +5,7 @@ import {
 	TableHeader,
 	TableFooter,
 } from '../modules/index.ts'
-import { ColumnKey, Row } from '@shared/components/table/types.ts'
+import { ColumnKey, Row } from '../../../../../shared/components/table/types.ts'
 
 
 const meta: Meta<typeof Table> = {

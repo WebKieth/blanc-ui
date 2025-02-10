@@ -10,7 +10,7 @@ import {
 	tableHeaderCellIconStyle,
 	tableHeaderCellIconVariants,
 	tableHeaderCellLabelStyle
-} from '@shared/components/table/headerCell/styles.css'
+} from '../../../../../../shared/components/table/headerCell/styles.css'
 
 export {
   TableHeaderCell,

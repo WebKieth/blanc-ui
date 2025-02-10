@@ -15,7 +15,7 @@ import {
 	type InputValue,
 	type InputType,
 	type InputId
-} from '@shared/components/input'
+} from '../../../../shared/components/input'
 
 export const inputProps = {
 	style: {

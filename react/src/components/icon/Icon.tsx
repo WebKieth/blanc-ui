@@ -1,4 +1,4 @@
-import { type IconName, type IconSize, type IconProps as SvgComponentProps } from "@shared/components/icon"
+import { type IconName, type IconSize, type IconProps as SvgComponentProps } from "../../../../shared/components/icon"
 import * as components from './components'
 import { FC } from "react"
 import { IconProps } from "./types"

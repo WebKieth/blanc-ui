@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react"
-import { tableFooterStyle } from '@shared/components/table/footer/styles.css'
+import { tableFooterStyle } from '../../../../../../shared/components/table/footer/styles.css'
 
 export type TableFooterProps = {
   style?: string

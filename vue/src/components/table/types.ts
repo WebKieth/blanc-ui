@@ -1,4 +1,4 @@
-import { ColumnKey, Columns, Rows, Sorting, TableSize } from "@shared/components/table/types"
+import { ColumnKey, Columns, Rows, Sorting, TableSize } from "../../../../shared/components/table/types"
 import { ComputedRef, Ref, Slots } from "vue"
 
 export type Column = {
