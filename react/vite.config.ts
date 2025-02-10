@@ -14,6 +14,14 @@ export default defineConfig({
 			name: 'blanc-ui',
 			fileName: (format) => `blanc-ui.${format}.js`,
 		},
+		rollupOptions: {
+			external: ['react'],
+			output: {
+				globals: {
+					react: 'react',
+				},
+			},
+		},
 		outDir: './dist/react',
 		emptyOutDir: true
 	},

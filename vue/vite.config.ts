@@ -15,6 +15,14 @@ export default defineConfig({
 			name: 'blanc-ui',
 			fileName: (format) => `blanc-ui.${format}.js`,
 		},
+		rollupOptions: {
+			external: ['vue'],
+			output: {
+				globals: {
+					vue: 'vue',
+				},
+			},
+		},
 		outDir: './dist/vue',
 		emptyOutDir: true
 	},
