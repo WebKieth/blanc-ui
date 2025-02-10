@@ -1,20 +1,22 @@
 {
   "name": "blanc-ui",
   "type": "module",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "User interface component API level",
   "files": [
     "dist"
   ],
   "exports": {
-    "react": {
+    "./react": {
       "import": "./dist/react/blanc-ui.umd.js",
       "require": "./dist/react/blanc-ui.es.js"
     },
-    "vue": {
+    "./vue": {
       "import": "./dist/vue/blanc-ui.umd.js",
       "require": "./dist/vue/blanc-ui.es.js"
-    }
+    },
+    "./react/css": "./dist/react/index.css",
+    "./vue/css": "./dist/vue/style.css"
   },
   "scripts": {
     "prepublish": "tsc -b",
