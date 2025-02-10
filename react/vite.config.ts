@@ -11,8 +11,8 @@ export default defineConfig({
 		target: 'esnext',
 		lib: {
 			entry: resolve(__dirname, 'src/index.ts'),
-			name: 'blank-ui',
-			fileName: (format) => `blank-ui.${format}.js`,
+			name: 'blanc-ui',
+			fileName: (format) => `blanc-ui.${format}.js`,
 		},
 		outDir: './dist/react',
 		emptyOutDir: true
