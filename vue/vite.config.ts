@@ -31,7 +31,10 @@ export default defineConfig({
 		vue(),
 		vueJsx(),
 		vanillaExtractPlugin(),
-		dts({ rollupTypes: true }),
+		dts({
+			rollupTypes: true,
+			tsconfigPath: resolve(__dirname, "tsconfig.json")
+		}),
 		alias({
 			entries: [{
 				find: '@shared',

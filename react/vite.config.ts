@@ -29,7 +29,10 @@ export default defineConfig({
 	plugins: [
 		react(),
 		vanillaExtractPlugin(),
-		dts({ rollupTypes: true }),
+		dts({
+			rollupTypes: true,
+			tsconfigPath: resolve(__dirname, "tsconfig.json")
+		}),
 		alias({
 			entries: [{
 				find: '@shared',
