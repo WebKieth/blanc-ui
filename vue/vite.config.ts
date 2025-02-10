@@ -10,10 +10,9 @@ import dts from 'vite-plugin-dts'
 export default defineConfig({
 	build: {
 		cssCodeSplit: true,
-		target: 'esnext',
 		lib: {
+			formats: ['es'],
 			entry: resolve(__dirname, 'src/index.ts'),
-			name: 'blanc-ui',
 			fileName: (format) => `blanc-ui.${format}.js`,
 		},
 		rollupOptions: {
