@@ -8,6 +8,8 @@ export {
   Button,
   buttonProps,
   type ButtonProps,
+  type ButtonSize,
+  type ButtonVariant,
   buttonStyle,
   buttonVariants
 } from './components/button'
