@@ -15,6 +15,16 @@ export {
 } from './components/button'
 
 export {
+  ButtonGroup,
+  type ButtonGroupProps,
+  type ButtonGroupChangeActiveHandler,
+  buttonGroupProps,
+  $buttonGroupProvided,
+  buttonGroupStyle
+} from './components/buttonGroup'
+
+
+export {
   Checkbox,
   checkboxProps,
   type CheckboxProps,

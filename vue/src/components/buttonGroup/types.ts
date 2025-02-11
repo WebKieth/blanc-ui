@@ -1,0 +1,1 @@
+export type ButtonGroupChangeActiveHandler = (newValue: string | number) => void

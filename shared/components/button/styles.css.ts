@@ -8,13 +8,13 @@ export const buttonStyle = style({
 
 export const buttonVariants = styleVariants({
 	primary: {
-		backgroundColor: 'var(--blue-700)',
+		backgroundColor: 'var(--blue-500)',
 		color: 'var(--neutral-50)',
 		':hover': {
-			backgroundColor: 'var(--blue-800)'
+			backgroundColor: 'var(--blue-600)'
 		},
 		':active': {
-			backgroundColor: 'var(--blue-900)'
+			backgroundColor: 'var(--blue-700)'
 		},
 	},
 	secondary: {
@@ -67,21 +67,85 @@ export const buttonVariants = styleVariants({
 	disabled: {
 		cursor: 'not-allowed',
 	},
-	disabled_primary: {
+	primary_disabled: {
 		backgroundColor: 'var(--gray-200)',
 		color: 'var(--gray-500)'
 	},
-	disabled_secondary: {
+	secondary_disabled: {
 		backgroundColor: 'var(--gray-100)',
 		color: 'var(--gray-400)'
 	},
-	disabled_outlined: {
+	outlined_disabled: {
 		backgroundColor: 'var(--white)',
 		border: '1px solid var(--zinc-100)',
 		color: 'var(--gray-400)'
 	},
-	disabled_clean: {
+	clean_disabled: {
 		backgroundColor: 'var(--white)',
 		color: 'var(--gray-400)'
+	},
+	primary_active: {
+		backgroundColor: 'var(--blue-700)',
+		color: 'var(--neutral-100)',
+		':hover': {
+			backgroundColor: 'var(--blue-700)',
+			color: 'var(--neutral-100)',
+		},
+		':active': {
+			backgroundColor: 'var(--blue-700)',
+			color: 'var(--neutral-100)',
+		}
+	},
+	secondary_active: {
+		backgroundColor: 'var(--neutral-600)',
+		color: 'var(--slate-50)',
+		':hover': {
+			backgroundColor: 'var(--neutral-600)',
+			color: 'var(--slate-50)',
+		},
+		':active': {
+			backgroundColor: 'var(--neutral-600)',
+			color: 'var(--slate-50)',
+		}
+	},
+	outlined_active: {
+		backgroundColor: 'var(--zinc-200)',
+		border: '1px solid var(--zinc-500)',
+		color: 'var(--slate-950)',
+		cursor: 'default',
+		':hover': {
+			backgroundColor: 'var(--zinc-200)',
+			border: '1px solid var(--zinc-500)',
+			color: 'var(--slate-950)',
+		},
+		':active': {
+			backgroundColor: 'var(--zinc-200)',
+			border: '1px solid var(--zinc-500)',
+			color: 'var(--slate-950)',
+		}
+	},
+	clean_active: {
+		backgroundColor: 'var(--slate-100)',
+		color: 'var(--slate-950)',
+		':hover': {
+			backgroundColor: 'var(--slate-100)',
+			color: 'var(--slate-950)',
+		},
+		':active': {
+			backgroundColor: 'var(--slate-100)',
+			color: 'var(--slate-950)',
+		}
+	},
+	first: {
+		borderTopLeftRadius: '6px',
+		borderBottomLeftRadius: '6px',
+		borderRight: '1px solid var(--blue-200)'
+	},
+	last: {
+		borderTopRightRadius: '6px',
+		borderBottomRightRadius: '6px'
+	},
+	middle: {
+		borderRight: '1px solid var(--blue-200)'
 	}
 })
