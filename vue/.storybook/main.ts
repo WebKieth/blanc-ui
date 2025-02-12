@@ -11,10 +11,6 @@ const config: StorybookConfig = {
   framework: {
     name: "@storybook/vue3-vite",
     options: {},
-  },
-  viteFinal: (config) => {
-    config.base = '/vue/'
-    return config
   }
 };
 export default config;

@@ -12,10 +12,6 @@ const config: StorybookConfig = {
   framework: {
     name: "@storybook/react-vite",
     options: {},
-  },
-  viteFinal: (config) => {
-    config.base = '/react/'
-    return config
   }
 };
 export default config;
