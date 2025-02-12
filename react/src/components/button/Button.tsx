@@ -19,7 +19,7 @@ export const Button: FC<ButtonProps> = ({
 			${style}
 			${(variants && !disabled) && variants[variant]}
 			${variants && variants[size]}
-			${disabled && `${variants.disabled} ${variants[`disabled_${variant}`]}`}
+			${disabled && `${variants.disabled} ${variants[`${variant}_disabled`]}`}
 		`}
 		disabled={disabled}
 		onClick={(e: SyntheticEvent) => !disabled && onClick(e)}

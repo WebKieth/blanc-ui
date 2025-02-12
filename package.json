@@ -1,7 +1,7 @@
 {
   "name": "blanc-ui",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "User interface component API level",
   "files": [
     "dist"
@@ -18,7 +18,9 @@
     "prepublish": "tsc -b",
     "build": "tsc -b && vite build -c ./vue/vite.config.ts && vite build -c ./react/vite.config.ts",
     "react:storybook": "storybook dev -p 6006 -c ./react/.storybook",
-    "vue:storybook": "storybook dev -p 7007 -c ./vue/.storybook"
+    "react:storybook:build": "storybook build -o ./react/.stories -c ./react/.storybook",
+    "vue:storybook": "storybook dev -p 7007 -c ./vue/.storybook",
+    "vue:storybook:build": "storybook build -o ./vue/.stories -c ./vue/.storybook"
   },
   "author": "",
   "license": "ISC",

@@ -16,7 +16,7 @@ import {
 	checkboxLabelVariants,
 	checkboxCaptionStyle,
 	checkboxCaptionVariants
-} from './index'
+} from '../../../../shared/components/checkbox'
 
 export const checkboxProps = {
 	id: {
