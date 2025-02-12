@@ -17,7 +17,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.build-publish.outputs.page_url }}/vue/
+      url: https://webkieth.github.io/blanc-ui/vue/
     runs-on: ubuntu-latest
     # Job steps
     steps:
