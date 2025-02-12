@@ -17,7 +17,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.build-publish.outputs.page_url }}
+      url: ${{ steps.build-publish.outputs.page_url }}/vue/
     runs-on: ubuntu-latest
     # Job steps
     steps:
