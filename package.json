@@ -15,7 +15,7 @@
     "./vue/css": "./dist/vue/index.css"
   },
   "scripts": {
-    "prepublish": "tsc -b",
+    "prepublish": "tsc -b -d",
     "build": "tsc -b && vite build -c ./vue/vite.config.ts && vite build -c ./react/vite.config.ts",
     "react:storybook": "storybook dev -p 6006 -c ./react/.storybook",
     "react:storybook:build": "storybook build -o ./react/.stories -c ./react/.storybook",
