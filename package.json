@@ -18,9 +18,9 @@
     "prepublish": "tsc -b -d",
     "build": "tsc -b && vite build -c ./vue/vite.config.ts && vite build -c ./react/vite.config.ts",
     "react:storybook": "storybook dev -p 6006 -c ./react/.storybook",
-    "react:storybook:build": "storybook build -o ./react/.stories -c ./react/.storybook",
+    "react:storybook:build": "storybook build -o ./deploy/react -c ./react/.storybook",
     "vue:storybook": "storybook dev -p 7007 -c ./vue/.storybook",
-    "vue:storybook:build": "storybook build -o ./vue/.stories -c ./vue/.storybook"
+    "vue:storybook:build": "storybook build -o ./deploy/vue -c ./vue/.storybook"
   },
   "author": "",
   "license": "ISC",
