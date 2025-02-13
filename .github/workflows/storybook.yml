@@ -42,11 +42,9 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1.0.4
         with:
-          path: 'deploy'
+          path: 'deploy/storybook'
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
-        with:
-          token: ${{ github.token }}
