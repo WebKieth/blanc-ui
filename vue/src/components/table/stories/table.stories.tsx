@@ -4,7 +4,7 @@ import { Table } from '../Table.tsx'
 import {
 	TableHeader,
 	TableFooter,
-} from '../modules/index.ts'
+} from '../modules'
 import { ColumnKey, Row } from '../../../../../shared/components/table/types.ts'
 
 
@@ -103,6 +103,7 @@ export const DefaultTable: Story = {
 		rows,
 		size: 'medium'
 	},
+	// @ts-ignore
 	render(args) {
 		return {
 			components: {
