@@ -35,7 +35,7 @@ jobs:
         run: npm ci
       - name: Build React Storybook
         run: |
-          npm run vue:storybook:build
+          npm run react:storybook:build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3.0.1
         with:
