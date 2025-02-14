@@ -19,9 +19,7 @@ export {
   ButtonGroup,
   type ButtonGroupProps,
   type ButtonGroupEmitters,
-  type ButtonGroupChangeActiveHandler,
   buttonGroupProps,
-  $buttonGroupProvided,
   buttonGroupStyle
 } from './components/buttonGroup'
 

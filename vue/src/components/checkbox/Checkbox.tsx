@@ -114,14 +114,14 @@ export const Checkbox = defineComponent({
 	emits: checkboxEmitters,
 	setup(props, { slots, emit }) {
 		const inputRef = ref<HTMLInputElement>()
-		const handleWhenChange = () => {
+		const handleChange = () => {
 			if (!inputRef.value) return
 			const { checked } = inputRef.value
 			emit('change', checked)
 		}
 
 		const onKeyDownHandler = (e: KeyboardEvent) => {
-			if (e.key === 'Enter') handleWhenChange()
+			if (e.key === 'Enter') handleChange()
 		}
 
 		return () => (
@@ -147,7 +147,7 @@ export const Checkbox = defineComponent({
 						id={props.id}
 						value={props.value}
 						disabled={props.disabled}
-						onChange={handleWhenChange}
+						onChange={handleChange}
 						tabindex={-1}
 					/>
 					<Icon

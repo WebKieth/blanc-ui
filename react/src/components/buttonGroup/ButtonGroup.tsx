@@ -6,8 +6,8 @@ export const ButtonGroupContext = createContext<ProvidedButtonGroupProps | undef
 
 export const ButtonGroup: FC<ButtonGroupProps> = ({
   style = buttonGroupStyle,
-  value = null,
-  onChange = null,
+  value,
+  onChange,
   children
 }) => {
   return <ButtonGroupContext.Provider

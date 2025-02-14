@@ -71,10 +71,10 @@ export const Default: Story = {
 				<div class={wrapperStyle}>
 					<Input value={title.value} whenChange={(value) => setTitle(`${value}`)} />
 					<Input value={text.value} whenChange={(value) => setText(`${value}`)} />
-					<Checkbox label='autoHide' value={autoHide.value} whenChange={setAutoHide} />
-					<Checkbox label='closable' value={closable.value} whenChange={setClosable} />
-					<Button whenClick={() => call()}>show toast</Button>
-					<Button whenClick={() => remove()}>hide toast</Button>
+					<Checkbox label='autoHide' value={autoHide.value} onChange={setAutoHide} />
+					<Checkbox label='closable' value={closable.value} onChange={setClosable} />
+					<Button onClick={() => call()}>show toast</Button>
+					<Button onClick={() => remove()}>hide toast</Button>
 				</div>
 			)
 		}

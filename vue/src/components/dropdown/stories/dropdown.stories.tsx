@@ -64,7 +64,7 @@ export const Basic: Story = {
 			const updateJustify = () => justify.value === 'flex-start' ? justify.value = 'space-between' : justify.value = 'flex-start'
 			return () => (
 				<div>
-					<Button whenClick={updateJustify}>update justify</Button>
+					<Button onClick={updateJustify}>update justify</Button>
 					<span>{'Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique exercitationem incidunt impedit iusto, ullam ratione molestiae ipsa nulla fugiat ab praesentium, corrupti unde dolores quidem, atque harum sapiente quae. Neque.'}</span>
 					<span>{'Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique exercitationem incidunt impedit iusto, ullam ratione molestiae ipsa nulla fugiat ab praesentium, corrupti unde dolores quidem, atque harum sapiente quae. Neque.'}</span>
 					<span>{'Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique exercitationem incidunt impedit iusto, ullam ratione molestiae ipsa nulla fugiat ab praesentium, corrupti unde dolores quidem, atque harum sapiente quae. Neque.'}</span>

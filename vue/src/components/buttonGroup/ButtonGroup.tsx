@@ -1,7 +1,6 @@
 import { definePropType } from '../../utils'
 import { defineComponent, ExtractPublicPropTypes, provide } from "vue";
 import {
-  type ButtonGroupChangeActiveHandler,
   buttonGroupStyle
 } from '../../../../shared/components/buttonGroup';
 
@@ -17,11 +16,11 @@ export const buttonGroupProps = {
 }
 
 export type ButtonGroupEmitters = {
-  change: ButtonGroupChangeActiveHandler
+  change: (newValue: string | number | symbol) => void
 }
 
 const buttonGroupEmitters: ButtonGroupEmitters = {
-  change: (newValue) => typeof newValue === 'string' || typeof newValue === 'number'
+  change: (newValue) => typeof newValue === 'string' || typeof newValue === 'number' || typeof 'symbol'
 }
 
 export const $buttonGroupProvided = Symbol('button-group-provided')
@@ -30,7 +29,7 @@ export type ButtonGroupProps = ExtractPublicPropTypes<typeof buttonGroupProps>
 
 export type ButtonGroupProvided = {
   props: ButtonGroupProps,
-  emit: (event: 'change', newValue: string | number) => void
+  emit: (event: 'change', newValue: string | number | symbol) => void
 }
 
 export const ButtonGroup = defineComponent({

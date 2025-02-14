@@ -1,7 +1,10 @@
 import { FC, SyntheticEvent, useContext, useEffect, useMemo, useRef, useState } from "react"
 import cn from 'classnames'
 import { ButtonProps } from "./types"
-import { buttonStyle, buttonVariants } from "./index"
+import {
+  buttonStyle,
+  buttonVariants
+} from "../../../../shared/components/button"
 import { ButtonGroupContext } from "../buttonGroup/ButtonGroup"
 
 

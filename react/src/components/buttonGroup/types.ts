@@ -1,9 +1,8 @@
 import { ReactNode } from "react"
-import { ButtonGroupChangeActiveHandler } from "../../../../shared/components/buttonGroup"
 
 export type ProvidedButtonGroupProps = {
-  value?: string | number | null
-  onChange?: ButtonGroupChangeActiveHandler | null,
+  value?: string | number | symbol
+  onChange?: (newValue: string | number) => void
 }
 
 export type ButtonGroupProps = {

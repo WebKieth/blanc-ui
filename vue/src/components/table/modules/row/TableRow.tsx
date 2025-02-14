@@ -190,7 +190,6 @@ export const TableRow = defineComponent({
 					? <Checkbox
 							size='medium'
 							value={selected.value}
-							whenChange={() => {}}
 						/>
 					: null}
 				{expandAvailable()

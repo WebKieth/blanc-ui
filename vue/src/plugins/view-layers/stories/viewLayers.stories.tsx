@@ -89,7 +89,7 @@ const WarningModal = defineComponent({
               </div>
               <div class={modalBodyStyle}>
                 {props.content}
-                <Button whenClick={open}>open</Button>
+                <Button onClick={open}>open</Button>
               </div>
             </div>
           )
@@ -114,7 +114,7 @@ export const Default: Story = {
       }
       return () => (
         <>
-          <Button whenClick={open}>
+          <Button onClick={open}>
             опен
           </Button>
         </>
