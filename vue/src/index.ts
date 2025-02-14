@@ -8,6 +8,7 @@ export {
   Button,
   buttonProps,
   type ButtonProps,
+  type ButtonEmitters,
   type ButtonSize,
   type ButtonVariant,
   buttonStyle,
@@ -17,6 +18,7 @@ export {
 export {
   ButtonGroup,
   type ButtonGroupProps,
+  type ButtonGroupEmitters,
   type ButtonGroupChangeActiveHandler,
   buttonGroupProps,
   $buttonGroupProvided,
@@ -28,6 +30,7 @@ export {
   Checkbox,
   checkboxProps,
   type CheckboxProps,
+  type CheckboxEmitters,
   checkboxStyle,
   checkboxFieldStyle,
   checkboxFieldVariants,

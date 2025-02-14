@@ -10,10 +10,8 @@ const meta: Meta<typeof ButtonGroup> = {
   argTypes: {
     value: {
       control: {
-        type: 'select'
-      },
-      options: ['one', 'two', 'three'],
-      default: 'one'
+        type: 'text'
+      }
     }
   }
 }
@@ -45,7 +43,7 @@ export const RadioChoosen: Story = {
       return () => (
         <ButtonGroup
           value={selectedKey.value}
-          whenChange={(newKey) => selectedKey.value = newKey as string}
+          onChange={(newKey) => selectedKey.value = newKey as string}
         >
           <Button groupKey={'one'}>one</Button>
           <Button groupKey={'two'}>two</Button>

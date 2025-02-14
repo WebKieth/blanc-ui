@@ -84,6 +84,7 @@ export const buttonVariants = styleVariants({
 		backgroundColor: 'var(--white)',
 		color: 'var(--gray-400)'
 	},
+	active: {},
 	primary_active: {
 		backgroundColor: 'var(--blue-700)',
 		color: 'var(--neutral-100)',
@@ -136,6 +137,9 @@ export const buttonVariants = styleVariants({
 			color: 'var(--slate-950)',
 		}
 	},
+	inGroup: {
+		alignSelf: 'center'
+	},
 	first: {
 		borderTopLeftRadius: '6px',
 		borderBottomLeftRadius: '6px',
@@ -147,5 +151,17 @@ export const buttonVariants = styleVariants({
 	},
 	middle: {
 		borderRight: '1px solid var(--blue-200)'
-	}
+	},
+	primary_first: {},
+	primary_middle: {},
+	primary_last: {},
+	secondary_first: {},
+	secondary_middle: {},
+	secondary_last: {},
+	outlined_first: {},
+	outlined_middle: {},
+	outlined_last: {},
+	clean_first: {},
+	clean_middle: {},
+	clean_last: {}
 })

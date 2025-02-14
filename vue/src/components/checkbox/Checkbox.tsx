@@ -43,10 +43,6 @@ export const checkboxProps = {
 		type: Boolean,
 		default: false,
 	},
-	whenChange: {
-		type: definePropType<(value: boolean) => void>(Function),
-		required: true,
-	},
 	boxStyle: {
 		type: String,
 		default: checkboxStyle
@@ -103,16 +99,25 @@ export const checkboxProps = {
 
 export type CheckboxProps = ExtractPublicPropTypes<typeof checkboxProps>
 
+export type CheckboxEmitters = {
+	change: (value: boolean) => void
+}
+
+const checkboxEmitters: CheckboxEmitters = {
+	change: (value) =>  typeof value === 'boolean'
+}
+
 export const Checkbox = defineComponent({
 	name: 'Checkbox',
 	components: { Icon },
 	props: checkboxProps,
-	setup(props, { slots }) {
+	emits: checkboxEmitters,
+	setup(props, { slots, emit }) {
 		const inputRef = ref<HTMLInputElement>()
 		const handleWhenChange = () => {
 			if (!inputRef.value) return
 			const { checked } = inputRef.value
-			props.whenChange(checked)
+			emit('change', checked)
 		}
 
 		const onKeyDownHandler = (e: KeyboardEvent) => {

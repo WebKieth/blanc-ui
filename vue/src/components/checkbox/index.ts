@@ -11,12 +11,13 @@ import {
 	checkboxCaptionStyle,
 	checkboxCaptionVariants
 } from '../../../../shared/components/checkbox/styles.css'
-import { Checkbox, type CheckboxProps, checkboxProps } from './Checkbox'
+import { Checkbox, type CheckboxProps, type CheckboxEmitters, checkboxProps } from './Checkbox'
 
 export {
   Checkbox,
 	checkboxProps,
 	type CheckboxProps,
+	type CheckboxEmitters,
 	checkboxStyle,
 	checkboxFieldStyle,
 	checkboxFieldVariants,

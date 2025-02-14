@@ -1,4 +1,4 @@
-import { Button, type ButtonProps, buttonProps } from './Button'
+import { Button, type ButtonProps, type ButtonEmitters, buttonProps } from './Button'
 import {
   buttonStyle,
   buttonVariants,
@@ -10,6 +10,7 @@ export {
   Button,
   buttonProps,
   type ButtonProps,
+  type ButtonEmitters,
   buttonStyle,
   buttonVariants,
   type ButtonSize,

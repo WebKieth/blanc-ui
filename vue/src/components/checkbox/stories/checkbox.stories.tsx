@@ -59,7 +59,7 @@ export const Basic: Story = {
 					value={checked.value}
 					size={args.size}
 					disabled={args.disabled}
-					whenChange={handleCheck}
+					onChange={handleCheck}
 				/>
 			)
 		},

@@ -1,14 +1,15 @@
 export {
   ButtonGroup,
   type ButtonGroupProps,
+  type ButtonGroupEmitters,
   buttonGroupProps,
   $buttonGroupProvided
 } from './ButtonGroup'
 
 export {
   type ButtonGroupChangeActiveHandler
-} from './types'
+} from '../../../../shared/components/buttonGroup'
 
 export {
   buttonGroupStyle
-} from './styles.css'
+} from '../../../../shared/components/buttonGroup/styles.css'

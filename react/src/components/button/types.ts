@@ -9,6 +9,8 @@ export type ButtonStyleProps = {
 
 export type ButtonProps = {
 	variant?: ButtonVariant
+	groupKey?: string | number
+	active?: boolean
 	size?: ButtonSize
 	disabled?: boolean
 	attributes?: ButtonHTMLAttributes<HTMLButtonElement>
