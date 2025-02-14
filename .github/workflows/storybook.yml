@@ -6,9 +6,6 @@ on:
   push:
     branches:
       - 'main'
-    paths:
-      - 'react/**'
-      - 'shared/**'
  
 permissions:
   contents: read
@@ -36,10 +33,13 @@ jobs:
       - name: Build React Storybook
         run: |
           npm run react:storybook:build
+      - name: Build Vue Storybook
+        run: |
+          npm run vue:storybook:build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3.0.1
         with:
-          path: 'deploy/storybook/react'
+          path: 'deploy/storybook'
   deploy:
     environment:
       name: github-pages
