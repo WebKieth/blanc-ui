@@ -1,10 +1,11 @@
 import { Meta, StoryObj } from '@storybook/vue3'
-import { Checkbox } from '../Checkbox'
+import { Radio } from '../Radio'
 import { ref } from 'vue'
+import { radioWrapper } from './styles.css'
 
-const meta: Meta<typeof Checkbox> = {
-  title: 'Components/Checkbox',
-  component: Checkbox,
+const meta: Meta<typeof Radio> = {
+  title: 'Components/Radio',
+  component: Radio,
   tags: ['autodocs'],
   argTypes: {
     size: {
@@ -40,6 +41,7 @@ const meta: Meta<typeof Checkbox> = {
     disabled: false
   }
 }
+
 export default meta
 
 type Story = StoryObj<typeof meta>
@@ -47,21 +49,28 @@ type Story = StoryObj<typeof meta>
 export const Basic: Story = {
   render: (args) => ({
     components: {
-      Checkbox,
+      Radio
     },
     setup() {
-      const checked = ref(false)
-      const handleCheck = (newValue: boolean) => checked.value = newValue
+      const keys = ['One', 'Two', 'Three']
+      const selected = ref('One')
+      const handleCheck = (newValue: string) => selected.value = newValue
+
       return () => (
-        <Checkbox
-          label={args.label}
-          caption={args.caption}
-          value={checked.value}
-          size={args.size}
-          disabled={args.disabled}
-          onChange={handleCheck}
-        />
+        <div class={radioWrapper}>
+          {keys.map((key) => (
+            <Radio
+              size={args.size}
+              disabled={args.disabled}
+              label={args.label}
+              caption={`${args.caption} (key: ${key})`}
+              key={key}
+              checked={selected.value === key}
+              onCheck={() => handleCheck(key)}
+            />
+          ))}
+        </div>
       )
-    },
-  }),
+    }
+  })
 }

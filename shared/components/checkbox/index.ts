@@ -1,4 +1,4 @@
-import {
+export {
   checkboxStyle,
   checkboxFieldStyle,
   checkboxFieldVariants,
@@ -13,15 +13,5 @@ import {
 } from './styles.css'
 
 export {
-  checkboxStyle,
-  checkboxFieldStyle,
-  checkboxFieldVariants,
-  checkboxInputAreaStyle,
-  checkboxIconStyle,
-  checkboxIconVariants,
-  checkboxTextContainerStyle,
-  checkboxLabelStyle,
-  checkboxLabelVariants,
-  checkboxCaptionStyle,
-  checkboxCaptionVariants
-}
+  type CheckboxSizes
+} from './types'

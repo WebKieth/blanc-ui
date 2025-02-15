@@ -20,8 +20,8 @@ Fully redesignable vanilla-extract based component modules and plugins
 | modal | ready | to do |
 | table | ready | storybooked |
 | toast | ready | storybooked |
-| radio group | doing | to do |
-| radio | doing | to do |
+| radio group | ready | storybooked |
+| radio | ready | storybooked |
 | select | to do | to do |
 | icon | ready | storybooked |
 

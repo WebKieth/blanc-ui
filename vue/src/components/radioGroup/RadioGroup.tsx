@@ -1,9 +1,9 @@
-import { definePropType } from "src/utils";
+import { definePropType } from "../../utils";
 import { defineComponent, ExtractPublicPropTypes, provide } from "vue";
 
 export const radioGroupProps = {
   value: {
-    type: definePropType<string | number | null>(null),
+    type: definePropType<string | number | symbol | null>(null),
     default: null
   }
 }
@@ -21,8 +21,8 @@ export const $radioGroupProvided = Symbol('radio-group-provided')
 export type RadioGroupProps = ExtractPublicPropTypes<typeof radioGroupProps>
 
 export type RadioGroupProvided = {
-  props: RadioGroupProps,
-  emit: (event: 'change', newValue: string | number | symbol) => void
+  props?: RadioGroupProps,
+  emit?: (event: 'change', newValue: string | number | symbol) => void
 }
 
 export const RadioGroup = defineComponent({

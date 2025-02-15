@@ -55,16 +55,16 @@ export const Button = defineComponent({
   props: buttonProps,
   emits: buttonEmitters,
   setup(props, {attrs, slots, emit}) {
-    const { props: groupProps, emit: groupEmit } = inject<ButtonGroupProvided>($buttonGroupProvided, { props: {}, emit: () => {} })
+    const { props: groupProps, emit: groupEmit } = inject<ButtonGroupProvided>($buttonGroupProvided, { props: undefined, emit: undefined })
     const $el = ref()
 
-    const isInGroup = computed(() => Boolean(Object.keys(groupProps).length))
+    const isInGroup = computed(() => Boolean(groupProps))
 
-    const isActive = computed(() => props.active || (isInGroup.value && groupProps.value && groupProps.value === props.groupKey))
+    const isActive = computed(() => props.active || (isInGroup.value && groupProps?.value && groupProps.value === props.groupKey))
 
     const handleClick = (e: Event) => {
       if (props.disabled) return
-      if (props.groupKey && !isActive.value) {
+      if (props.groupKey && !isActive.value && groupEmit) {
         groupEmit('change', props.groupKey)
       }
       emit('click', e)
@@ -79,7 +79,7 @@ export const Button = defineComponent({
         {...attrs}
         ref={$el}
         class={[
-          props.style,
+          cn({[props.style]: props.style}),
           {
             [cn({
               [props.variants[props.variant]]: props.variants[props.variant]

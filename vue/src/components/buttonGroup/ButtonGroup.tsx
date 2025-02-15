@@ -1,8 +1,9 @@
 import { definePropType } from '../../utils'
 import { defineComponent, ExtractPublicPropTypes, provide } from "vue";
+import cn from 'classnames'
 import {
   buttonGroupStyle
-} from '../../../../shared/components/buttonGroup';
+} from '@shared/components/buttonGroup';
 
 export const buttonGroupProps = {
   style: {
@@ -28,8 +29,8 @@ export const $buttonGroupProvided = Symbol('button-group-provided')
 export type ButtonGroupProps = ExtractPublicPropTypes<typeof buttonGroupProps>
 
 export type ButtonGroupProvided = {
-  props: ButtonGroupProps,
-  emit: (event: 'change', newValue: string | number | symbol) => void
+  props?: ButtonGroupProps,
+  emit?: (event: 'change', newValue: string | number | symbol) => void
 }
 
 export const ButtonGroup = defineComponent({
@@ -39,7 +40,7 @@ export const ButtonGroup = defineComponent({
   setup(props, {slots, emit}) {
     provide<ButtonGroupProvided>($buttonGroupProvided, {props, emit})
     return () => (
-      <div class={props.style}>
+      <div class={cn({[props.style]: props.style})}>
         {slots.default && slots.default()}
       </div>
     )

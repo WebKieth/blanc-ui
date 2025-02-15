@@ -1,6 +1,6 @@
 import { style, styleVariants } from "@vanilla-extract/css"
 
-const boxSizes = {
+const radioFieldSizes = {
   small: {
     width: '16px',
     height: '16px',
@@ -15,17 +15,37 @@ const boxSizes = {
   }
 }
 
-export const checkboxStyle = style({
+const radioDotSizes = {
+  small: {
+    width: '8px',
+    height: '8px',
+  },
+  medium: {
+    width: '10px',
+    height: '10px',
+  },
+  large: {
+    width: '12px',
+    height: '12px',
+  }
+}
+
+export const radioStyle = style({
   display: 'flex',
   alignItems: 'center',
   gap: '12px'
 })
 
-export const checkboxFieldStyle = style({
+
+export const radioFieldStyle = style({
+  borderRadius: '99px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   position: 'relative'
 })
 
-export const checkboxFieldVariants = styleVariants({
+export const radioFieldVariants = styleVariants({
   unchecked: {
     border: '1px solid var(--teal-600)',
     backgroundColor: 'var(--teal-50)',
@@ -35,56 +55,52 @@ export const checkboxFieldVariants = styleVariants({
     }
   },
   checked: {
-    backgroundColor: 'var(--sky-600)',
+    backgroundColor: 'var(--sky-50)',
     border: '1px solid var(--sky-600)',
     ':hover': {
-      backgroundColor: 'var(--sky-700)',
+      backgroundColor: 'var(--sky-100)',
       border: '1px solid var(--sky-700)',
     }
   },
   disabled: {
     pointerEvents: 'none',
     cursor: 'not-allowed',
-    backgroundColor: 'var(--neutral-100)',
-    border: '1px solid var(--neutral-200)'
+    backgroundColor: 'var(--neutral-50)',
+    border: '1px solid var(--neutral-400)',
   },
-  unchecked_disabled: {},
-  checked_disabled: {},
-  ...boxSizes
+  ...radioFieldSizes
 })
-export const checkboxIconStyle = style({
-  position: 'absolute',
-  inset: '0',
-  margin: 'auto',
-  pointerEvents: 'none',
+
+export const radioDotStyle = style({
+  borderRadius: '99px',
+  pointerEvents: 'none'
 })
-export const checkboxIconVariants = styleVariants({
+
+export const radioDotVariants = styleVariants({
   unchecked: {
     opacity: '0'
   },
   checked: {
     opacity: '1',
-    color: 'white'
+    backgroundColor: 'var(--sky-600)'
   },
   disabled: {
-    color: 'var(--neutral-400)'
+    backgroundColor: 'var(--neutral-400)'
   },
-  checked_disabled: {},
-  unchecked_disabled: {},
-  ...boxSizes
+  ...radioDotSizes
 })
 
-export const checkboxTextContainerStyle = style({
+export const radioTextContainerStyle = style({
   display: 'flex',
   flexDirection: 'column',
   gap: '4px'
 })
 
-export const checkboxLabelStyle = style({
+export const radioLabelStyle = style({
   fontWeight: '400'
 })
 
-export const checkboxLabelVariants = styleVariants({
+export const radioLabelVariants = styleVariants({
   unchecked: {
     color: 'var(--neutral-600)'
   },
@@ -105,11 +121,11 @@ export const checkboxLabelVariants = styleVariants({
   }
 })
 
-export const checkboxCaptionStyle = style({
+export const radioCaptionStyle = style({
   fontWeight: '400'
 })
 
-export const checkboxCaptionVariants = styleVariants({
+export const radioCaptionVariants = styleVariants({
   unchecked: {
     color: 'var(--neutral-600)'
   },
@@ -130,7 +146,7 @@ export const checkboxCaptionVariants = styleVariants({
   }
 })
 
-export const checkboxInputAreaStyle = style({
+export const radioInputAreaStyle = style({
   width: '100%',
   height: '100%',
   margin: 'unset',
