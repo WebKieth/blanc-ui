@@ -1,4 +1,4 @@
-import { TableRow } from "./TableRow";
+import { TableRow, type TableRowProps } from "./TableRow";
 import {
   tableMainRowStyle,
   tableMainRowVariants,
@@ -12,6 +12,7 @@ import {
 
 export {
   TableRow,
+  type TableRowProps,
   tableMainRowStyle,
   tableMainRowVariants,
   tableRowBoxStyle,

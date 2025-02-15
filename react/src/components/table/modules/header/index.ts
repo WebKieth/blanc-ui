@@ -1,4 +1,4 @@
-import { TableHeader } from "./TableHeader";
+import { TableHeader, type TableHeaderProps } from "./TableHeader";
 import {
   tableHeaderStyle,
   tableHeaderVariants
@@ -6,6 +6,7 @@ import {
 
 export {
   TableHeader,
+  type TableHeaderProps,
   tableHeaderStyle,
   tableHeaderVariants
 }

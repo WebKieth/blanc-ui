@@ -4,13 +4,13 @@ import {
   tableHeaderVariants
 } from '../../../../../../shared/components/table/header/styles.css'
 import { FC, ReactNode } from "react"
-import { useTableColStyling } from "../../hooks/use-col-styling"
+import cn from 'classnames'
 import { useTablePropsProvided } from "../../hooks/use-table-props-provided"
 import { ChangeSortHandler } from "../../types"
 import { TableHeaderCell } from "../headerCell/TableHeaderCell"
 
-type TableHeaderProps = {
-  style?: String
+export type TableHeaderProps = {
+  style?: string
   variants?: Record<TableSize, string>
   children?: ReactNode
   onChangeSort?: ChangeSortHandler
@@ -22,10 +22,16 @@ export const TableHeader: FC<TableHeaderProps> = ({
   children = null,
   onChangeSort = () => {}
 }) => {
-  const { columns, renderHeaderCell } = useTablePropsProvided()
-  const { sizeType } = useTableColStyling()
+  const {
+    columns,
+    renderHeaderCell,
+    size = 'medium'
+  } = useTablePropsProvided()
   return <div
-    className={`${style} ${variants[sizeType]}`}
+    className={cn({
+      [style]: style,
+      [variants[size]]: size && variants[size]
+    })}
   >
     {columns
       ? columns.map((column) => (

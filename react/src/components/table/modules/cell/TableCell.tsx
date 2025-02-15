@@ -6,7 +6,7 @@ import { tableCellStyle, tableCellVariants } from "../../../../../../shared/comp
 import { useTablePropsProvided } from "../../hooks/use-table-props-provided";
 import { useTableColStyling } from "../../hooks/use-col-styling";
 
-type TableCellProps = {
+export type TableCellProps = {
   colKey: ColumnKey
   children?: ReactNode
 } & TableCellStylingProps

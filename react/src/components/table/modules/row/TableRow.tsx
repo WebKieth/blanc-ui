@@ -19,7 +19,7 @@ import { Icon } from "../../../icon";
 
 
 
-type TableRowProps = {
+export type TableRowProps = {
   rowIndex?: number
   expanded?: boolean
   selected?: boolean

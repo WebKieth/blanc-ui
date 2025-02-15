@@ -13,7 +13,7 @@ import {
 import { useTablePropsProvided } from "../../hooks/use-table-props-provided";
 import { useTableColStyling } from "../../hooks/use-col-styling";
 
-type TableHeaderCellProps = {
+export type TableHeaderCellProps = {
   style?: string
   variants?: StyleVariants
   labelStyle?: string
