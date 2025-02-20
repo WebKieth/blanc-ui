@@ -1,12 +1,12 @@
-import { defineComponent, computed, ExtractPublicPropTypes } from 'vue'
+import { defineComponent, computed, ExtractPublicPropTypes, inject, ref, Ref } from 'vue'
 import { definePropType } from '../../utils/index.ts'
-import { IconSize, IconName, IconProps as _IconProps } from '../../../../shared/components/icon'
+import { IconSize, IconProps as _IconProps } from '../../../../shared/components/icon'
 
-import * as components from './components'
+import { $iconify, $icons, IconComponents } from '../../plugins/iconify'
 
 export const iconProps = {
 	name: {
-		type: definePropType<IconName>(String),
+		type: definePropType<string>(String),
 		required: true,
 	},
 	size: {
@@ -19,38 +19,51 @@ export type IconProps = ExtractPublicPropTypes<typeof iconProps>
 
 export const Icon = defineComponent({
 	name: 'Icon',
-	components: components,
 	props: iconProps,
 	setup(props) {
 		const sizes: Record<IconSize, _IconProps> = {
 			small: {
 				width: 16,
 				height: 16,
-				stroke: 1.8, // (reproportion from viewbox: (24 / 16) * 1.2)
 			},
 			medium: {
 				width: 20,
 				height: 20,
-				stroke: 1.68, // (reproportion from viewbox: (24 / 20) * 1.4)
 			},
 			large: {
 				width: 24,
 				height: 24,
-				stroke: 1.6,
 			},
 		}
 		const currentSize = computed(() => {
 			const size = sizes[props.size]
 			return size ? size : sizes.medium
 		})
+		const components = inject<IconComponents | undefined>($icons, undefined)
+		const IconComponent = computed(() => (props.name && components ? components[props.name] : null))
 
-		const camelize = (s: IconName) => s.replace(/-./g, (x) => x[1].toUpperCase()) as keyof typeof components
-		const IconComponent = computed(() => (props.name ? components[camelize(props.name)] : ''))
+		const { sprite: spriteXml } = inject<{ sprite: Ref<Document | null> }>($iconify, { sprite: ref(null) })
+
+		const svg = computed(() => {
+			if (!spriteXml.value) return
+			const icon = spriteXml.value.querySelector(`#${props.name}`)
+			return icon
+		})
+
+		const viewbox = computed(() => svg.value?.getAttribute('viewBox'))
+
 
 		return () => (
-			<IconComponent.value
-				{...currentSize.value}
-			/>
+			IconComponent.value
+				? <IconComponent.value {...currentSize} />
+				: svg.value
+					? <svg
+						viewBox={viewbox.value || '0 0 24 24'}
+						width={currentSize.value.width}
+						height={currentSize.value.height}
+						v-html={svg.value.innerHTML}
+					></svg>
+					: <></>
 		)
 	},
 })

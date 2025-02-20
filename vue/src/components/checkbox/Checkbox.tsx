@@ -3,7 +3,6 @@ import cn from 'classnames'
 import { Icon } from '../icon/Icon'
 import { CheckboxSizes } from '../../../../shared/components/checkbox/types'
 import { definePropType } from '../../utils'
-import { IconName } from '../../../../shared/components/icon/types'
 
 import {
   checkboxStyle,
@@ -89,11 +88,11 @@ export const checkboxProps = {
     default: checkboxCaptionVariants
   },
   checkedIconName: {
-    type: definePropType<IconName>(String),
+    type: definePropType<string>(String),
     default: 'ri-check-line'
   },
   uncheckedIconName: {
-    type: definePropType<IconName>(String),
+    type: definePropType<string>(String),
     default: 'ri-check-line'
   }
 } as const
@@ -136,7 +135,7 @@ export const Checkbox = defineComponent({
             [props.fieldVariants[props.size]]: props.fieldVariants[props.size],
             [props.fieldVariants.disabled]: props.disabled && props.fieldVariants.disabled,
             [props.fieldVariants.checked]: props.value && props.fieldVariants.checked,
-            [props.fieldVariants.unchecked] : props.value && props.fieldVariants.unchecked
+            [props.fieldVariants.unchecked] : !props.value && props.fieldVariants.unchecked
           })}
           onKeydown={onKeyDownHandler}
         >

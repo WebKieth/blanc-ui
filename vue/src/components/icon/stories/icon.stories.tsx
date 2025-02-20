@@ -13,7 +13,7 @@ const meta: Meta<typeof Icon> = {
 				type: 'select',
 			},
 			options: [...iconList],
-			default: 'x',
+			default: iconList[0],
 		},
 		size: {
 			control: {
@@ -47,7 +47,7 @@ export const View: Story = {
 	}),
 }
 
-export const FullKit: Story = {
+export const RemixIconsExample: Story = {
 	render: (args) => ({
 		components: { Icon },
 		setup() {

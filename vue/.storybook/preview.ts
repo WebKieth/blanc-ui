@@ -2,9 +2,10 @@ import type { Preview } from "@storybook/vue3";
 import { setup } from '@storybook/vue3'
 //@ts-ignore
 import { applyCssReset, applyCssVariables } from '@shared/styles'
-import { Notify, $notify } from '../src/plugins/notify/main'
-import { ViewLayers, $viewLayers } from '../src/plugins/view-layers/main'
-import { EventBus, $eventBus } from '../src/plugins/event-bus/main'
+import { NotifyPlugin } from '../src/plugins/notify'
+import { ViewLayersPlugin } from '../src/plugins/view-layers'
+import { EventBusPlugin } from '../src/plugins/event-bus'
+import { IconifyPlugin } from '../src/plugins/iconify'
 
 const preview: Preview = {
   parameters: {
@@ -20,9 +21,12 @@ const preview: Preview = {
 setup((app) => {
   applyCssReset()
   applyCssVariables()
-  app.provide($notify, new Notify(app))
-  app.provide($viewLayers, new ViewLayers(app))
-  app.provide($eventBus, new EventBus())
+  app.use(IconifyPlugin, {
+    spriteUrl: 'https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.symbol.svg'
+  })
+  app.use(NotifyPlugin)
+  app.use(ViewLayersPlugin)
+  app.use(EventBusPlugin)
 })
 
 export default preview;

@@ -1,7 +1,7 @@
-import { type IconName, type IconSize, type IconProps as SvgComponentProps } from "../../../../shared/components/icon"
-import * as components from './components'
-import { FC } from "react"
+import { type IconSize, type IconProps as SvgComponentProps } from "@shared/components/icon"
+import { FC, useMemo } from "react"
 import { IconProps } from "./types"
+import { useIconify } from "../../providers/iconify"
 
 export const Icon: FC<IconProps> = ({
   name,
@@ -12,24 +12,34 @@ export const Icon: FC<IconProps> = ({
     small: {
       width: 16,
       height: 16,
-      stroke: 1.8, // (reproportion from viewbox: (24 / 16) * 1.2)
     },
     medium: {
       width: 20,
       height: 20,
-      stroke: 1.68, // (reproportion from viewbox: (24 / 20) * 1.4)
     },
     large: {
       width: 24,
       height: 24,
-      stroke: 1.6,
     },
   }
-  const currentProps = sizes[size]
-  const camelize = (s: IconName) => s.replace(/-./g, (x) => x[1].toUpperCase()) as keyof typeof components
-  const IconComponent = components[camelize(name)]
-  return <IconComponent
-    className={className}
-    {...currentProps}
-  />
+  const { components, sprite } = useIconify()
+  const currentSize = sizes[size]
+  const spriteIcon = useMemo(() => (
+    sprite?.querySelector(`#${name}`) || null
+  ), [sprite, name])
+  const spriteIconViewbox = useMemo(() => (
+    spriteIcon?.getAttribute('viewBox')
+  ), [spriteIcon])
+  const IconComponent = components && components[name]
+
+  return IconComponent ?
+    <IconComponent
+      className={className}
+      {...currentSize}
+    />
+    : <svg
+      viewBox={spriteIconViewbox || '0 0 24 24'}
+      {...currentSize}
+      dangerouslySetInnerHTML={{__html: spriteIcon?.innerHTML || ''}}
+    ></svg>
 }
