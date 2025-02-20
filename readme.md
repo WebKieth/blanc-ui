@@ -28,6 +28,7 @@ Fully redesignable vanilla-extract based component modules and plugins
 ### Plugins
 | name | status | documentation |
 |---|---|---|
+| iconify | ready | to do |
 | notify | ready | storybooked |
 | eventBus | ready | documenting |
 | view-layers | ready | storybooked |
@@ -55,6 +56,7 @@ Fully redesignable vanilla-extract based component modules and plugins
 ### providers
 | name | status | documentation |
 |---|---|---|
+| iconify | ready | to do |
 | eventBus | backlog | backlog |
 | notify | backlog | backlog |
 | view-layers | backlog | backlog |
