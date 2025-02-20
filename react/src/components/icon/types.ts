@@ -1,7 +1,7 @@
-import { IconName, IconSize } from "../../../../shared/components/icon"
+import { IconSize } from "@shared/components/icon"
 
 export type IconProps = {
-  name: IconName
+  name: string
   size?: IconSize
   className?: string
 }

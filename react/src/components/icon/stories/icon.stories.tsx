@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { Icon } from '../index'
-import { iconList } from '@shared/components/icon/list'
 import { wrapperStyle, boxStyle, labelStyle } from '@shared/components/icon/stories/fullKitStyles.css'
 import { IconifyProvider } from '../../../providers/iconify'
 
@@ -11,10 +10,9 @@ const meta: Meta<typeof Icon> = {
 	argTypes: {
 		name: {
 			control: {
-				type: 'select',
+				type: 'text',
 			},
-			options: [...iconList],
-			default: iconList[0],
+			default: 'ri-arrow-right-s-line',
 		},
 		size: {
 			control: {
@@ -25,7 +23,7 @@ const meta: Meta<typeof Icon> = {
 		},
 	},
   args: {
-    name: iconList[0],
+    name: 'ri-arrow-right-s-line',
     size: 'medium'
   }
 }

@@ -1,6 +1,5 @@
 import { defineComponent, ExtractPublicPropTypes } from "vue"
 import { definePropType } from "../../utils"
-import { IconName } from "../../../../shared/components/icon/types"
 import {
   toastStyle,
   toastVariants,
@@ -92,7 +91,7 @@ export const toastProps = {
     default: 'medium'
   },
   iconName: {
-    type: definePropType<IconName>(String),
+    type: definePropType<string>(String),
     default: 'ri-message-line'
   },
   title: {

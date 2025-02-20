@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from '@storybook/vue3'
 import { Toast } from '../index'
-import { iconList } from '@shared/components/icon/list'
 
 const meta: Meta<typeof Toast> = {
 	title: 'Components/Toast',
@@ -16,9 +15,8 @@ const meta: Meta<typeof Toast> = {
 		},
 		iconName: {
 			control: {
-				type: 'select',
+				type: 'text',
 			},
-			options: iconList,
 			default: 'ri-message-line', 
 		},
 		title: {

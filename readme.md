@@ -24,6 +24,7 @@ Fully redesignable vanilla-extract based component modules and plugins
 | radio | ready | storybooked |
 | select | to do | to do |
 | icon | ready | storybooked |
+| calendar | in progress | storybooked |
 
 ### Plugins
 | name | status | documentation |
@@ -52,6 +53,7 @@ Fully redesignable vanilla-extract based component modules and plugins
 | radio | backlog | backlog |
 | select | backlog | backlog |
 | icon | ready | storybooked |
+| calendar | backlog | backlog |
 
 ### providers
 | name | status | documentation |
