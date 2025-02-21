@@ -1,7 +1,7 @@
 {
   "name": "blanc-ui",
   "type": "module",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "User interface component API level",
   "files": [
     "dist"
@@ -32,13 +32,13 @@
     "@storybook/addon-links": "^8.1.11",
     "@storybook/addon-onboarding": "^8.1.11",
     "@storybook/blocks": "^8.1.11",
-    "@storybook/react": "^8.1.11",
-    "@storybook/react-vite": "^8.1.11",
-    "@storybook/test": "^8.1.11",
-    "@storybook/vue3": "^8.1.11",
-    "@storybook/vue3-vite": "^8.1.11",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
+    "@storybook/react": "^8.5.8",
+    "@storybook/react-vite": "^8.5.8",
+    "@storybook/test": "^8.5.8",
+    "@storybook/vue3": "^8.5.8",
+    "@storybook/vue3-vite": "^8.5.8",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
     "@typescript-eslint/eslint-plugin": "^7.16.0",
     "@typescript-eslint/parser": "^7.16.0",
     "@vanilla-extract/vite-plugin": "^4.0.13",
@@ -50,7 +50,7 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
     "eslint-plugin-storybook": "^0.8.0",
-    "storybook": "^8.1.11",
+    "storybook": "^8.5.8",
     "typescript": "^5.5.3",
     "vite": "^5.3.3",
     "vite-plugin-dts": "^4.5.0",
@@ -59,8 +59,8 @@
   "dependencies": {
     "@vanilla-extract/css": "^1.15.3",
     "classnames": "^2.5.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "uuid": "^10.0.0",
     "vue": "^3.5.13"
   }

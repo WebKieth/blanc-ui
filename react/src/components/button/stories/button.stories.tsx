@@ -2,6 +2,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import { fn } from "@storybook/test"
 
 import { Button } from ".."
+import { useEffect, useRef } from 'react'
 
 const meta: Meta<typeof Button> = {
 	component: Button,
@@ -43,12 +44,17 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-	render: (args) => (
-		<Button
+	render: (args) => {
+		const buttonRef = useRef<HTMLButtonElement | null>(null)
+		useEffect(() => {
+			console.log(buttonRef)
+		}, [])
+		return <Button
+			ref={buttonRef}
 			variant={args.variant}
 			size={args.size}
 			disabled={args.disabled}
 			onClick={args.onClick}
 		>{args.children}</Button>
-	)
+	}
 }

@@ -1,10 +1,12 @@
 import { createContext, FC } from "react";
+import cn from "classnames"
 import { type ButtonGroupProps, type ProvidedButtonGroupProps } from "./types";
 import { buttonGroupStyle } from "../../../../shared/components/buttonGroup";
 
 export const ButtonGroupContext = createContext<ProvidedButtonGroupProps | undefined>(undefined)
 
 export const ButtonGroup: FC<ButtonGroupProps> = ({
+  ref,
   style = buttonGroupStyle,
   value,
   onChange,
@@ -13,7 +15,7 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
   return <ButtonGroupContext.Provider
     value={{value, onChange}}
   >
-    <div className={style}>
+    <div className={cn({[style]: style})} ref={ref}>
       {children}
     </div>
   </ButtonGroupContext.Provider>

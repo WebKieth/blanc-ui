@@ -1,8 +1,10 @@
 import { CheckboxSizes } from "@shared/components/checkbox/types"
 import { StyleVariants } from "../types"
-import { ReactNode } from "react"
+import { ReactNode, Ref } from "react"
 
 export type CheckboxProps = {
+  ref?: Ref<HTMLDivElement>
+  inputRef?: Ref<HTMLInputElement>
   id?: string
   label?: string
   labelNode?: ReactNode

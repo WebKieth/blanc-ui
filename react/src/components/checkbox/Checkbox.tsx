@@ -14,7 +14,7 @@ import {
   checkboxLabelVariants,
   checkboxStyle,
   checkboxTextContainerStyle
-} from "../../../../shared/components/checkbox";
+} from "@shared/components/checkbox";
 import { Icon } from "../icon";
 
 export const Checkbox: FC<CheckboxProps> = ({
@@ -31,6 +31,8 @@ export const Checkbox: FC<CheckboxProps> = ({
   captionVariants = checkboxCaptionVariants,
   checkedIconName = 'ri-check-line',
   uncheckedIconName = 'ri-check-line',
+  ref = null,
+  inputRef = null,
   id = uuid(),
   label = '',
   labelNode = null,
@@ -40,17 +42,17 @@ export const Checkbox: FC<CheckboxProps> = ({
   disabled = false,
   onChange
 }) => {
-  const inputRef = useRef<HTMLInputElement | null>(null)
+  const $inputRef = useRef<HTMLInputElement | null>(null)
   const handleChange = () => {
-    if (!inputRef.current) return
-    const checked = inputRef.current.checked
+    if (!$inputRef.current) return
+    const checked = $inputRef.current.checked
     onChange(checked)
   }
   const onKeyDownHandler: KeyboardEventHandler<HTMLDivElement> = (e) => {
     if (e.key === 'Enter') handleChange()
   }
   return (
-    <div className={style}>
+    <div className={cn({[style]: style})} ref={ref}>
       <div
         tabIndex={0}
         className={cn(
@@ -64,7 +66,11 @@ export const Checkbox: FC<CheckboxProps> = ({
         onKeyDown={onKeyDownHandler}
       >
         <input
-          ref={inputRef}
+          ref={(element) => {
+            $inputRef.current = element
+            if (typeof inputRef === 'function') inputRef(element)
+            else if (inputRef) inputRef.current = element
+          }}
           type='checkbox'
           className={inputAreaStyle}
           id={id}

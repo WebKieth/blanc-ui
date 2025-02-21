@@ -9,6 +9,7 @@ import { ButtonGroupContext } from "../buttonGroup/ButtonGroup"
 
 
 export const Button: FC<ButtonProps> = ({
+	ref = null,
 	style = buttonStyle,
 	variants = buttonVariants,
 	groupKey,
@@ -21,7 +22,7 @@ export const Button: FC<ButtonProps> = ({
 	onClick = () => false
 }) => {
 	const groupProps = useContext(ButtonGroupContext)
-	const $el = useRef<HTMLButtonElement>(null)
+	const $el = useRef<HTMLButtonElement | null>(null)
 
 	const [mounted, setMounted] = useState(false)
 
@@ -59,7 +60,12 @@ export const Button: FC<ButtonProps> = ({
 	}, [])
 	return <button
 		{...attributes}
-		ref={$el}
+		ref={(element) => {
+			$el.current = element
+			if (typeof ref === 'function') {
+				ref(element)
+			} else if (ref) ref.current = element
+		}}
 		className={cn(
 			style,
 			{
