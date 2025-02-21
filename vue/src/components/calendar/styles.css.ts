@@ -51,10 +51,10 @@ export const cellStyle = style([
 ])
 
 export const cellVariants = styleVariants({
-  prev: {
+  prevMonth: {
     color: 'var(--gray-400)'
   },
-  next: {
+  nextMonth: {
     color: 'var(--gray-400)'
   },
   today: {
@@ -62,6 +62,14 @@ export const cellVariants = styleVariants({
     color: 'white',
     ':hover': {
       backgroundColor: 'var(--blue-600)',
+    }
+  },
+  choosen: {
+    backgroundColor: 'var(--gray-300)',
+    color: 'var(--gray-700)',
+    ':hover': {
+      backgroundColor: 'var(--gray-400)',
+      color: 'var(--gray-800)',
     }
   }
 })

@@ -3,17 +3,9 @@ import { computed, defineComponent, ExtractPublicPropTypes, ref, watch } from "v
 import { bodyStyle, boxStyle, cellStyle, cellVariants, controlsStyle, headerStyle, monthTitleStyle, rewinderStyle, rowStyle, titlesStyle, weekdayCellStyle } from "./styles.css";
 import { Icon } from "../icon";
 import cn from 'classnames'
-import { CalendarEmitters, Month, Weekday } from "./types";
-
-const MONTHS: Month[] = [
-  'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
-]
-
-const WEEKDAYS: Weekday[] = [
-  'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
-]
-
-const ROWS_LENGTH = 6
+import { CalendarCell, CalendarEmitters, CalendarLanguage, CalendarLocale, Month, Weekday } from "./types";
+import { MONTHS, ROWS_LENGTH, WEEKDAYS } from "./constants";
+import { CALENDAR_LOCALES } from './locales'
 
 export const calendarStylingProps = {
   style: {
@@ -63,6 +55,10 @@ export const calendarStylingProps = {
 }
 
 export const calendarProps = {
+  day: {
+    type: definePropType<number>(Number),
+    default: new Date().getDate()
+  },
   month: {
     type: definePropType<Month>(String),
     default: MONTHS[new Date().getMonth()]
@@ -70,6 +66,14 @@ export const calendarProps = {
   year: {
     type: definePropType<number>(Number),
     default: new Date().getFullYear()
+  },
+  customLocale: {
+    type: definePropType<CalendarLocale | null>(null),
+    default: null
+  },
+  language: {
+    type: definePropType<CalendarLanguage>(String),
+    default: 'en'
   },
   ...calendarStylingProps
 } as const
@@ -124,56 +128,90 @@ export const Calendar = defineComponent({
       }
       monthDiff.value = monthDiff.value + 1
     }
-    const handleDayClick = (e: MouseEvent, date: number, weekday: Weekday, today: boolean) => {
-      emit('dayClick', e, date, weekday, currentMonth.value, currentYear.value, today)
+    const handleDayClick = (e: MouseEvent, cell: CalendarCell) => {
+      const month = cell.prevMonth
+        ? MONTHS[currentMonthIndex.value - 1]
+        : cell.nextMonth
+          ? MONTHS[currentMonthIndex.value + 1]
+          : currentMonth.value
+      emit('dayClick', e, cell.date, cell.weekday, month, currentYear.value, cell.today)
+    }
+    const isToday = (date: number, monthIndex: number, year: number) => {
+      const d = new Date()
+      return (
+        date === d.getDate() &&
+        monthIndex === d.getMonth() &&
+        year === d.getFullYear()
+      )
+    }
+    const isChoosen = (cell: CalendarCell) => {
+      const monthIndex = MONTHS.findIndex((m) => m === props.month)
+      const actualMonthIndex = cell.prevMonth
+        ? monthIndex - 1
+        : cell.nextMonth
+          ? monthIndex + 1
+          : monthIndex
+      return (
+        cell.date === props.day &&
+        currentMonthIndex.value === actualMonthIndex &&
+        currentYear.value === props.year
+      )
     }
     const daysGrid = computed(() => {
       const daysInPrevMonth = new Date(currentYear.value, currentMonthIndex.value, 0).getDate()
       const daysInCurrentMonth = new Date(currentYear.value, currentMonthIndex.value + 1, 0).getDate()
       const startDay = new Date(currentYear.value, currentMonthIndex.value, 1).getDay()
-      const today = new Date()
-      const dayNow = today.getDate()
-      const wDayNow = today.getDay()
-      const monthNow = today.getMonth()
-      const yearNow = today.getFullYear()
-
       const rows = []
       for (let rowIndex = 0; rowIndex < ROWS_LENGTH; rowIndex++) {
         const row = []
         for(let wdIndex = 0; wdIndex < WEEKDAYS.length; wdIndex++) {
           const wdNum = wdIndex + 1
           const i = (rowIndex * WEEKDAYS.length) + wdNum
-          const cell = { date: 0, prev: false, next: false, today: false }
+          const cell: CalendarCell = {
+            date: 0,
+            prevMonth: false,
+            nextMonth: false,
+            today: false,
+            weekday: WEEKDAYS[0]
+          }
           if (i < startDay) {
             cell.date = daysInPrevMonth - startDay + i + 1
-            cell.prev = true
+            cell.prevMonth = true
           } else if (i > daysInCurrentMonth + startDay - 1) {
             cell.date =  (i - daysInCurrentMonth - startDay) + 1
-            cell.next = true
+            cell.nextMonth = true
           } else {
             cell.date = (i - startDay) + 1
           }
-          cell.today = (
-            currentMonthIndex.value === monthNow &&
-            currentYear.value === yearNow &&
-            cell.date === dayNow &&
-            wdIndex === wDayNow - 1
-          )
-          row.push({
-            weekday: WEEKDAYS[wdIndex],
-            ...cell
-          })
+          cell.today = isToday(cell.date, currentMonthIndex.value, currentYear.value)
+          cell.weekday = WEEKDAYS[wdIndex]
+          row.push(cell)
         }
         rows.push(row)
       }
       return rows
     })
 
+    const getMonthLocale = (month: Month, short: boolean = false) => (
+      props.customLocale
+        ? props.customLocale.months[short ? 'short' : 'full'][month]
+        : CALENDAR_LOCALES[props.language].months[short ? 'short' : 'full'][month]
+    )
+
+    const getWeekdayLocale = (weekday: Weekday, short: boolean = false) => (
+      props.customLocale
+        ? props.customLocale.weekdays[short ? 'short' : 'full'][weekday]
+        : CALENDAR_LOCALES[props.language].weekdays[short ? 'short' : 'full'][weekday]
+    )
+
     return () => <div class={props.style}>
       <div class={props.headerStyle}>
         {slots.header
           ? slots.header({
-            month: currentMonth.value,
+            month: {
+              full: getMonthLocale(currentMonth.value),
+              short: getMonthLocale(currentMonth.value, true)
+            },
             year: currentYear.value,
             handlePrevMonth,
             handlePrevYear,
@@ -197,7 +235,7 @@ export const Calendar = defineComponent({
             </div>
             <div class={props.titlesStyle}>
               <div class={props.monthTitleStyle}>
-                {currentMonth.value}
+                {getMonthLocale(currentMonth.value)}
               </div>
               <div>
                 {currentYear.value}
@@ -224,7 +262,7 @@ export const Calendar = defineComponent({
         <div class={props.rowStyle}>
           {WEEKDAYS.map((weekday) => (
             <div class={props.weekdayCellStyle} key={weekday}>
-              {weekday.substring(0, 2)}
+              {getWeekdayLocale(weekday, true)}
             </div>
           ))}
         </div>
@@ -234,12 +272,13 @@ export const Calendar = defineComponent({
               <div
                 class={cn({
                   [props.cellStyle]: props.cellStyle,
-                  [props.cellVariants.prev]: props.cellVariants.prev && cell.prev,
-                  [props.cellVariants.next]: props.cellVariants.next && cell.next,
-                  [props.cellVariants.today]: props.cellVariants.today && cell.today
+                  [props.cellVariants.prevMonth]: props.cellVariants.prevMonth && cell.prevMonth,
+                  [props.cellVariants.nextMonth]: props.cellVariants.nextMonth && cell.nextMonth,
+                  [props.cellVariants.today]: props.cellVariants.today && cell.today,
+                  [props.cellVariants.choosen]: props.cellVariants.choosen && isChoosen(cell)
                 })}
                 key={cell.weekday}
-                onClick={(e) => handleDayClick(e, cell.date, cell.weekday, cell.today)}
+                onClick={(e) => handleDayClick(e, cell)}
               >
                 {cell.date}
               </div>
@@ -250,3 +289,7 @@ export const Calendar = defineComponent({
     </div>
   }
 })
+
+export {
+  CALENDAR_LOCALES
+}
