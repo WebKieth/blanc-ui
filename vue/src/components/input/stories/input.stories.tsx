@@ -53,7 +53,7 @@ export const Basic: Story = {
 					disabled={args.disabled}
 					label={args.label}
 					value={val.value}
-					whenInput={(value) => changeVal(value as string)}
+					onInput={(value) => changeVal(value as string)}
 				/>
 			)
 		}
