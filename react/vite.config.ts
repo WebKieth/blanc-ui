@@ -15,10 +15,12 @@ export default defineConfig({
 			fileName: (format) => `blanc-ui.${format}.js`,
 		},
 		rollupOptions: {
-			external: ['react'],
+			external: ['react', 'react-dom', 'react/jsx-runtime'],
 			output: {
 				globals: {
-					react: 'react',
+					react: 'React',
+					'react-dom': 'ReactDom',
+					'react/jsx-runtime': 'ReactJsxRuntime'
 				},
 			},
 		},
