@@ -35,7 +35,7 @@ export const defaultTableProps: _TableProps = {
 	rows: null,
 	expandRows: false,
 	selected: '',
-	whenSelect: null
+	selectable: false
 }
 export const defaultTableControlsProvided = {
 	hiddenColumnKeys: ref([]),
@@ -43,6 +43,7 @@ export const defaultTableControlsProvided = {
 }
 export const defaultProvidedTableOptions = {
 	slots: {},
+	emit: () => {},
 	props: { ...defaultTableProps },
 	provided: { ...defaultTableControlsProvided },
 }

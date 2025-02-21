@@ -93,7 +93,7 @@ export const TableHeaderCell = defineComponent({
 
 		const handleSort = () => isColumnSortable.value && sort()
 
-		return (
+		return () => (
 			isHidden.value
 				? <></>
 				: <th

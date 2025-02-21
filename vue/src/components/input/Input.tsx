@@ -10,12 +10,12 @@ import {
 	inputLabelVariants,
 	inputStyle,
 	inputVariants,
-	type InputEmitter,
 	type InputSize,
 	type InputValue,
 	type InputType,
 	type InputId
-} from '../../../../shared/components/input'
+} from '@shared/components/input'
+import { InputEmitters } from '@shared/components/input/types'
 
 export const inputProps = {
 	style: {
@@ -74,22 +74,20 @@ export const inputProps = {
 		type: definePropType<InputSize>(String),
 		default: 'medium'
 	},
-	whenChange: {
-		type: definePropType<InputEmitter>(Function),
-		default: () => {}
-	},
-	whenInput: {
-		type: definePropType<InputEmitter>(Function),
-		default: () => {}
-	}
 }
 
 export type InputProps = ExtractPublicPropTypes<typeof inputProps>
 
+export const inputEmitters: InputEmitters = {
+	input: (value: string) => typeof value === 'string',
+	change: (value: string) => typeof value === 'string'
+}
+
 export const Input = defineComponent({
 	name: 'Input',
 	props: inputProps,
-	setup(props, { slots, attrs }) {
+	emits: inputEmitters,
+	setup(props, { slots, attrs, emit }) {
 		const id = props.id ? props.id : uuid()
 
 		const hover = ref(false)
@@ -166,8 +164,8 @@ export const Input = defineComponent({
 								value={props.value}
 								onFocus={handleFocus}
 								onBlur={handleBlur}
-								onChange={(e: Event) => props.whenChange((e.target as HTMLInputElement).value)}
-								onInput={(e: Event) => props.whenInput((e.target as HTMLInputElement).value)}
+								onChange={(e: Event) => emit('change', (e.target as HTMLInputElement).value)}
+								onInput={(e: Event) => emit('input', (e.target as HTMLInputElement).value)}
 							/>
 							{slots.postfix && slots.postfix()}
 						</div>

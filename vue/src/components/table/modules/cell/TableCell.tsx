@@ -33,7 +33,7 @@ export const TableCell = defineComponent({
 	setup(props, { attrs, slots }) {
 		const { props: tableProps, provided: tableControlsProvided } = inject<ProvidedTableConfig>(tableConfigSymbol, { ...defaultProvidedTableOptions })
 		const { hiddenColumnKeys } = tableControlsProvided
-		console.log(tableProps, props)
+
 		const rowProps = inject<TableRowProps>(tableRowPropsSymbol, {
 			selected: computed(() => false),
 			nodes: [],

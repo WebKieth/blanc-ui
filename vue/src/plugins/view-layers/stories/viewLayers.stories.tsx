@@ -36,11 +36,11 @@ const DialogModal = defineComponent({
     return () => (
       <Modal {...props}>
         {{
-          default: () => (
+          default: ({ onClose = () => {} }) => (
             <div class={dialogBoxStyle}>
               <div class={modalHeaderStyle}>
                 <div>{props.title}</div>
-                <div class={closeIconStyle} onClick={props.whenClose}>
+                <div class={closeIconStyle} onClick={() => onClose()}>
                   <Icon name='ri-close-line' />
                 </div>
               </div>
@@ -79,11 +79,11 @@ const WarningModal = defineComponent({
     return () => (
       <Modal {...props}>
         {{
-          default: () => (
+          default: ({ onClose = () => {} }) => (
             <div class={warningBoxStyle}>
               <div class={modalHeaderStyle}>
                 <div>{props.title}</div>
-                <div class={closeIconStyle} onClick={props.whenClose}>
+                <div class={closeIconStyle} onClick={() => onClose()}>
                   <Icon name='ri-close-line' />
                 </div>
               </div>

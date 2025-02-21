@@ -1,5 +1,5 @@
 import { ExtractPublicPropTypes, defineComponent, inject, provide } from 'vue'
-import { ProvidedTableConfig, WhenSelect, TableControlsProvided } from './types'
+import { ProvidedTableConfig, TableControlsProvided, TableEmitters } from './types'
 import { defaultTableControlsProvided, tableConfigSymbol, tableControlsProvidedSymbol } from './common'
 import { definePropType } from '../../utils'
 
@@ -35,27 +35,31 @@ export const tableProps = {
 		type: definePropType<boolean>(Boolean),
 		default: false
 	},
-	selected: {
-		type: definePropType<string | string[]>(String || Array<String>),
-		default: []
+	selectable: {
+		type: definePropType<boolean>(Boolean),
+		default: false
 	},
-	whenSelect: {
-		type: definePropType<WhenSelect>(Function),
-		default: null
+	selected: {
+		type: definePropType<string | string[]>(),
+		default: '',
+		validate: (value: string | string[]) => typeof value === 'string' || Array.isArray(value)
 	}
 } as const
 
 export type TableProps = ExtractPublicPropTypes<typeof tableProps>
 
+export const tableEmitters: TableEmitters = {
+	select: (id) => typeof id === 'string' || Array.isArray(id)
+}
+
 export const Table = defineComponent({
 	name: 'Table',
 	components: { TableBody },
 	props: tableProps,
-	setup(props, { attrs, slots }) {
-		// console.log(props, tableProps)
+	emits: tableEmitters,
+	setup(props, { attrs, slots, emit }) {
 		const tableControlsProvided = inject<TableControlsProvided>(tableControlsProvidedSymbol, { ...defaultTableControlsProvided })
-		provide<ProvidedTableConfig>(tableConfigSymbol, { props, slots, provided: { ...tableControlsProvided } })
-
+		provide<ProvidedTableConfig>(tableConfigSymbol, { props, slots, emit, provided: { ...tableControlsProvided } })
 		return () => (
 			<table
 				{...attrs}

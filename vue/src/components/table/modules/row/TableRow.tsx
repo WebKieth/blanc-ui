@@ -83,7 +83,7 @@ export const TableRow = defineComponent({
 	components: { TableCell, Checkbox, Icon },
 	props: tableRowProps,
 	setup(props, { attrs, slots }) {
-		const { props: tableProps, slots: tableSlots } = inject<ProvidedTableConfig>(tableConfigSymbol, { ...defaultProvidedTableOptions })
+		const { props: tableProps, emit: tableEmit ,slots: tableSlots } = inject<ProvidedTableConfig>(tableConfigSymbol, { ...defaultProvidedTableOptions })
 		const isExpanded = ref<Boolean>(props.expanded)
 		const toggleExpand = (e: Event) => {
 			e.stopPropagation()
@@ -104,8 +104,7 @@ export const TableRow = defineComponent({
 			return rows?.find((_, index) => index === props.rowIndex) || null
 		})
 		const childNodes = computed(() => currentRow.value?.nodes)
-		const selectable = computed(() => tableProps.whenSelect !== null)
-		const selectMulti = computed(() => selectable.value && Array.isArray(tableProps.selected))
+		const selectMulti = computed(() => tableProps.selectable && Array.isArray(tableProps.selected))
 
 		const selected = computed(() => {
 			if (props.selected !== undefined) return props.selected
@@ -126,19 +125,19 @@ export const TableRow = defineComponent({
 
 		const handleChangeSelected = () => {
 			const currentId = currentRow.value?.id as string
-			if (!currentId || !tableProps.whenSelect) return
+			if (!currentId || !tableProps.selectable) return
 			if (Array.isArray(tableProps.selected)) {
 				const selected = tableProps.selected.includes(currentId) 
 					? tableProps.selected.filter(id => id !== currentId) 
 					: [...tableProps.selected, currentId]
-				tableProps.whenSelect(selected)
+				tableEmit('select', selected)
 			} else {
-				tableProps.whenSelect(tableProps.selected === currentId ? '' : currentId)
+				tableEmit('select', tableProps.selected === currentId ? '' : currentId)
 			}
 		}
 
 		const handleRowClick = () => {
-			if (!selectable.value) return
+			if (!tableProps.selectable) return
 			handleChangeSelected()
 		}
 
@@ -196,7 +195,7 @@ export const TableRow = defineComponent({
 					? <div
 							class={`
 								${props.expanderStyle}
-								${selectable.value && props.expanderVariants.selectable}
+								${tableProps.selectable && props.expanderVariants.selectable}
 								${selected.value
 									? props.expanderVariants.selected
 									: props.expanderVariants.notSelected
@@ -229,7 +228,7 @@ export const TableRow = defineComponent({
 					class={`
 						${props.rowBoxStyle}
 						${props.last && props.rowBoxVariants.last}
-						${selectable.value && props.rowBoxVariants.selectable}
+						${tableProps.selectable && props.rowBoxVariants.selectable}
 						${selected.value
 							? props.rowBoxVariants.selected
 							: props.rowBoxVariants.notSelected
@@ -241,7 +240,7 @@ export const TableRow = defineComponent({
 						class={`
 							${props.mainRowStyle}
 							${props.last && props.mainRowVariants.last}
-							${selectable.value && props.mainRowVariants.selectable}
+							${tableProps.selectable && props.mainRowVariants.selectable}
 							${selected.value
 								? props.mainRowVariants.selected
 								: props.mainRowVariants.notSelected

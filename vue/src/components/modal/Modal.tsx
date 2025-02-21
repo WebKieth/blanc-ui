@@ -1,5 +1,6 @@
 import { definePropType } from '../../utils/index.ts'
 import { ExtractPublicPropTypes, defineComponent } from 'vue'
+import cn from 'classnames'
 import {
 	modalBackdropStyle,
 	modalWindowStyle
@@ -21,30 +22,39 @@ export const modalProps = {
 	zIndex: {
 		type: definePropType<number>(Number),
 		default: 1
-	},
-	whenClose: {
-		type: definePropType<() => void>(Function),
-		default: () => {}
 	}
 } as const
 
 export type ModalProps = ExtractPublicPropTypes<typeof modalProps>
 
+export type ModalEmitters = {
+	close: () => void
+}
+
+export const modalEmitters = {
+	close: () => true
+}
+
 export const Modal = defineComponent({
 	props: modalProps,
-	setup(props, { slots, attrs }) {
+	emits: modalEmitters,
+	setup(props, { slots, attrs, emit }) {
 		return () => (
 			<>
 				<div
 					{...attrs}
-					class={props.backdropStyle}
+					class={cn({[props.backdropStyle]: props.backdropStyle})}
 					style={`z-index: ${props.zIndex}`}
 				></div>
 				<div
-					class={props.windowStyle}
+					class={cn({[props.windowStyle]: props.windowStyle})}
 					style={`z-index: ${props.zIndex}`}
 				>
-					{slots.default && slots.default(props.whenClose)}
+					{slots.default &&
+						slots.default(
+							{ onClose: () => emit('close') }
+						)
+					}
 				</div>
 			</>
 		)

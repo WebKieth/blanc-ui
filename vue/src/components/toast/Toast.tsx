@@ -1,5 +1,6 @@
 import { defineComponent, ExtractPublicPropTypes } from "vue"
 import { definePropType } from "../../utils"
+import cn from 'classnames'
 import {
   toastStyle,
   toastVariants,
@@ -110,32 +111,41 @@ export const toastProps = {
 
 export type ToastProps = ExtractPublicPropTypes<typeof toastProps>
 
+export const toastEmitters = {
+  close: () => true
+}
+
+export type ToastEmitters = {
+  close: () => void
+}
+
 export const Toast = defineComponent({
   name: 'Toast',
   props: toastProps,
+  emits: toastEmitters,
   components: { Icon },
-  setup(props, { slots, attrs }) {
+  setup(props, { slots, attrs, emit }) {
     return () => (
       <div
         {...attrs}
-        class={`
-          ${props.style}
-          ${props.variants[props.size]}
-        `}
+        class={cn({
+          [props.style]: props.style,
+          [props.variants[props.size]]: props.variants[props.size] && props.size
+        })}
       >
         {slots.default
-          ? slots.default()
+          ? slots.default({ onClose: () => emit('close') })
           : <div
-              class={`
-                ${props.boxStyle}
-                ${props.boxVariants[props.size]}
-              `}
+              class={cn({
+                [props.boxStyle]: props.boxStyle,
+                [props.boxVariants[props.size]]: props.boxVariants[props.size] && props.size
+              })}
             >
             <div
-              class={`
-                ${props.iconStyle}
-                ${props.iconVariants[props.size]}
-              `}
+              class={cn({
+                [props.iconStyle]: props.iconStyle,
+                [props.iconVariants[props.size]]: props.iconVariants[props.size] && props.size
+              })}
             >
               {slots.icon
                 ? slots.icon()
@@ -143,24 +153,24 @@ export const Toast = defineComponent({
               }
             </div>
             <div
-              class={`
-                ${props.contentStyle}
-                ${props.contentVariants[props.size]}
-              `}
+              class={cn({
+                [props.contentStyle]: props.contentStyle,
+                [props.contentVariants[props.size]]: props.contentVariants[props.size] && props.size
+              })}
             >
               <div
-                class={`
-                  ${props.headerStyle}
-                  ${props.headerVariants[props.size]}
-                `}
+                class={cn({
+                  [props.headerStyle]: props.headerStyle,
+                  [props.headerVariants[props.size]]: props.headerVariants[props.size] && props.size
+                })}
               >
                 {slots.title
                     ? slots.title()
                     : <div
-                        class={`
-                          ${props.titleStyle}
-                          ${props.titleVariants[props.size]}
-                        `}
+                        class={cn({
+                          [props.titleStyle]: props.titleStyle,
+                          [props.titleVariants[props.size]]: props.titleVariants[props.size] && props.size
+                        })}
                     >
                       {props.title}
                     </div>
@@ -169,27 +179,27 @@ export const Toast = defineComponent({
                     ? slots.close
                       ? slots.close()
                       : <div
-                        class={`
-                          ${props.closeStyle}
-                          ${props.closeVariants[props.size]}
-                        `}
-                        onClick={() => props.whenClose && props.whenClose()}
-                      >
-                        <Icon name='ri-close-line' size={props.size} />
-                      </div>
+                          class={cn({
+                            [props.closeStyle]: props.closeStyle,
+                            [props.closeVariants[props.size]]: props.closeVariants[props.size] && props.size
+                          })}
+                          onClick={() => emit('close')}
+                        >
+                          <Icon name='ri-close-line' size={props.size} />
+                        </div>
                     : null
                 }
               </div>
               {slots.message
                 ? slots.message()
                 : <div
-                    class={`
-                      ${props.messageStyle}
-                      ${props.messageVariants[props.size]}
-                    `}
-                >
-                  {props.message}
-                </div>
+                    class={cn({
+                      [props.messageStyle]: props.messageStyle,
+                      [props.messageVariants[props.size]]: props.messageVariants[props.size] && props.size
+                    })}
+                  >
+                    {props.message}
+                  </div>
               }
             </div>
           </div>

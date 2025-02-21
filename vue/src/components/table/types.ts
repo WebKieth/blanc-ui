@@ -1,4 +1,4 @@
-import { ColumnKey, Columns, Rows, Sorting, TableSize } from "../../../../shared/components/table/types"
+import { ColumnKey, Columns, Rows, Sorting, TableSize } from "@shared/components/table/types"
 import { ComputedRef, Ref, Slots } from "vue"
 
 export type Column = {
@@ -8,12 +8,17 @@ export type Column = {
 	width?: number
 }
 
+export type TableEmitters = {
+	select: SelectRowHandler
+}
+
 export type ProvidedTableConfig = {
 	props: _TableProps
 	slots: Slots
+	emit: (event: 'select', id: string | Array<string>) => void | null
 	provided: TableControlsProvided
 }
-export type WhenSelect = ((ids: string | Array<string>) => void) | null
+export type SelectRowHandler = ((ids: string | Array<string>) => void) | null
 
 export type TableRowStylingProps = {
 	rowBoxStyle: string
@@ -37,7 +42,7 @@ export type _TableProps = {
 	rows: Rows | null
 	expandRows: boolean
 	selected: string | Array<string>
-	whenSelect: WhenSelect
+	selectable: boolean
 } & TableRowStylingProps & TableCellStylingProps
 
 export type TableControlsProvided = {

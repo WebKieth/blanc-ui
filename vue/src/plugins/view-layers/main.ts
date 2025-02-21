@@ -40,7 +40,7 @@ export class ViewLayers {
       props: {
         ...props,
         zIndex: Object.keys(this.layers).length,
-        whenClose: this.remove.bind(this, id)
+        onClose: this.remove.bind(this, id)
       },
       element: wrapper,
       app: this.app,
