@@ -1,10 +1,14 @@
+import { ComputedRef } from "vue"
+import { CalendarGridEmitters } from "./modules/CalendarGrid/CalendarGrid"
+import { CalenadarHeaderEmitters } from "./modules/CalendarHeader"
+
 export type Month = 'January' | 'February' | 'March' | 'April' | 'May' | 'June' | 'July' | 'August' | 'September' | 'October' | 'November' | 'December'
 
 export type Weekday = 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday'| 'Friday' | 'Saturday'| 'Sunday'
 
-export type CalendarEmitters = {
-  dayClick: (event: MouseEvent, day: number, weekday: Weekday, month: Month, year: number, today: boolean) => void
-}
+export type CalendarEmitters = {}
+  & CalendarGridEmitters
+  & CalenadarHeaderEmitters
 
 export type CalendarLanguage = 'ru' | 'en'
 
@@ -27,4 +31,24 @@ export type CalendarCell = {
   nextMonth: boolean
   weekday: Weekday
   today: boolean
+}
+
+export type CalendarProvided = {
+  language: CalendarLanguage
+  customLocale: CalendarLocale | null
+  currentMonthIndex: ComputedRef<number>
+  currentMonth: ComputedRef<Month>
+  currentYear: ComputedRef<number>
+  day: ComputedRef<number>
+  month: ComputedRef<Month>
+  year: ComputedRef<number>
+  handlePrevYear: () => void
+  handleNextYear: () => void
+  handlePrevMonth: () => void
+  handleNextMonth: () => void
+}
+
+export type MonthEmitArg = {
+  key: Month,
+  index: number
 }

@@ -46,6 +46,10 @@ export const Icon = defineComponent({
 
 		const svg = computed(() => {
 			if (!spriteXml.value) return
+			if (!props.name) {
+				console.error('[Blanc-UI Icon] Name did not provided - cannot compute svg inners!')
+				return
+			}
 			const icon = spriteXml.value.querySelector(`#${props.name}`)
 			return icon
 		})

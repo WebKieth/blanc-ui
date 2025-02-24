@@ -1,57 +1,27 @@
 import { definePropType } from "../../utils";
-import { computed, defineComponent, ExtractPublicPropTypes, ref, watch } from "vue";
-import { bodyStyle, boxStyle, cellStyle, cellVariants, controlsStyle, headerStyle, monthTitleStyle, rewinderStyle, rowStyle, titlesStyle, weekdayCellStyle } from "./styles.css";
-import { Icon } from "../icon";
+import { computed, defineComponent, ExtractPublicPropTypes, provide, ref, watch } from "vue";
+import { boxStyle } from "./styles.css";
+
 import cn from 'classnames'
-import { CalendarCell, CalendarEmitters, CalendarLanguage, CalendarLocale, Month, Weekday } from "./types";
-import { MONTHS, ROWS_LENGTH, WEEKDAYS } from "./constants";
+import { CalendarEmitters, CalendarLanguage, CalendarLocale, CalendarProvided, Month } from "./types";
+import { CalendarHeader, calendarHeaderEmitters } from "./modules/CalendarHeader";
+import { $calendarProvidedSymbol } from "./constants";
+import { MONTHS } from "./_constants";
 import { CALENDAR_LOCALES } from './locales'
+
+import * as calendarHeaderStylingProps from './modules/CalendarHeader/stylingProps'
+import * as calendarGridStylingProps from './modules/CalendarGrid/stylingProps'
+import { CalendarGrid, calendarGridEmitters } from "./modules/CalendarGrid/CalendarGrid";
+import { useWatchersForEmit } from "./hooks";
+
 
 export const calendarStylingProps = {
   style: {
     type: String,
     default: boxStyle
   },
-  headerStyle: {
-    type: String,
-    default: headerStyle
-  },
-  bodyStyle: {
-    type: String,
-    default: bodyStyle
-  },
-  rowStyle: {
-    type: String,
-    default: rowStyle
-  },
-  weekdayCellStyle: {
-    type: String,
-    default: weekdayCellStyle
-  },
-  cellStyle: {
-    type: String,
-    default: cellStyle
-  },
-  cellVariants: {
-    type: Object,
-    default: cellVariants
-  },
-  controlsStyle: {
-    type: String,
-    default: controlsStyle
-  },
-  titlesStyle: {
-    type: String,
-    default: titlesStyle
-  },
-  monthTitleStyle: {
-    type: String,
-    default: monthTitleStyle
-  },
-  rewinderStyle: {
-    type: String,
-    default: rewinderStyle
-  }
+  ...calendarGridStylingProps,
+  ...calendarHeaderStylingProps
 }
 
 export const calendarProps = {
@@ -75,14 +45,14 @@ export const calendarProps = {
     type: definePropType<CalendarLanguage>(String),
     default: 'en'
   },
-  ...calendarStylingProps
+  ...calendarStylingProps,
 } as const
 
 export type CalendarProps = ExtractPublicPropTypes<typeof calendarProps>
 
-
 const calendarEmitters: CalendarEmitters = {
-  dayClick: (e) => e?.type === 'click'
+  ...calendarGridEmitters,
+  ...calendarHeaderEmitters
 }
 
 export const Calendar = defineComponent({
@@ -128,164 +98,58 @@ export const Calendar = defineComponent({
       }
       monthDiff.value = monthDiff.value + 1
     }
-    const handleDayClick = (e: MouseEvent, cell: CalendarCell) => {
-      const month = cell.prevMonth
-        ? MONTHS[currentMonthIndex.value - 1]
-        : cell.nextMonth
-          ? MONTHS[currentMonthIndex.value + 1]
-          : currentMonth.value
-      emit('dayClick', e, cell.date, cell.weekday, month, currentYear.value, cell.today)
-    }
-    const isToday = (date: number, monthIndex: number, year: number) => {
-      const d = new Date()
-      return (
-        date === d.getDate() &&
-        monthIndex === d.getMonth() &&
-        year === d.getFullYear()
-      )
-    }
-    const isChoosen = (cell: CalendarCell) => {
-      const monthIndex = MONTHS.findIndex((m) => m === props.month)
-      const actualMonthIndex = cell.prevMonth
-        ? monthIndex - 1
-        : cell.nextMonth
-          ? monthIndex + 1
-          : monthIndex
-      return (
-        cell.date === props.day &&
-        currentMonthIndex.value === actualMonthIndex &&
-        currentYear.value === props.year
-      )
-    }
-    const daysGrid = computed(() => {
-      const daysInPrevMonth = new Date(currentYear.value, currentMonthIndex.value, 0).getDate()
-      const daysInCurrentMonth = new Date(currentYear.value, currentMonthIndex.value + 1, 0).getDate()
-      const startDay = new Date(currentYear.value, currentMonthIndex.value, 1).getDay()
-      const rows = []
-      for (let rowIndex = 0; rowIndex < ROWS_LENGTH; rowIndex++) {
-        const row = []
-        for(let wdIndex = 0; wdIndex < WEEKDAYS.length; wdIndex++) {
-          const wdNum = wdIndex + 1
-          const i = (rowIndex * WEEKDAYS.length) + wdNum
-          const cell: CalendarCell = {
-            date: 0,
-            prevMonth: false,
-            nextMonth: false,
-            today: false,
-            weekday: WEEKDAYS[0]
-          }
-          if (i < startDay) {
-            cell.date = daysInPrevMonth - startDay + i + 1
-            cell.prevMonth = true
-          } else if (i > daysInCurrentMonth + startDay - 1) {
-            cell.date =  (i - daysInCurrentMonth - startDay) + 1
-            cell.nextMonth = true
-          } else {
-            cell.date = (i - startDay) + 1
-          }
-          cell.today = isToday(cell.date, currentMonthIndex.value, currentYear.value)
-          cell.weekday = WEEKDAYS[wdIndex]
-          row.push(cell)
-        }
-        rows.push(row)
-      }
-      return rows
+
+    useWatchersForEmit({
+      monthIndex: currentMonthIndex,
+      year: currentYear
+    }, emit)
+
+    const day = computed(() => props.day)
+    const month = computed(() => props.month)
+    const year = computed(() => props.year)
+
+    provide<CalendarProvided>($calendarProvidedSymbol, {
+      language: props.language,
+      customLocale: props.customLocale,
+      currentMonthIndex,
+      currentMonth,
+      currentYear,
+      handleNextYear,
+      handlePrevYear,
+      handleNextMonth,
+      handlePrevMonth,
+      day,
+      month,
+      year
     })
 
-    const getMonthLocale = (month: Month, short: boolean = false) => (
-      props.customLocale
-        ? props.customLocale.months[short ? 'short' : 'full'][month]
-        : CALENDAR_LOCALES[props.language].months[short ? 'short' : 'full'][month]
-    )
-
-    const getWeekdayLocale = (weekday: Weekday, short: boolean = false) => (
-      props.customLocale
-        ? props.customLocale.weekdays[short ? 'short' : 'full'][weekday]
-        : CALENDAR_LOCALES[props.language].weekdays[short ? 'short' : 'full'][weekday]
-    )
-
-    return () => <div class={props.style}>
-      <div class={props.headerStyle}>
-        {slots.header
-          ? slots.header({
-            month: {
-              full: getMonthLocale(currentMonth.value),
-              short: getMonthLocale(currentMonth.value, true)
-            },
-            year: currentYear.value,
-            handlePrevMonth,
-            handlePrevYear,
-            handleNextMonth,
-            handleNextYear
-          })
-          : <>
-            <div class={props.controlsStyle}>
-              <div
-                class={props.rewinderStyle}
-                onClick={() => handlePrevYear()}
-              >
-                <Icon name='ri-arrow-left-line' />
-              </div>
-              <div
-                class={props.rewinderStyle}
-                onClick={() => handlePrevMonth()}
-              >
-                <Icon name='ri-arrow-left-s-line' />
-              </div>
-            </div>
-            <div class={props.titlesStyle}>
-              <div class={props.monthTitleStyle}>
-                {getMonthLocale(currentMonth.value)}
-              </div>
-              <div>
-                {currentYear.value}
-              </div>
-            </div>
-            <div class={props.controlsStyle}>
-              <div
-                class={props.rewinderStyle}
-                onClick={() => handleNextMonth()}
-              >
-                <Icon name='ri-arrow-right-s-line' />
-              </div>
-              <div
-                class={props.rewinderStyle}
-                onClick={() => handleNextYear()}
-              >
-                <Icon name='ri-arrow-right-line' />
-              </div>
-            </div>
-          </>
-        }
-      </div>
-      <div class={props.bodyStyle}>
-        <div class={props.rowStyle}>
-          {WEEKDAYS.map((weekday) => (
-            <div class={props.weekdayCellStyle} key={weekday}>
-              {getWeekdayLocale(weekday, true)}
-            </div>
-          ))}
-        </div>
-        {daysGrid.value.map((row, index) => (
-          <div class={props.rowStyle} key={index}>
-            {row.map((cell) => (
-              <div
-                class={cn({
-                  [props.cellStyle]: props.cellStyle,
-                  [props.cellVariants.prevMonth]: props.cellVariants.prevMonth && cell.prevMonth,
-                  [props.cellVariants.nextMonth]: props.cellVariants.nextMonth && cell.nextMonth,
-                  [props.cellVariants.today]: props.cellVariants.today && cell.today,
-                  [props.cellVariants.choosen]: props.cellVariants.choosen && isChoosen(cell)
-                })}
-                key={cell.weekday}
-                onClick={(e) => handleDayClick(e, cell)}
-              >
-                {cell.date}
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
+    return () => <div class={cn({[props.style]: props.style})}>
+      {slots.header
+        ? slots.header()
+        : <CalendarHeader
+            style={props.headerStyle}
+            controlsStyle={props.headerControlsStyle}
+            titlesStyle={props.headerTitlesStyle}
+            monthTitleStyle={props.headerMonthTitleStyle}
+            yearTitleStyle={props.headerYearTitleStyle}
+            rewinderStyle={props.headerRewinderStyle}
+            prevMonthIcon={props.prevMonthIcon}
+            nextMonthIcon={props.nextMonthIcon}
+            prevYearIcon={props.prevYearIcon}
+            nextYearIcon={props.nextYearIcon}
+          />
+      }
+      {slots.default
+        ? slots.default()
+        : <CalendarGrid
+            style={props.gridStyle}
+            rowStyle={props.gridRowStyle}
+            weekdayCellStyle={props.gridWeekdayCellStyle}
+            cellStyle={props.gridCellStyle}
+            cellVariants={props.gridCellVariants}
+            onDayClick={(...args) => emit('dayClick', ...args)}
+          />
+      }
     </div>
   }
 })

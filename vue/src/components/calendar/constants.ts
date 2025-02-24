@@ -1,10 +1,23 @@
-import { Month, Weekday } from "./types"
-export const MONTHS: Month[] = [
-  'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
-]
+import { computed } from "vue"
+import { CalendarProvided } from "./types"
+import { MONTHS } from "./_constants"
 
-export const WEEKDAYS: Weekday[] = [
-  'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
-]
+const defaultMonth = MONTHS[0]
+const defaultYear = new Date().getFullYear()
 
-export const ROWS_LENGTH = 6
+export const $calendarProvidedSymbol = Symbol('calendar-provided')
+
+export const defaultCalendarProvideInjected: CalendarProvided = {
+  language: 'ru',
+  customLocale: null,
+  currentMonthIndex: computed(() => 0),
+  currentMonth: computed(() => defaultMonth),
+  currentYear: computed(() => defaultYear),
+  day: computed(() => 1),
+  month: computed(() => defaultMonth),
+  year: computed(() => defaultYear),
+  handleNextYear: () => {},
+  handlePrevYear: () => {},
+  handleNextMonth: () => {},
+  handlePrevMonth: () => {}
+}
