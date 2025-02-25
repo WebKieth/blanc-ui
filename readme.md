@@ -20,7 +20,7 @@ Fully redesignable vanilla-extract based component modules and plugins
 | checkbox | ready | storybooked |
 | dropdown | ready | storybooked |
 | input | ready | storybooked |
-| modal | ready | to do |
+| modal | ready | storybooked |
 | table | ready | storybooked |
 | toast | ready | storybooked |
 | radio group | ready | storybooked |

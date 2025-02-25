@@ -16,5 +16,6 @@ export const modalWindowStyle = style({
 	backgroundColor: 'white',
 	height: 'fit-content',
 	width: 'fit-content',
+	minWidth: '200px',
 	overflow: 'hidden'
 })

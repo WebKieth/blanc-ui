@@ -1,6 +1,6 @@
 import { defineComponent, computed, ExtractPublicPropTypes, inject, ref, Ref } from 'vue'
 import { definePropType } from '../../utils/index.ts'
-import { IconSize, IconProps as _IconProps } from '../../../../shared/components/icon'
+import { IconSize, IconProps as _IconProps } from '@shared/components/icon'
 
 import { $iconify, $icons, IconComponents } from '../../plugins/iconify'
 
@@ -65,6 +65,7 @@ export const Icon = defineComponent({
 						viewBox={viewbox.value || '0 0 24 24'}
 						width={currentSize.value.width}
 						height={currentSize.value.height}
+						fill='currentColor'
 						v-html={svg.value.innerHTML}
 					></svg>
 					: <></>

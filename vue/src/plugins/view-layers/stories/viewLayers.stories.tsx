@@ -4,7 +4,7 @@ import { Button } from '../../../components/button'
 import { Modal, modalProps } from '../../../components/modal'
 import { defineComponent, inject, onMounted } from 'vue'
 import { Icon } from '../../../components/icon'
-import { closeIconStyle, dialogBoxStyle, modalBodyStyle, modalHeaderStyle, warningBoxStyle } from '../styles.css'
+import { closeIconStyle, dialogBoxStyle, modalBodyStyle, modalHeaderStyle, warningBoxStyle } from './styles.css'
 
 const meta: Meta<typeof ViewLayers> = {
   title: 'Plugins/ViewLayers',
@@ -18,14 +18,6 @@ type Story = StoryObj<typeof ViewLayers>
 const DialogModal = defineComponent({
   name: 'Dialog',
   props: {
-    content: {
-      type: String,
-      default: ''
-    },
-    title: {
-      type: String,
-      default: ''
-    },
     ...modalProps
   },
   setup(props) {
@@ -58,14 +50,6 @@ const DialogModal = defineComponent({
 const WarningModal = defineComponent({
   name: 'Warning',
   props: {
-    content: {
-      type: String,
-      default: ''
-    },
-    title: {
-      type: String,
-      default: ''
-    },
     ...modalProps
   },
   setup(props) {
@@ -73,7 +57,7 @@ const WarningModal = defineComponent({
     const open = () => {
       viewLayers?.open(DialogModal, {
         title: 'Диалог тайтл',
-        content: 'Хелоу мазафака. Варнинг диалог вилл слоуз сри секондс лейтер'
+        content: 'Хелоу мазафака. Варнинг диалог вилл клоуз сри секондс лейтер'
       })
     }
     return () => (
