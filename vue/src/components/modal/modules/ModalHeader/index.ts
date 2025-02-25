@@ -2,5 +2,5 @@ export {
   headerStyle as modalHeaderStyle,
   headerTitleStyle as modalHeaderTitleStyle,
   headerButtonStyle as modalHeaderButtonStyle
-} from './styles.css'
+} from '@shared/components/modal/modules/header/styles.css'
 export * from './ModalHeader'

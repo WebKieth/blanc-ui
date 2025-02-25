@@ -5,11 +5,12 @@ import {
   buttonStyle,
   buttonVariants
 } from "../../../../shared/components/button"
-import { ButtonGroupContext } from "../buttonGroup/ButtonGroup"
+import { ButtonGroupContext } from "../ButtonGroup/ButtonGroup"
 
 
 export const Button: FC<ButtonProps> = ({
 	ref = null,
+	className = '',
 	style = buttonStyle,
 	variants = buttonVariants,
 	groupKey,
@@ -67,6 +68,7 @@ export const Button: FC<ButtonProps> = ({
 			} else if (ref) ref.current = element
 		}}
 		className={cn(
+			className,
 			style,
 			{
 				[cn({

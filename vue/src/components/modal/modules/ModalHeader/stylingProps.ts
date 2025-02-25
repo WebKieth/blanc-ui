@@ -4,7 +4,7 @@ import {
   headerStyle as _headerStyle,
   headerTitleStyle as _headerTitleStyle,
   headerButtonStyle as _headerButtonStyle
-} from './styles.css'
+} from '@shared/components/modal/modules/header/styles.css'
 
 export const headerStyle = {
   type: String,

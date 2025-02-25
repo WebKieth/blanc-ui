@@ -1,8 +1,8 @@
-import { Meta, StoryObj } from '@storybook/vue3'
+import { Meta, StoryObj } from '@storybook/react'
 import { v4 as uuidv4 } from 'uuid'
 import { Table } from '../Table.tsx'
-import { TableHeader } from '../modules/header'
-import { TableFooter } from '../modules/footer'
+import { TableHeader } from '../modules/header/index.ts'
+import { TableFooter } from '../modules/footer/index.ts'
 
 const meta: Meta<typeof Table> = {
   title: 'Components/Table',

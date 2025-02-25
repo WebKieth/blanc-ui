@@ -4,7 +4,7 @@ import {
   bodyStyle as _bodyStyle,
   bodyIconStyle as _bodyIconStyle,
   bodyContentStyle as _bodyContentStyle
-} from './styles.css'
+} from '@shared/components/modal/modules/body/styles.css'
 
 export const bodyStyle = {
   type: String,

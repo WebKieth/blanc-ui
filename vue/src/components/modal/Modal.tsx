@@ -7,7 +7,7 @@ import * as modalBodyStylingProps from './modules/ModalBody/stylingProps.ts'
 import {
   modalBackdropStyle,
   modalWindowStyle
-} from './styles.css.ts'
+} from '@shared/components/modal/styles.css.ts'
 import { ModalBody } from './modules/ModalBody'
 
 
@@ -55,7 +55,6 @@ export const Modal = defineComponent({
     return () => (
       <>
         <div
-          {...attrs}
           class={cn({[props.backdropStyle]: props.backdropStyle})}
           style={`z-index: ${props.zIndex}`}
           onClick={
@@ -65,6 +64,7 @@ export const Modal = defineComponent({
           }
         ></div>
         <div
+          {...attrs}
           class={cn({[props.windowStyle]: props.windowStyle})}
           style={`z-index: ${props.zIndex}`}
         >
@@ -73,43 +73,43 @@ export const Modal = defineComponent({
                 { onClose: () => emit('close') }
               )
             : <>
-              {slots.header
-                ? slots.header(
-                    { onClose: () => emit('close') }
-                  )
-                : <ModalHeader
-                    title={props.title}
-                    style={props.headerStyle}
-                    titleStyle={props.headerTitleStyle}
-                    buttonStyle={props.headerButtonStyle}
-                    buttonSize={props.headerButtonSize}
-                    buttonVariant={props.headerButtonVariant}
-                    buttonIcon={props.headerButtonIcon}
-                    onClose={() => emit('close')}
-                  >
-                    {{
-                      title: slots.title,
-                      button: slots.closeButton
-                    }}
-                  </ModalHeader>
-              }
-              {slots.body
-                ? slots.body(
-                    { onClose: () => emit('close') }
-                  )
-                : <ModalBody
-                    content={props.content}
-                    icon={props.bodyIcon}
-                    iconSize={props.bodyIconSize}
-                    style={props.bodyStyle}
-                    iconStyle={props.bodyIconStyle}
-                    contentStyle={props.bodyContentStyle}
-                  >
-                    {{
-                      content: slots.content
-                    }}
-                  </ModalBody>
-              }
+                {slots.header
+                  ? slots.header(
+                      { onClose: () => emit('close') }
+                    )
+                  : <ModalHeader
+                      title={props.title}
+                      style={props.headerStyle}
+                      titleStyle={props.headerTitleStyle}
+                      buttonStyle={props.headerButtonStyle}
+                      buttonSize={props.headerButtonSize}
+                      buttonVariant={props.headerButtonVariant}
+                      buttonIcon={props.headerButtonIcon}
+                      onClose={() => emit('close')}
+                    >
+                      {{
+                        title: slots.title,
+                        button: slots.closeButton
+                      }}
+                    </ModalHeader>
+                }
+                {slots.body
+                  ? slots.body(
+                      { onClose: () => emit('close') }
+                    )
+                  : <ModalBody
+                      content={props.content}
+                      icon={props.bodyIcon}
+                      iconSize={props.bodyIconSize}
+                      style={props.bodyStyle}
+                      iconStyle={props.bodyIconStyle}
+                      contentStyle={props.bodyContentStyle}
+                    >
+                      {{
+                        content: slots.content
+                      }}
+                    </ModalBody>
+                }
             </>
           }
         </div>

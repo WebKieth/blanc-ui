@@ -52,7 +52,7 @@ Fully redesignable vanilla-extract based component modules and plugins
 | checkbox | ready | storybooked |
 | dropdown | backlog | backlog |
 | input | ready | storybooked |
-| modal | backlog | backlog |
+| modal | ready | storybooked |
 | table | testing | storybooked |
 | toast | backlog | backlog |
 | radio group | backlog | backlog |
@@ -67,4 +67,4 @@ Fully redesignable vanilla-extract based component modules and plugins
 | iconify | ready | to do |
 | eventBus | backlog | backlog |
 | notify | backlog | backlog |
-| view-layers | backlog | backlog |
+| view-layers | ready | storybooked |

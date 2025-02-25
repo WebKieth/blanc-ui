@@ -14,8 +14,8 @@ import { ColumnKey, Row, Rows } from "../../../../../../shared/components/table/
 import { TableRowStylingProps } from "../../types";
 import { useTablePropsProvided } from "../../hooks/use-table-props-provided";
 import { TableCell } from "../cell";
-import { Checkbox } from "../../../checkbox";
-import { Icon } from "../../../icon";
+import { Checkbox } from "../../../Checkbox";
+import { Icon } from "../../../Icon";
 
 
 
