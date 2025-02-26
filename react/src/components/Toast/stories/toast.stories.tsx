@@ -1,5 +1,5 @@
-import { Meta, StoryObj } from '@storybook/vue3'
-import { Toast } from '../index'
+import { Meta, StoryObj } from "@storybook/react";
+import { Toast } from "../Toast";
 
 const meta: Meta<typeof Toast> = {
   title: 'Components/Toast',
@@ -50,18 +50,15 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Basic: Story = {
-  render: (args) => ({
-    components: { Toast },
-    setup() {
-      return () => (
-        <Toast
-          size={args.size}
-          iconName={args.iconName}
-          title={args.title}
-          message={args.message}
-          closeIconName={args.closeIconName}
-        />
-      )
-    }
-  })
+  render(args) {
+    return (
+      <Toast
+      size={args.size}
+      iconName={args.iconName}
+      title={args.title}
+      message={args.message}
+      closeIconName={args.closeIconName}
+      />
+    )
+  }
 }

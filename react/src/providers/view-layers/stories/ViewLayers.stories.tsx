@@ -41,7 +41,7 @@ const Contents: FC = () => {
       content: 'Warning content'
     })
   }
-  return <div style={{width: '100vw', height: '100vh'}}>
+  return <div style={{width: '100%', height: '100vh'}}>
     <Button onClick={openWarning}>open</Button>
   </div>
 }

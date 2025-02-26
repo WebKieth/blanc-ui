@@ -18,4 +18,4 @@ export {
   toastHeaderVariants,
   toastCloseStyle,
   toastCloseVariants
-} from "./styles.css"
+} from "@shared/components/toast/styles.css"

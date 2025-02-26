@@ -5,7 +5,7 @@ import { Checkbox } from '../../../components/checkbox'
 import { Input } from '../../../components/input/Input'
 // import Select from '@/components/select/index.vue'
 import { inject, ref } from 'vue'
-import { NotifyPosition } from '../types'
+import { NotifyPosition } from '@shared/plugins/notify/types'
 import { wrapperStyle } from './styles.css'
 
 const meta: Meta<typeof Notify> = {
@@ -74,7 +74,7 @@ export const Default: Story = {
 					<Checkbox label='autoHide' value={autoHide.value} onChange={setAutoHide} />
 					<Checkbox label='closable' value={closable.value} onChange={setClosable} />
 					<Button onClick={() => call()}>show toast</Button>
-					<Button onClick={() => remove()}>hide toast</Button>
+					<Button onClick={() => remove()}>hide last toast</Button>
 				</div>
 			)
 		}
