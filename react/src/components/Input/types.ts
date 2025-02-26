@@ -16,8 +16,10 @@ export type InputStyleProps = {
   labelVariants?: StyleVariants
   fieldBoxStyle?: string
   fieldBoxVariants?: StyleVariants
-  fieldStyle?: string
-  fieldVariants?: StyleVariants
+  inputStyle?: string
+  inputVariants?: StyleVariants
+  placeholderStyle?: string
+  placeholderVariants?: StyleVariants
 }
 
 export type InputChildScope = {
@@ -38,6 +40,7 @@ export type InputProps = {
   onChange?: InputEmitter
   onInput?: InputEmitter
   children?: Nullable<ReactNode | ((scope: InputChildScope) => ReactNode)>
-  prefix?: Nullable<ReactNode | (() => ReactNode)>
-  postfix?: Nullable<ReactNode | (() => ReactNode)>
+  renderPrefix?: Nullable<ReactNode | (() => ReactNode)>
+  renderPostfix?: Nullable<ReactNode | (() => ReactNode)>
+  renderPlaceholder?: Nullable<ReactNode | (() => ReactNode)>
 } & InputStyleProps

@@ -3,6 +3,7 @@ import { fn } from "@storybook/test"
 
 import { Input } from '..'
 import { useState } from 'react'
+import { customPlaceholder, customPlaceholderStar, customPlaceholderText, customPlaceholderText2 } from './styles.css'
 
 const meta: Meta<typeof Input> = {
 	component: Input,
@@ -59,7 +60,29 @@ export const Default: Story = {
 			label={args.label}
 			disabled={args.disabled}
 			value={value}
-			onChange={(value) => setValue(value as string)}
+			attributes={{
+				placeholder: 'Basic placeholder'
+			}}
+			onChange={setValue}
+		/>
+	}
+}
+
+export const CustomPlaceholder: Story = {
+	render: (args) => {
+		const [value, setValue] = useState('')
+		return <Input
+			type={args.type}
+			size={args.size}
+			label={args.label}
+			disabled={args.disabled}
+			value={value}
+			onChange={setValue}
+			renderPlaceholder={<div className={customPlaceholder}>
+				<span className={customPlaceholderText}>Custom</span>
+				<span className={customPlaceholderText2}>placeholder</span>
+				<span className={customPlaceholderStar}>*</span>
+			</div>}
 		/>
 	}
 }

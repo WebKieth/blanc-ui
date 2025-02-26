@@ -1,5 +1,6 @@
 import { FC, SyntheticEvent, useId, useState } from "react"
 import { InputProps } from "./types"
+import cn from 'classnames'
 
 import {
 	inputFieldBoxStyle,
@@ -8,19 +9,23 @@ import {
 	inputFieldVariants,
 	inputLabelStyle,
 	inputLabelVariants,
-	inputStyle,
-	inputVariants
-} from './index'
+	inputStyle as _style,
+	inputVariants as _variants,
+	inputPlaceholderStyle,
+	inputPlaceholderVariants
+} from '@shared/components/input/styles.css'
 
 export const Input: FC<InputProps> = ({
-	style = inputStyle,
-	variants = inputVariants,
+	style = _style,
+	variants = _variants,
 	labelStyle = inputLabelStyle,
 	labelVariants = inputLabelVariants,
 	fieldBoxStyle = inputFieldBoxStyle,
 	fieldBoxVariants = inputFieldBoxVariants,
-	fieldStyle = inputFieldStyle,
-	fieldVariants = inputFieldVariants,
+	inputStyle = inputFieldStyle,
+	inputVariants = inputFieldVariants,
+	placeholderStyle = inputPlaceholderStyle,
+	placeholderVariants = inputPlaceholderVariants,
 	attributes = {},
 	id = '',
 	type = 'text',
@@ -31,8 +36,9 @@ export const Input: FC<InputProps> = ({
 	onChange = () => {},
 	onInput = () => {},
 	children = null,
-	prefix = null,
-	postfix = null
+	renderPrefix = null,
+	renderPostfix = null,
+	renderPlaceholder = null
 }) => {
 	const inputId = id ? id : useId()
 
@@ -52,27 +58,28 @@ export const Input: FC<InputProps> = ({
 	const handleBlur = () => setFocus(false)
 
 	return <div
-		{...attributes}
-		className={`
-			${style}
-			${variants[size]}
-			${disabled && variants.disabled}
-			${hover && variants.hover}
-			${focus && variants.focus}
-		`}
+		className={cn({
+			[style]: style,
+			[variants[size]]: variants[size] && size,
+			[variants.disabled]: variants.disabled && disabled,
+			[variants.hover]: variants.hover && hover,
+			[variants.focus]: variants.focus && focus,
+			[variants.filled]: variants.filled && value
+		})}
 		onMouseEnter={handleMouseIn}
 		onMouseLeave={handleMouseOut}
 	>
 		{label && (
 			<label
 				htmlFor={inputId}
-				className={`
-					${labelStyle}
-					${labelVariants[size]}
-					${disabled && labelVariants.disabled}
-					${hover && labelVariants.hover}
-					${(focus || value) && labelVariants.focus}
-				`}
+				className={cn({
+					[labelStyle]: labelStyle,
+					[labelVariants[size]]: labelVariants[size] && size,
+					[labelVariants.disabled]: labelVariants.disabled && disabled,
+					[labelVariants.hover]: labelVariants.hover && hover,
+					[labelVariants.focus]: labelVariants.focus && focus,
+					[labelVariants.filled]: labelVariants.filled && value
+				})}
 			>
 				{label}
 			</label>
@@ -82,27 +89,45 @@ export const Input: FC<InputProps> = ({
 			: children !== null
 				? children
 				: <div
-					className={`
-						${fieldBoxStyle}
-						${fieldBoxVariants[size]}
-						${disabled && fieldBoxVariants.disabled}
-						${hover && fieldBoxVariants.hover}
-						${focus && fieldBoxVariants.focus}
-					`}
+					className={cn({
+						[fieldBoxStyle]: fieldBoxStyle,
+						[fieldBoxVariants[size]]: fieldBoxVariants[size] && size,
+						[fieldBoxVariants.disabled]: fieldBoxVariants.disabled && disabled,
+						[fieldBoxVariants.hover]: fieldBoxVariants.hover && hover,
+						[fieldBoxVariants.focus]: fieldBoxVariants.focus && focus,
+						[fieldBoxVariants.filled]: fieldBoxVariants.filled && value
+					})}
 				>
-					{typeof prefix === 'function'
-						? prefix()
-						: prefix
+					{typeof renderPrefix === 'function'
+						? renderPrefix()
+						: renderPrefix
 					}
+					{renderPlaceholder && (
+						<div className={cn({
+							[placeholderStyle]: placeholderStyle,
+							[placeholderVariants[size]]: placeholderVariants[size] && size,
+							[placeholderVariants.disabled]: placeholderVariants.disabled && disabled,
+							[placeholderVariants.hover]: placeholderVariants.hover && hover,
+							[placeholderVariants.focus]: placeholderVariants.focus && focus,
+							[placeholderVariants.filled]: placeholderVariants.filled && value
+						})}>
+							{typeof renderPlaceholder === 'function'
+								? renderPlaceholder()
+								: renderPlaceholder
+							}
+						</div>
+					)}
 					<input
 						id={inputId}
-						className={`
-							${fieldStyle}
-							${fieldVariants[size]}
-							${disabled && fieldVariants.disabled}
-							${hover && fieldVariants.hover}
-							${focus && fieldVariants.focus}
-						`}
+						{...attributes}
+						className={cn({
+							[inputStyle]: inputStyle,
+							[inputVariants[size]]: inputVariants[size] && size,
+							[inputVariants.disabled]: inputVariants.disabled && disabled,
+							[inputVariants.hover]: inputVariants.hover && hover,
+							[inputVariants.focus]: inputVariants.focus && focus,
+							[inputVariants.filled]: inputVariants.filled && value
+						})}
 						type={type}
 						value={value}
 						onFocus={handleFocus}
@@ -110,9 +135,9 @@ export const Input: FC<InputProps> = ({
 						onChange={(e: SyntheticEvent) => onChange((e.target as HTMLInputElement).value)}
 						onInput={(e: SyntheticEvent) => onInput((e.target as HTMLInputElement).value)}
 					/>
-					{typeof postfix === 'function'
-						? postfix()
-						: postfix
+					{typeof renderPostfix === 'function'
+						? renderPostfix()
+						: renderPostfix
 					}
 				</div>
 		}

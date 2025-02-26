@@ -2,6 +2,7 @@ import { style, styleVariants } from "@vanilla-extract/css";
 
 export const inputStyle = style({
 	display: 'inline-flex',
+	flexDirection: 'column',
 	position: 'relative',
 	gap: '8px',
 })
@@ -12,43 +13,28 @@ export const inputVariants = styleVariants({
 	},
 	hover: {},
 	focus: {},
-	small: {
-		padding: '0px 8px',
-		height: '28px'
-	},
-	medium: {
-		padding: '0px 12px',
-		height: '34px'
-	},
-	large: {
-		padding: '0px 16px',
-		height: '40px'
-	}
+	filled: {},
+	small: {},
+	medium: {},
+	large: {}
 })
 
 export const inputLabelStyle = style({
 	color: 'var(--neutral-700)',
-	position: 'absolute',
-	left: '0',
-	top: '0',
-	bottom: '0',
 	display: 'flex',
 	alignItems: 'center',
-	zIndex: '-1'
 })
 
 export const inputLabelVariants = styleVariants({
 	disabled: {
-		color: 'var(--neutral-400) !important'
+		color: 'var(--neutral-400)',
+		pointerEvents: 'none'
 	},
 	hover: {
 		color: 'var(--neutral-800)'
 	},
-	focus: {
-		color: 'var(--neutral-900)',
-		alignItems: 'flex-start',
-		transform: 'scale(0.8) translateY(-40%)'
-	},
+	focus: {},
+	filled: {},
 	small: {
 		fontSize: 'var(--font-sm)',
 		padding: '0px 8px'
@@ -64,25 +50,38 @@ export const inputLabelVariants = styleVariants({
 })
 
 export const inputFieldBoxStyle = style({
-	width: '100%',
 	display: 'flex',
 	gap: '8px',
-	borderBottom: '1px solid var(--zinc-600)'
+	borderRadius: '8px',
+	boxShadow: '0 2px 5px var(--zinc-400)',
+	position: 'relative'
 })
 
 export const inputFieldBoxVariants = styleVariants({
 	disabled: {
-		borderBottom: '1px solid var(--zinc-400)',
+		boxShadow: 'none',
+		border: '1px solid var(--zinc-200)',
+		backgroundColor: 'var(--zinc-50)'
 	},
 	hover: {
-		borderBottom: '1px solid var(--zinc-700)',
+		boxShadow: '0 1px 3px var(--zinc-400)',
 	},
 	focus: {
-		borderBottom: '1px solid var(--zinc-800)'
+		boxShadow: '0 1px 2px var(--zinc-400)',
 	},
-	small: {},
-	medium: {},
-	large: {}
+	filled: {},
+	small: {
+		padding: '0px 8px',
+		height: '28px'
+	},
+	medium: {
+		padding: '0px 12px',
+		height: '34px'
+	},
+	large: {
+		padding: '0px 16px',
+		height: '40px'
+	}
 })
 
 export const inputFieldStyle = style({
@@ -95,17 +94,56 @@ export const inputFieldStyle = style({
 export const inputFieldVariants = styleVariants({
 	disabled: {
 		color: 'var(--neutral-400)',
-		pointerEvents: 'none'
+		pointerEvents: 'none',
+		'::placeholder': {
+			color: 'var(--neutral-300)'
+		}
 	},
 	hover: {},
 	focus: {},
+	filled: {},
 	small: {
-		fontSize: 'var(--font-sm)'
+		fontSize: 'var(--font-sm)',
 	},
 	medium: {
-		fontSize: 'var(--font-md)'
+		fontSize: 'var(--font-md)',
 	},
 	large: {
-		fontSize: 'var(--font-lg)'
+		fontSize: 'var(--font-lg)',
+	}
+})
+
+export const inputPlaceholderStyle = style({
+	color: 'var(--nautral-300)',
+	pointerEvents: 'none',
+	position: 'absolute',
+	width: 'fit-content',
+	height: 'fit-content',
+	right: 'auto',
+	top: 0,
+	bottom: 0,
+	margin: 'auto'
+})
+
+export const inputPlaceholderVariants = styleVariants({
+	small: {
+		fontSize: 'var(--font-sm)',
+		padding: '0 1px'
+	},
+	medium: {
+		fontSize: 'var(--font-md)',
+		padding: '0 3px'
+	},
+	large: {
+		fontSize: 'var(--font-lg)',
+		padding: '0 5px'
+	},
+	hover: {},
+	focus: {},
+	filled: {
+		opacity: 0
+	},
+	disabled: {
+		opacity: 50
 	}
 })

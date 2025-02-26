@@ -38,6 +38,8 @@ export const Icon: FC<IconProps> = ({
       {...currentSize}
     />
     : <svg
+      className={className}
+      fill='currentColor'
       viewBox={spriteIconViewbox || '0 0 24 24'}
       {...currentSize}
       dangerouslySetInnerHTML={{__html: spriteIcon?.innerHTML || ''}}
