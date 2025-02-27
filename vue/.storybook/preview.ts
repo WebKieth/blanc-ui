@@ -21,9 +21,7 @@ const preview: Preview = {
 setup((app) => {
   applyCssReset()
   applyCssVariables()
-  app.use(IconifyPlugin, {
-    spriteUrl: 'https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.symbol.svg'
-  })
+  app.use(IconifyPlugin)
   app.use(NotifyPlugin)
   app.use(ViewLayersPlugin)
   app.use(EventBusPlugin)

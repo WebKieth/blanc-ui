@@ -6,21 +6,25 @@ export const IconifyContext = createContext<IconifyProvided>({
   sprite: undefined
 })
 
-export const IconifyProvider: FC<PropsWithChildren<IconifyProviderProps>> = ({children, ...options}) => {
+export const IconifyProvider: FC<PropsWithChildren<IconifyProviderProps>> = ({
+  children,
+  components = {},
+  spriteUrl = 'https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.symbol.svg'
+}) => {
   const [sprite, setSprite] = useState<Document>()
 
   useEffect(() => {
-    if (!options.spriteUrl) return
-    fetch(options.spriteUrl)
+    if (!spriteUrl) return
+    fetch(spriteUrl)
       .then((resp) => resp.text())
       .then((string) => {
         const xml = new DOMParser().parseFromString(string, 'image/svg+xml')
         setSprite(xml)
       })
-  }, [options.spriteUrl])
+  }, [spriteUrl])
 
   return <IconifyContext.Provider value={{
-    components: options.components,
+    components: components,
     sprite
   }}>
     {children}

@@ -39,7 +39,7 @@ export const headerRewinderStyle = {
 
 export const prevYearIcon = {
   type: String,
-  default: 'ri-arrow-left-line'
+  default: 'ri-arrow-left-double-line'
 }
 export const prevMonthIcon = {
   type: String,
@@ -51,5 +51,5 @@ export const nextMonthIcon = {
 }
 export const nextYearIcon = {
   type: String,
-  default: 'ri-arrow-right-line'
+  default: 'ri-arrow-right-double-line'
 }

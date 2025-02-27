@@ -14,7 +14,7 @@ const preview: Preview = {
     },
   },
   decorators: [
-    (S) => (<IconifyProvider spriteUrl="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.symbol.svg"><S/></IconifyProvider>)
+    (S) => (<IconifyProvider><S/></IconifyProvider>)
   ]
 };
 

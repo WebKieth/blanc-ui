@@ -5,7 +5,12 @@ import { IconifyOptions, IconifyProvided } from "./types"
 export const $iconify = Symbol('iconify')
 export const $icons = Symbol('icons')
 
-export const installIcons = (app: App,options: IconifyOptions): IconifyProvided => {
+export const installIcons = (
+  app: App,
+  options: IconifyOptions =  {
+    spriteUrl: 'https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.symbol.svg'
+  }
+): IconifyProvided => {
   const sprite = ref<Document | null>(null)
   const { components, spriteUrl } = options
   if (components && Object.keys(components).length) {
