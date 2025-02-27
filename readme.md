@@ -1,17 +1,42 @@
 # Blanc UI
 
-Fully redesignable vanilla-extract based component modules and plugins  
-**Package in active development**
+> Fully unstyled :nail_care: lightweight :leaves: user interface environment :hammer_and_wrench:   
+:construction: **Progress:** 60% :chart_with_upwards_trend:  
+While package is in dev – self-written documentation now available only on russian and partially, sorry :smiling_face_with_tear:
 
 [![npm version](https://img.shields.io/npm/v/blanc-ui.svg?style=flat-square)](https://www.npmjs.com/package/blanc-ui)
 [![Build status](https://img.shields.io/github/actions/workflow/status/webkieth/blanc-ui/storybook.yml?branch=main&label=CI&logo=github&style=flat-square)](https://github.com/webkieth/blanc-ui/actions/workflows/storybook.yml)
 [![npm downloads](https://img.shields.io/npm/dm/blanc-ui.svg?style=flat-square)](https://npm-stat.com/charts.html?package=blanc-ui)
 
-## Vue Ui Kit
+## Features
+
+- :package: Only small utility client deps - all components are self-written.
+- :rainbow: Agnostic restyle ability.
+- :relieved: No worries about using modal windows, notifies and z-index dropdown problems - it includes full environment for better render control experience.
+- :open_book: No repeatable components. Only basic, with cookbook to create one from another.
+
+## Installation
+Bash into root folder of your project:
+```bash
+npm install blanc-ui@latest
+```
+Add base styles to your root file:
+```main.ts
+import 'blanc-ui/react/css'
+/** or */
+import 'blanc-ui/vue/css'
+```
+Then initialize plugins or providers you need to use and build your own components.
+
+[Available Writable Documentation](https://webkieth.github.io/blanc-ui_docs/)
+
+## Progress Details
+
+### Vue Ui Kit
 
 [Vue Storybook](https://webkieth.github.io/blanc-ui/vue)
 
-### Components
+#### Components
 
 | name | status | documentation |
 |---|---|---|
@@ -25,11 +50,12 @@ Fully redesignable vanilla-extract based component modules and plugins
 | toast | ready | storybooked |
 | radio group | ready | storybooked |
 | radio | ready | storybooked |
-| select | to do | to do |
 | icon | ready | storybooked |
 | calendar | ready | storybooked |
+| select | to do | to do |
+| datepicker | to do | to do |
 
-### Plugins
+#### Plugins
 | name | status | documentation |
 |---|---|---|
 | iconify | ready | to do |
@@ -39,18 +65,18 @@ Fully redesignable vanilla-extract based component modules and plugins
 
 -----------------------------------------
 
-## React Ui Kit
+### React Ui Kit
 
 [React Storybook](https://webkieth.github.io/blanc-ui/react)
 
-### components
+#### components
 
 | name | status | documentation |
 |---|---|---|
 | button | ready | storybooked |
 | button group | ready | storybooked |
 | checkbox | ready | storybooked |
-| dropdown | backlog | backlog |
+| dropdown | to do | to do |
 | input | ready | storybooked |
 | modal | ready | storybooked |
 | table | testing | storybooked |
@@ -59,9 +85,10 @@ Fully redesignable vanilla-extract based component modules and plugins
 | radio | backlog | backlog |
 | select | backlog | backlog |
 | icon | ready | storybooked |
-| calendar | backlog | backlog |
+| calendar | to do | to do |
+| datepicker | to do | to do |
 
-### providers
+#### providers
 | name | status | documentation |
 |---|---|---|
 | iconify | ready | to do |
