@@ -4,6 +4,7 @@ export const buttonStyle = style({
 	display: 'flex',
 	alignItems: 'center',
 	border: 0,
+	borderRadius: '6px'
 })
 
 export const buttonVariants = styleVariants({
@@ -143,14 +144,19 @@ export const buttonVariants = styleVariants({
 	first: {
 		borderTopLeftRadius: '6px',
 		borderBottomLeftRadius: '6px',
-		borderRight: '1px solid var(--blue-200)'
+		borderRight: '1px solid var(--blue-200)',
+		borderTopRightRadius: 0,
+		borderBottomRightRadius: 0
 	},
 	last: {
 		borderTopRightRadius: '6px',
-		borderBottomRightRadius: '6px'
+		borderBottomRightRadius: '6px',
+		borderTopLeftRadius: 0,
+		borderBottomLeftRadius: 0
 	},
 	middle: {
-		borderRight: '1px solid var(--blue-200)'
+		borderRight: '1px solid var(--blue-200)',
+		borderRadius: 0
 	},
 	primary_first: {},
 	primary_middle: {},

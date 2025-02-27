@@ -103,7 +103,25 @@ export const CalendarGrid = defineComponent({
           } else {
             cell.date = (i - startDay) + 1
           }
-          cell.today = isToday(cell.date, currentMonthIndex.value, currentYear.value)
+          const todayMonthIndex = cell.prevMonth
+            ? currentMonthIndex.value === 0
+              ? 11
+              : currentMonthIndex.value - 1
+            : cell.nextMonth
+              ? currentMonthIndex.value === 11
+                ? 0
+                :currentMonthIndex.value + 1
+              : currentMonthIndex.value
+          const todayYear = cell.prevMonth && currentMonthIndex.value === 0
+            ? currentYear.value - 1
+            : cell.nextMonth && currentMonthIndex.value === 11
+              ? currentYear.value + 1
+              : currentYear.value
+          cell.today = isToday(
+            cell.date,
+            todayMonthIndex,
+            todayYear
+          )
           cell.weekday = WEEKDAYS[wdIndex]
           row.push(cell)
         }

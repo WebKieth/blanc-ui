@@ -1,73 +1,65 @@
-import { definePropType } from '../../utils'
-import { ExtractPublicPropTypes, defineComponent, ref } from 'vue'
+import { TextareaEmitters, TextareaSize, TextareaValue } from "@shared/components/textarea/types";
+import { definePropType } from "../../utils";
+import { defineComponent, ExtractPublicPropTypes, ref } from "vue";
 import cn from 'classnames'
 import { v4 as uuid } from 'uuid'
 import {
-  inputFieldBoxStyle,
-  inputFieldBoxVariants,
-  inputFieldStyle,
-  inputFieldVariants,
-  inputLabelStyle,
-  inputLabelVariants,
-  inputStyle,
-  inputVariants,
-  type InputSize,
-  type InputValue,
-  type InputType,
-  type InputId,
-  inputPlaceholderStyle,
-  inputPlaceholderVariants
-} from '@shared/components/input'
-import { InputEmitters } from '@shared/components/input/types'
+  textareaFieldBoxStyle,
+  textareaFieldBoxVariants,
+  textareaFieldStyle,
+  textareaFieldVariants,
+  textareaLabelStyle,
+  textareaLabelVariants,
+  textareaPlaceholderStyle,
+  textareaPlaceholderVariants,
+  textareaStyle,
+  textareaVariants
+} from "@shared/components/textarea/styles.css";
 
-export const inputProps = {
+export const textareaProps = {
   style: {
     type: String,
-    default: inputStyle
+    default: textareaStyle
   },
   variants: {
     type: Object,
-    default: inputVariants
+    default: textareaVariants
   },
   labelStyle: {
     type: String,
-    default: inputLabelStyle
+    default: textareaLabelStyle
   },
   labelVariants: {
     type: Object,
-    default: inputLabelVariants
+    default: textareaLabelVariants
   },
   fieldBoxStyle: {
     type: String,
-    default: inputFieldBoxStyle
+    default: textareaFieldBoxStyle
   },
   fieldBoxVariants: {
     type: Object,
-    default: inputFieldBoxVariants
+    default: textareaFieldBoxVariants
   },
-  inputStyle: {
+  textareaStyle: {
     type: String,
-    default: inputFieldStyle
+    default: textareaFieldStyle
   },
-  inputVariants: {
+  textareaVariants: {
     type: Object,
-    default: inputFieldVariants
+    default: textareaFieldVariants
   },
   placeholderStyle: {
     type: String,
-    default: inputPlaceholderStyle
+    default: textareaPlaceholderStyle
   },
   placeholderVariants: {
     type: Object,
-    default: inputPlaceholderVariants
+    default: textareaPlaceholderVariants
   },
   id: {
-    type: definePropType<InputId>(String),
+    type: definePropType<string>(String),
     default: ''
-  },
-  type: {
-    type: definePropType<InputType>(String),
-    default: 'text'
   },
   label: {
     type: definePropType<string>(String),
@@ -78,7 +70,7 @@ export const inputProps = {
     default: ''
   },
   value: {
-    type: definePropType<InputValue>(String),
+    type: definePropType<TextareaValue>(String),
     default: ''
   },
   disabled: {
@@ -86,25 +78,24 @@ export const inputProps = {
     default: false
   },
   size: {
-    type: definePropType<InputSize>(String),
+    type: definePropType<TextareaSize>(String),
     default: 'medium'
   }
 } as const
 
-export type InputProps = ExtractPublicPropTypes<typeof inputProps>
+export type TextareaProps = ExtractPublicPropTypes<typeof textareaProps>
 
-export const inputEmitters: InputEmitters = {
+export const textareaEmitters: TextareaEmitters = {
   input: (value: string) => typeof value === 'string',
   change: (value: string) => typeof value === 'string'
 }
 
-export const Input = defineComponent({
-  name: 'Input',
-  props: inputProps,
-  emits: inputEmitters,
+export const Textarea = defineComponent({
+  name: 'Textarea',
+  props: textareaProps,
+  emits: textareaEmitters,
   setup(props, { slots, attrs, emit }) {
     const id = props.id ? props.id : uuid()
-
     const hover = ref(false)
     const focus = ref(false)
 
@@ -112,19 +103,21 @@ export const Input = defineComponent({
       if (props.disabled) return
       hover.value = true
     }
+
     const handleMouseOut = () => hover.value = false
 
     const handleFocus = () => {
       if (props.disabled) return
       focus.value = true
     }
+
     const handleBlur = () => focus.value = false
 
     return () => (
       <div
         class={cn({
           [props.style]: props.style,
-          [props.variants[props.size]]: props.variants[props.size],
+          [props.variants[props.size]]: props.variants[props.size] && props.size,
           [props.variants.disabled]: props.variants.disabled && props.disabled,
           [props.variants.hover]: hover.value,
           [props.variants.focus]: focus.value
@@ -144,8 +137,8 @@ export const Input = defineComponent({
                 [props.labelVariants.focus]: props.labelVariants.focus && focus.value
               })}
             >
-            {props.label}
-          </label>
+              {props.label}
+            </label>
           : slots.label && slots.label()
         }
         {slots.default
@@ -155,8 +148,7 @@ export const Input = defineComponent({
               handleFocus,
               handleBlur
             })
-          : 
-            <div
+          : <div
               class={cn({
                 [props.fieldBoxStyle]: props.fieldBoxStyle,
                 [props.fieldBoxVariants[props.size]]: props.fieldBoxVariants[props.size] && props.size,
@@ -166,7 +158,6 @@ export const Input = defineComponent({
                 [props.fieldBoxVariants.focus]: props.fieldBoxVariants.focus && focus.value
               })}
             >
-              {slots.prefix && slots.prefix()}
               {slots.placeholder && (
                 <div class={cn({
                   [props.placeholderStyle]: props.placeholderStyle,
@@ -179,26 +170,24 @@ export const Input = defineComponent({
                   {slots.placeholder()}
                 </div>
               )}
-              <input
+              <textarea
                 id={id}
                 {...attrs}
                 class={cn({
-                  [props.inputStyle]: props.inputStyle,
-                  [props.inputVariants[props.size]]: props.inputVariants[props.size] && props.size,
-                  [props.inputVariants.disabled]: props.inputVariants.disabled && props.disabled,
-                  [props.inputVariants.filled]: props.inputVariants.filled && props.value,
-                  [props.inputVariants.hover]: props.inputVariants.hover && hover.value,
-                  [props.inputVariants.focus]: props.inputVariants.focus && focus.value
+                  [props.textareaStyle]: props.textareaStyle,
+                  [props.textareaVariants[props.size]]: props.textareaVariants[props.size] && props.size,
+                  [props.textareaVariants.disabled]: props.textareaVariants.disabled && props.disabled,
+                  [props.textareaVariants.filled]: props.textareaVariants.filled && props.value,
+                  [props.textareaVariants.hover]: props.textareaVariants.hover && hover.value,
+                  [props.textareaVariants.focus]: props.textareaVariants.focus && focus.value
                 })}
                 placeholder={props.placeholder}
-                type={props.type}
                 value={props.value}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
                 onChange={(e: Event) => emit('change', (e.target as HTMLInputElement).value)}
                 onInput={(e: Event) => emit('input', (e.target as HTMLInputElement).value)}
-              />
-              {slots.postfix && slots.postfix()}
+              ></textarea>
             </div>
         }
       </div>

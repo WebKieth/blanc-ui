@@ -1,13 +1,13 @@
 import { style, styleVariants } from "@vanilla-extract/css";
 
-export const inputStyle = style({
+export const textareaStyle = style({
   display: 'inline-flex',
   flexDirection: 'column',
   position: 'relative',
   gap: '8px',
 })
 
-export const inputVariants = styleVariants({
+export const textareaVariants = styleVariants({
   disabled: {
     cursor: 'not-allowed'
   },
@@ -19,13 +19,13 @@ export const inputVariants = styleVariants({
   large: {}
 })
 
-export const inputLabelStyle = style({
+export const textareaLabelStyle = style({
   color: 'var(--neutral-700)',
   display: 'flex',
   alignItems: 'center',
 })
 
-export const inputLabelVariants = styleVariants({
+export const textareaLabelVariants = styleVariants({
   disabled: {
     color: 'var(--neutral-400)',
     pointerEvents: 'none'
@@ -49,15 +49,16 @@ export const inputLabelVariants = styleVariants({
   }
 })
 
-export const inputFieldBoxStyle = style({
+export const textareaFieldBoxStyle = style({
   display: 'flex',
   gap: '8px',
   borderRadius: '8px',
   boxShadow: '0 2px 5px var(--zinc-400)',
-  position: 'relative'
+  position: 'relative',
+  minWidth: '100px'
 })
 
-export const inputFieldBoxVariants = styleVariants({
+export const textareaFieldBoxVariants = styleVariants({
   disabled: {
     boxShadow: 'none',
     border: '1px solid var(--zinc-200)',
@@ -71,27 +72,26 @@ export const inputFieldBoxVariants = styleVariants({
   },
   filled: {},
   small: {
-    padding: '0px 8px',
-    height: '28px'
+    minHeight: '60px',
   },
   medium: {
-    padding: '0px 12px',
-    height: '34px'
+    minHeight: '80px'
   },
   large: {
-    padding: '0px 16px',
-    height: '40px'
+    minHeight: '100px'
   }
 })
 
-export const inputFieldStyle = style({
+export const textareaFieldStyle = style({
   width: '100%',
   backgroundColor: 'transparent',
   border: '0',
   outline: 'none',
+  fontFamily: 'sans-serif',
+  minWidth: '100px'
 })
 
-export const inputFieldVariants = styleVariants({
+export const textareaFieldVariants = styleVariants({
   disabled: {
     color: 'var(--neutral-400)',
     pointerEvents: 'none',
@@ -104,16 +104,22 @@ export const inputFieldVariants = styleVariants({
   filled: {},
   small: {
     fontSize: 'var(--font-sm)',
+    minHeight: '60px',
+    padding: '2px 4px'
   },
   medium: {
     fontSize: 'var(--font-md)',
+    minHeight: '80px',
+    padding: '6px 10px'
   },
   large: {
     fontSize: 'var(--font-lg)',
+    minHeight: '100px',
+    padding: '10px 16px'
   }
 })
 
-export const inputPlaceholderStyle = style({
+export const textareaPlaceholderStyle = style({
   color: 'var(--nautral-300)',
   pointerEvents: 'none',
   position: 'absolute',
@@ -121,22 +127,21 @@ export const inputPlaceholderStyle = style({
   height: 'fit-content',
   right: 'auto',
   top: 0,
-  bottom: 0,
-  margin: 'auto'
+  margin: 'auto',
 })
 
-export const inputPlaceholderVariants = styleVariants({
+export const textareaPlaceholderVariants = styleVariants({
   small: {
     fontSize: 'var(--font-sm)',
-    padding: '0 1px'
+    padding: '2px 4px'
   },
   medium: {
     fontSize: 'var(--font-md)',
-    padding: '0 3px'
+    padding: '6px 10px'
   },
   large: {
     fontSize: 'var(--font-lg)',
-    padding: '0 5px'
+    padding: '10px 16px'
   },
   hover: {},
   focus: {},

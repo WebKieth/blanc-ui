@@ -40,6 +40,7 @@ Then initialize plugins or providers you need to use and build your own componen
 
 | name | status | documentation |
 |---|---|---|
+| accordion | ready | storybooked |
 | button | ready | storybooked |
 | button group | ready | storybooked |
 | checkbox | ready | storybooked |
@@ -47,12 +48,14 @@ Then initialize plugins or providers you need to use and build your own componen
 | input | ready | storybooked |
 | modal | ready | storybooked |
 | table | ready | storybooked |
+| textarea | ready | storybooked |
 | toast | ready | storybooked |
 | radio group | ready | storybooked |
 | radio | ready | storybooked |
 | icon | ready | storybooked |
 | calendar | ready | storybooked |
 | select | to do | to do |
+| spoiler | ready | storybooked |
 | datepicker | to do | to do |
 
 #### Plugins
@@ -73,20 +76,23 @@ Then initialize plugins or providers you need to use and build your own componen
 
 | name | status | documentation |
 |---|---|---|
+| accordion | backlog | backlog |
 | button | ready | storybooked |
 | button group | ready | storybooked |
 | checkbox | ready | storybooked |
-| dropdown | to do | to do |
+| dropdown | backlog | backlog |
 | input | ready | storybooked |
 | modal | ready | storybooked |
 | table | testing | storybooked |
+| textarea | to do | to do |
 | toast | ready | storybooked |
 | radio group | backlog | backlog |
 | radio | backlog | backlog |
 | select | backlog | backlog |
+| spoiler | backlog | backlog |
 | icon | ready | storybooked |
-| calendar | to do | to do |
-| datepicker | to do | to do |
+| calendar | backlog | backlog |
+| datepicker | backlog | backlog |
 
 #### providers
 | name | status | documentation |
