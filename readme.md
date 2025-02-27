@@ -28,6 +28,8 @@ import 'blanc-ui/vue/css'
 ```
 Then initialize plugins or providers you need to use and build your own components.
 
+## Links
+
 :notebook: [Available Writable Documentation](https://webkieth.github.io/blanc-ui_docs/)
 
 :calendar: [Release Notes](https://t.me/blanc_ui_release_notes)
