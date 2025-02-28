@@ -14,7 +14,7 @@ import {
   spoilerTitleVariants,
   spoilerVariants
 } from "@shared/components/spoiler";
-import { $accordionSymbol, AccordionProvided } from "../accordion/Accordion";
+import { $accordionSymbol, type AccordionProvided } from "../accordion";
 
 export const spoilerProps = {
   style: {

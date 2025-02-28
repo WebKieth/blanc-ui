@@ -1,11 +1,10 @@
 import { Meta, StoryObj } from "@storybook/vue3";
-import { Accordion } from "../Accordion";
+import Accordion from "../Accordion";
 import { Spoiler } from "../../spoiler";
 import { ref, watch } from "vue";
 
 const meta: Meta<typeof Accordion> = {
   title: 'Components/Accordion',
-  component: Accordion,
   tags: ['autodocs'],
   argTypes: {
     opened: {

@@ -17,6 +17,7 @@
   "scripts": {
     "prepublish": "tsc -b -d",
     "build": "tsc -b && vite build -c ./vue/vite.config.ts && vite build -c ./react/vite.config.ts",
+    "build:vapor": "tsc -b && vite build -c ./vue/vite.config.ts",
     "react:storybook": "storybook dev -p 6006 -c ./react/.storybook",
     "react:storybook:build": "storybook build -o ./deploy/storybook/react -c ./react/.storybook",
     "vue:storybook": "storybook dev -p 7007 -c ./vue/.storybook",
@@ -26,7 +27,7 @@
   "license": "ISC",
   "devDependencies": {
     "@chromatic-com/storybook": "^1.6.1",
-    "@rollup/plugin-alias": "^5.1.0",
+    "@rollup/plugin-alias": "^5.1.1",
     "@storybook/addon-essentials": "^8.6.0",
     "@storybook/addon-interactions": "^8.6.0",
     "@storybook/addon-links": "^8.6.0",
@@ -40,7 +41,7 @@
     "@types/react-dom": "^19.0.4",
     "@typescript-eslint/eslint-plugin": "^7.16.0",
     "@typescript-eslint/parser": "^7.16.0",
-    "@vanilla-extract/vite-plugin": "^4.0.13",
+    "@vanilla-extract/vite-plugin": "^5.0.1",
     "@vitejs/plugin-react": "^4.3.1",
     "@vitejs/plugin-vue": "^5.0.5",
     "@vitejs/plugin-vue-jsx": "^4.0.0",
@@ -51,7 +52,8 @@
     "eslint-plugin-storybook": "^0.8.0",
     "storybook": "^8.6.0",
     "typescript": "^5.5.3",
-    "vite": "^5.3.3",
+    "unplugin-vue-jsx-vapor": "^1.4.1",
+    "vite": "^6.2.0",
     "vite-plugin-dts": "^4.5.0",
     "vue-tsc": "^2.0.26"
   },
