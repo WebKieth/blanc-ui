@@ -2,7 +2,7 @@
 import { computed, defineComponent, provide } from "vue";
 import cn from 'classnames'
 import { accordionStyle } from "./styles.css";
-import { AccordionEmitters, AccordionProps, AccordionProvided } from "./types";
+import { AccordionEmitters, AccordionProvided } from "./types";
 
 // const accordionProps = {
 //   style: {
@@ -39,22 +39,30 @@ export const $accordionSymbol = Symbol('accordion')
 // })
 
 export default defineComponent(
+  //@ts-ignore
   (
-    {
-      opened = '',
-      style = accordionStyle
-    }: AccordionProps,
+    { opened, style },
     { slots, emit }
   ) => {
     const openedKey = computed(() => opened)
     provide<AccordionProvided>($accordionSymbol, { openedKey, emit })
-    return () => (
+    return (
       <div class={cn({[style]: style})}>
         {slots.default && slots.default()}
       </div>
     )
   },
   {
+    props: {
+      opened: {
+        type: String,
+        default: ''
+      },
+      style: {
+        type: String,
+        default: accordionStyle
+      }
+    },
     emits: accordionEmitters
   }
 )

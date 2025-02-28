@@ -14,6 +14,9 @@ const meta: Meta<typeof Accordion> = {
       options: ['first', 'second', 'third'],
       default: '',
     },
+  },
+  args: {
+    opened: ''
   }
 }
 
@@ -24,7 +27,9 @@ export const Basic: Story = {
   render: (args) => ({
     components: { Accordion, Spoiler },
     setup() {
+      //@ts-ignore
       const openedKey = ref<string | symbol | undefined>(args.opened || undefined)
+      //@ts-ignore
       watch(() => args.opened, (value) => {
         openedKey.value = value || undefined
       })
