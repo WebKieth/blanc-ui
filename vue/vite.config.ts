@@ -3,7 +3,6 @@ import { resolve } from 'path'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin'
-import alias from '@rollup/plugin-alias'
 import dts from 'vite-plugin-dts'
 
 // https://vitejs.dev/config/
@@ -26,6 +25,11 @@ export default defineConfig({
 		outDir: './dist/vue',
 		emptyOutDir: true
 	},
+	resolve: {
+		alias: {
+			'@shared': resolve(__dirname, '..', 'shared')
+		}
+	},
 	plugins: [
 		vue(),
 		vueJsx(),
@@ -33,12 +37,6 @@ export default defineConfig({
 		dts({
 			rollupTypes: true,
 			tsconfigPath: resolve(__dirname, "tsconfig.json")
-		}),
-		alias({
-			entries: [{
-				find: '@shared',
-				replacement: resolve(__dirname, '..', 'shared')
-			}]
 		})
 	],
 })
