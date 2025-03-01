@@ -1,7 +1,7 @@
 import { definePropType } from "../../utils";
 import { computed, ComputedRef, defineComponent, ExtractPublicPropTypes, provide } from "vue";
 import cn from 'classnames'
-import { accordionStyle } from "./styles.css";
+import { accordionStyle } from "@shared/components/accordion";
 
 const accordionProps = {
   style: {

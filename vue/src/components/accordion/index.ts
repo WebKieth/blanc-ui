@@ -1,2 +1,2 @@
 export * from './Accordion'
-export * from './styles.css'
+export * from '@shared/components/accordion/styles.css'

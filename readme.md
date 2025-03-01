@@ -81,7 +81,7 @@ Then initialize plugins or providers you need to use and build your own componen
 
 | name | status | documentation |
 |---|---|---|
-| accordion | backlog | backlog |
+| accordion | ready | storybooked |
 | button | ready | storybooked |
 | button group | ready | storybooked |
 | checkbox | ready | storybooked |
@@ -94,7 +94,7 @@ Then initialize plugins or providers you need to use and build your own componen
 | radio group | backlog | backlog |
 | radio | backlog | backlog |
 | select | backlog | backlog |
-| spoiler | backlog | backlog |
+| spoiler | ready | storybooked |
 | icon | ready | storybooked |
 | calendar | backlog | backlog |
 | datepicker | backlog | backlog |

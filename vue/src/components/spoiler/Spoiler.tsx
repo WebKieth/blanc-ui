@@ -140,7 +140,8 @@ export const Spoiler = defineComponent({
             : <div class={cn({
                 [props.titleStyle]: props.titleStyle,
                 [props.titleVariants[props.size]]: props.titleVariants[props.size] && props.size,
-                [props.titleVariants.disabled]: props.titleVariants.disabled && props.disabled
+                [props.titleVariants.disabled]: props.titleVariants.disabled && props.disabled,
+                [props.titleVariants.opened]: props.titleVariants.opened && opened.value
               })}>
                 {props.title}
               </div>
