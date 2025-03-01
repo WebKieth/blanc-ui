@@ -113,7 +113,7 @@ export const Spoiler = defineComponent({
       }
       emit('toggle', !opened.value)
     }
-    return () => (
+    return (
       <div
         {...attrs}
         ref={$el}

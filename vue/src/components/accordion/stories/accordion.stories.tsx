@@ -1,11 +1,12 @@
 import { Meta, StoryObj } from "@storybook/vue3";
-import Accordion from "../Accordion";
-import { Spoiler } from "../../spoiler";
+import { Accordion } from "../Accordion";
+// import { Spoiler } from "../../spoiler";
 import { ref, watch } from "vue";
 
 const meta: Meta<typeof Accordion> = {
   title: 'Components/Accordion',
   tags: ['autodocs'],
+  component: Accordion,
   argTypes: {
     opened: {
       control: {
@@ -25,21 +26,19 @@ type Story = StoryObj<typeof meta>
 
 export const Basic: Story = {
   render: (args) => ({
-    components: { Accordion, Spoiler },
+    components: { Accordion },
     setup() {
-      //@ts-ignore
       const openedKey = ref<string | symbol | undefined>(args.opened || undefined)
-      //@ts-ignore
       watch(() => args.opened, (value) => {
         openedKey.value = value || undefined
       })
       const handleToggle = (value?: string | symbol) => openedKey.value = value
-      return () => (
+      return (
         <Accordion
           opened={openedKey.value}
           onToggle={handleToggle}
         >
-          <Spoiler
+          {/* <Spoiler
             title={'First title'}
             groupKey={'first'}
           >
@@ -71,7 +70,7 @@ export const Basic: Story = {
             <p>
               Non natoque ultrices donec dui semper risus sodales libero. Pulvinar integer gravida bibendum risus molestie facilisis posuere. Inceptos inceptos penatibus scelerisque eget nostra magna magnis. Himenaeos eu porttitor leo et curae quam nostra. Elit ridiculus posuere risus ornare; ex curae. Fames luctus ac imperdiet luctus nulla venenatis litora lectus.
             </p>
-          </Spoiler>
+          </Spoiler> */}
         </Accordion>
       )
     }
