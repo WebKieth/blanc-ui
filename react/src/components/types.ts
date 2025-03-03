@@ -1,1 +1,0 @@
-export type StyleVariants = Record<string, string>

@@ -1,5 +1,5 @@
 import { ReactNode } from "react"
-import { StyleVariants } from "../types"
+import { StyleVariants } from "../../types"
 import { ToastSize } from "@shared/components/toast/types"
 
 type ToastStylingProps = {

@@ -1,7 +1,7 @@
 import { ColumnKey, Sorting } from "../../../../../../shared/components/table/types";
 import { FC, ReactNode } from "react";
 import cn from 'classnames';
-import { StyleVariants } from "src/components/types";
+import { StyleVariants } from "src/types";
 import { ChangeSortHandler } from "../../types";
 import {
 	tableHeaderCellStyle,

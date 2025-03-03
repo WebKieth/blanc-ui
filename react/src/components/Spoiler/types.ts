@@ -1,5 +1,5 @@
 import { SpoilerSize } from "@shared/components/spoiler"
-import { StyleVariants } from "../types"
+import { StyleVariants } from "../../types"
 import { HTMLAttributes, ReactNode, Ref } from "react"
 
 type SpoilerStylingProps = {

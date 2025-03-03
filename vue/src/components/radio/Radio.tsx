@@ -1,5 +1,4 @@
-import { computed, defineComponent, ExtractPublicPropTypes, inject, ref, watch } from 'vue'
-import { v4 as uuid } from 'uuid'
+import { computed, defineComponent, ExtractPublicPropTypes, inject, ref, useId, watch } from 'vue'
 import { definePropType } from '../../utils'
 import cn from 'classnames'
 import { RadioSize } from './types'
@@ -53,7 +52,7 @@ export const radioProps = {
   },
   id: {
     type: String,
-    default: uuid()
+    default: ''
   },
   label: {
     type: String,
@@ -96,7 +95,7 @@ export const Radio = defineComponent({
   props: radioProps,
   emits: radioEmitters,
   setup(props, { slots, emit }) {
-    
+    const id = props.id ? props.id : useId()
     const { props: groupProps, emit: groupEmit } = inject<RadioGroupProvided>($radioGroupProvided, { props: undefined, emit: undefined })
 
     const $inputRef = ref<HTMLInputElement>()
@@ -136,7 +135,7 @@ export const Radio = defineComponent({
             class={cn({
               [props.inputAreaStyle]: props.inputAreaStyle
             })}
-            id={props.id}
+            id={id}
             value={isChecked.value}
             disabled={props.disabled}
             onChange={handleCheck}
@@ -157,7 +156,7 @@ export const Radio = defineComponent({
             ? <>
               {props.label &&
                 <label
-                  for={props.id}
+                  for={id}
                   class={cn({
                     [props.labelStyle]: props.labelStyle,
                     [props.labelVariants[props.size]]: props.labelVariants[props.size],

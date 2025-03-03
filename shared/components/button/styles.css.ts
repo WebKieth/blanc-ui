@@ -50,6 +50,8 @@ export const buttonVariants = styleVariants({
 			backgroundColor: 'var(--zinc-200)'
 		}
 	},
+	rounded: {},
+	danger: {},
 	small: {
 		height: '28px',
 		padding: '0 8px',

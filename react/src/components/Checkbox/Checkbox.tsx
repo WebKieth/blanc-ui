@@ -1,7 +1,6 @@
-import { FC, KeyboardEventHandler, useRef } from "react";
+import { FC, KeyboardEventHandler, useId, useRef } from "react";
 import cn from 'classnames';
 import { CheckboxProps } from "./types";
-import { v4 as uuid } from 'uuid'
 import {
   checkboxCaptionStyle,
   checkboxCaptionVariants,
@@ -33,7 +32,7 @@ export const Checkbox: FC<CheckboxProps> = ({
   uncheckedIconName = 'ri-check-line',
   ref = null,
   inputRef = null,
-  id = uuid(),
+  id = '',
   label = '',
   labelNode = null,
   caption = '',
@@ -42,6 +41,7 @@ export const Checkbox: FC<CheckboxProps> = ({
   disabled = false,
   onChange
 }) => {
+  const usableId = id ? id : useId()
   const $inputRef = useRef<HTMLInputElement | null>(null)
   const handleChange = () => {
     if (!$inputRef.current) return
@@ -73,7 +73,7 @@ export const Checkbox: FC<CheckboxProps> = ({
           }}
           type='checkbox'
           className={inputAreaStyle}
-          id={id}
+          id={usableId}
           value={`${value}`}
           disabled={disabled}
           onChange={handleChange}
@@ -104,6 +104,7 @@ export const Checkbox: FC<CheckboxProps> = ({
                     ? labelVariants.checked
                     : labelVariants.unchecked
                 )}
+                htmlFor={usableId}
               >
                 {label}
               </label>

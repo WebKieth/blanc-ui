@@ -1,6 +1,6 @@
 import { ColumnKey, Columns, Sorting, TableSize } from "../../../../shared/components/table/types"
 import { ReactNode } from "react"
-import { StyleVariants } from "../types"
+import { StyleVariants } from "../../types"
 
 
 export type ViewportWidths = Record<TableSize, number>

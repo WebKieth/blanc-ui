@@ -1,4 +1,7 @@
+// Styles
 export * from '@shared/styles'
+
+// Components
 export * from './components/accordion'
 export * from './components/button'
 export * from './components/buttonGroup'
@@ -12,6 +15,11 @@ export * from './components/spoiler'
 export * from './components/textarea'
 export * from './components/table'
 export * from './components/toast'
+
+//Hooks
+export * from './hooks'
+
+// Plugins
 export * from './plugins/notify'
 export * from './plugins/event-bus'
 export * from './plugins/view-layers'

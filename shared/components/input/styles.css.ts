@@ -11,6 +11,7 @@ export const inputVariants = styleVariants({
   disabled: {
     cursor: 'not-allowed'
   },
+  invalid: {},
   hover: {},
   focus: {},
   filled: {},
@@ -33,6 +34,7 @@ export const inputLabelVariants = styleVariants({
   hover: {
     color: 'var(--neutral-800)'
   },
+  invalid: {},
   focus: {},
   filled: {},
   small: {
@@ -69,6 +71,7 @@ export const inputFieldBoxVariants = styleVariants({
   focus: {
     boxShadow: '0 1px 2px var(--zinc-400)',
   },
+  invalid: {},
   filled: {},
   small: {
     padding: '0px 8px',
@@ -102,6 +105,7 @@ export const inputFieldVariants = styleVariants({
   hover: {},
   focus: {},
   filled: {},
+  invalid: {},
   small: {
     fontSize: 'var(--font-sm)',
   },
@@ -138,6 +142,7 @@ export const inputPlaceholderVariants = styleVariants({
     fontSize: 'var(--font-lg)',
     padding: '0 5px'
   },
+  invalid: {},
   hover: {},
   focus: {},
   filled: {

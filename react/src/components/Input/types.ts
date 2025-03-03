@@ -1,5 +1,5 @@
 import { InputHTMLAttributes, ReactNode } from "react"
-import { StyleVariants } from "../types"
+import { StyleVariants } from "../../types"
 import {
   InputEmitter,
   InputId,
@@ -23,10 +23,13 @@ export type InputStyleProps = {
 }
 
 export type InputChildScope = {
+  id: string
   hover: boolean
   focus: boolean
   handleFocus: () => void
   handleBlur: () => void
+  handleMouseIn: () => void
+  handleMouseOut: () => void
 }
 
 export type InputProps = {
@@ -36,10 +39,12 @@ export type InputProps = {
   label?: string
   disabled?: boolean
   size?: InputSize
+  invalid?: boolean
   value?: InputValue
   onChange?: InputEmitter
   onInput?: InputEmitter
   children?: Nullable<ReactNode | ((scope: InputChildScope) => ReactNode)>
+  renderLabel?: Nullable<ReactNode | (() => ReactNode)>
   renderPrefix?: Nullable<ReactNode | (() => ReactNode)>
   renderPostfix?: Nullable<ReactNode | (() => ReactNode)>
   renderPlaceholder?: Nullable<ReactNode | (() => ReactNode)>

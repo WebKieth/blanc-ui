@@ -16,6 +16,8 @@ export const Button: FC<ButtonProps> = ({
 	groupKey,
 	variant = 'primary',
 	active = false,
+	rounded = false,
+	danger = false,
 	size = 'medium',
 	disabled = false,
 	attributes = {},
@@ -72,53 +74,63 @@ export const Button: FC<ButtonProps> = ({
 			style,
 			{
 				[cn({
+					[variants.rounded]: variants.rounded
+				})]: rounded
+			},
+			{
+				[cn({
+					[variants.danger]: variants.danger
+				})]: danger
+			},
+			{
+				[cn({
 					[variants[variant]]: variants[variant]
-				})]: variants && !disabled
+				})]: !disabled
 			},
 			{
 				[cn({
 					[variants[size]]: variants[size]
-				})]: variants && size
+				})]: size
 			},
 			{
 				[cn({
 					[variants.disabled]: variants.disabled
-				})]: variants && disabled
+				})]: disabled
 			},
 			{
 				[cn({
 					[variants.disabled]: variants.disabled,
 					[variants[`${variant}_disabled`]]: variants[`${variant}_disabled`]
-				})]: variants && disabled
+				})]: disabled
 			},
 			{
 				[cn({
 					[variants.inGroup]: variants.inGroup
-				})]: variants && isInGroup
+				})]: isInGroup
 			},
 			{
 				[cn({
 					[variants.active]: variants.active,
 					[variants[`${variant}_active`]]: variants[`${variant}_active`]
-				})]: variants && isActive
+				})]: isActive
 			},
 			{
 				[cn({
 					[variants.first]: variants.first,
 					[variants[`${variant}_first`]]: variants[`${variant}_first`]
-				})]: variants && isFirst
+				})]: isFirst
 			},
 			{
 				[cn({
 					[variants.middle]: variants.middle,
 					[variants[`${variant}_middle`]]: variants[`${variant}_middle`]
-				})]: variants && isMiddle
+				})]: isMiddle
 			},
 			{
 				[cn({
 					[variants.last]: variants.last,
 					[variants[`${variant}_last`]]: variants[`${variant}_last`]
-				})]: variants && isLast
+				})]: isLast
 			}
 		)}
 		disabled={disabled}

@@ -1,8 +1,7 @@
 import { TextareaEmitters, TextareaSize, TextareaValue } from "@shared/components/textarea/types";
 import { definePropType } from "../../utils";
-import { defineComponent, ExtractPublicPropTypes, ref } from "vue";
+import { computed, defineComponent, ExtractPublicPropTypes, useId } from "vue";
 import cn from 'classnames'
-import { v4 as uuid } from 'uuid'
 import {
   textareaFieldBoxStyle,
   textareaFieldBoxVariants,
@@ -15,6 +14,7 @@ import {
   textareaStyle,
   textareaVariants
 } from "@shared/components/textarea/styles.css";
+import { useInputStateHandlers } from "../../hooks";
 
 export const textareaProps = {
   style: {
@@ -80,6 +80,10 @@ export const textareaProps = {
   size: {
     type: definePropType<TextareaSize>(String),
     default: 'medium'
+  },
+  invalid: {
+    type: definePropType<boolean>(Boolean),
+    default: false
   }
 } as const
 
@@ -95,23 +99,17 @@ export const Textarea = defineComponent({
   props: textareaProps,
   emits: textareaEmitters,
   setup(props, { slots, attrs, emit }) {
-    const id = props.id ? props.id : uuid()
-    const hover = ref(false)
-    const focus = ref(false)
+    const id = props.id ? props.id : useId()
+    const disabled = computed(() => props.disabled)
 
-    const handleMouseIn = () => {
-      if (props.disabled) return
-      hover.value = true
-    }
-
-    const handleMouseOut = () => hover.value = false
-
-    const handleFocus = () => {
-      if (props.disabled) return
-      focus.value = true
-    }
-
-    const handleBlur = () => focus.value = false
+    const {
+      hover,
+      focus,
+      handleMouseIn,
+      handleMouseOut,
+      handleFocus,
+      handleBlur
+    } = useInputStateHandlers(disabled)
 
     return () => (
       <div
@@ -119,19 +117,22 @@ export const Textarea = defineComponent({
           [props.style]: props.style,
           [props.variants[props.size]]: props.variants[props.size] && props.size,
           [props.variants.disabled]: props.variants.disabled && props.disabled,
+          [props.variants.invalid]: props.variants.invalid && props.invalid,
           [props.variants.hover]: hover.value,
           [props.variants.focus]: focus.value
         })}
         onMouseenter={handleMouseIn}
         onMouseleave={handleMouseOut}
       >
-        {props.label
-          ? <label
+        {slots.label
+          ? slots.label()
+          : <label
               for={id}
               class={cn({
                 [props.labelStyle]: props.labelStyle,
                 [props.labelVariants[props.size]]: props.labelVariants[props.size] && props.size,
                 [props.labelVariants.disabled]: props.labelVariants.disabled && props.disabled,
+                [props.labelVariants.invalid]: props.labelVariants.invalid && props.invalid,
                 [props.labelVariants.hover]: props.labelVariants.hover && hover.value,
                 [props.labelVariants.filled]: props.labelVariants.filled && props.value,
                 [props.labelVariants.focus]: props.labelVariants.focus && focus.value
@@ -139,10 +140,10 @@ export const Textarea = defineComponent({
             >
               {props.label}
             </label>
-          : slots.label && slots.label()
         }
         {slots.default
           ? slots.default({
+              id,
               hover,
               focus,
               handleFocus,
@@ -153,6 +154,7 @@ export const Textarea = defineComponent({
                 [props.fieldBoxStyle]: props.fieldBoxStyle,
                 [props.fieldBoxVariants[props.size]]: props.fieldBoxVariants[props.size] && props.size,
                 [props.fieldBoxVariants.disabled]: props.fieldBoxVariants.disabled && props.disabled,
+                [props.fieldBoxVariants.invalid]: props.fieldBoxVariants.invalid && props.invalid,
                 [props.fieldBoxVariants.filled]: props.fieldBoxVariants.filled && props.value,
                 [props.fieldBoxVariants.hover]: props.fieldBoxVariants.hover && hover.value,
                 [props.fieldBoxVariants.focus]: props.fieldBoxVariants.focus && focus.value
@@ -163,6 +165,7 @@ export const Textarea = defineComponent({
                   [props.placeholderStyle]: props.placeholderStyle,
                   [props.placeholderVariants[props.size]]: props.placeholderVariants[props.size] && props.size,
                   [props.placeholderVariants.disabled]: props.placeholderVariants.disabled && props.disabled,
+                  [props.placeholderVariants.invalid]: props.placeholderVariants.invalid && props.invalid,
                   [props.placeholderVariants.filled]: props.placeholderVariants.filled && props.value,
                   [props.placeholderVariants.hover]: props.placeholderVariants.hover && hover.value,
                   [props.placeholderVariants.focus]: props.placeholderVariants.focus && focus.value
@@ -177,11 +180,13 @@ export const Textarea = defineComponent({
                   [props.textareaStyle]: props.textareaStyle,
                   [props.textareaVariants[props.size]]: props.textareaVariants[props.size] && props.size,
                   [props.textareaVariants.disabled]: props.textareaVariants.disabled && props.disabled,
+                  [props.textareaVariants.invalid]: props.textareaVariants.invalid && props.invalid,
                   [props.textareaVariants.filled]: props.textareaVariants.filled && props.value,
                   [props.textareaVariants.hover]: props.textareaVariants.hover && hover.value,
                   [props.textareaVariants.focus]: props.textareaVariants.focus && focus.value
                 })}
                 placeholder={props.placeholder}
+                disabled={props.disabled}
                 value={props.value}
                 onFocus={handleFocus}
                 onBlur={handleBlur}

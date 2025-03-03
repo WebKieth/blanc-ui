@@ -18,6 +18,14 @@ export const buttonProps = {
     type: Object,
     default: buttonVariants
   },
+  rounded: {
+    type: definePropType<boolean>(Boolean),
+    default: false
+  },
+  danger: {
+    type: definePropType<boolean>(Boolean),
+    default: false
+  },
   groupKey: {
     type: definePropType<string | number | symbol | null>(null),
     default: null
@@ -80,6 +88,16 @@ export const Button = defineComponent({
         ref={$el}
         class={[
           cn({[props.style]: props.style}),
+          {
+            [cn({
+              [props.variants.rounded]: props.variants.rounded
+            })]: props.rounded
+          },
+          {
+            [cn({
+              [props.variants.danger]: props.variants.danger
+            })]: props.danger
+          },
           {
             [cn({
               [props.variants[props.variant]]: props.variants[props.variant]

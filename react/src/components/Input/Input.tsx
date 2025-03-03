@@ -1,4 +1,4 @@
-import { FC, SyntheticEvent, useId, useState } from "react"
+import { FC, SyntheticEvent, useId } from "react"
 import { InputProps } from "./types"
 import cn from 'classnames'
 
@@ -14,6 +14,7 @@ import {
 	inputPlaceholderStyle,
 	inputPlaceholderVariants
 } from '@shared/components/input/styles.css'
+import { useInputStateHandlers } from "../../hooks/useInputStateHandlers"
 
 export const Input: FC<InputProps> = ({
 	style = _style,
@@ -33,35 +34,32 @@ export const Input: FC<InputProps> = ({
 	value = '',
 	disabled = false,
 	size = 'medium',
+	invalid = false,
 	onChange = () => {},
 	onInput = () => {},
 	children = null,
+	renderLabel = null,
 	renderPrefix = null,
 	renderPostfix = null,
 	renderPlaceholder = null
 }) => {
 	const inputId = id ? id : useId()
 
-	const [hover, setHover] = useState(false)
-	const [focus, setFocus] = useState(false)
-
-	const handleMouseIn = () => {
-		if (disabled) return
-		setHover(true)
-	}
-	const handleMouseOut = () => setHover(false)
-
-	const handleFocus = () => {
-		if (disabled) return
-		setFocus(true)
-	}
-	const handleBlur = () => setFocus(false)
+	const {
+		hoverState: [hover],
+		focusState: [focus],
+		handleMouseIn,
+		handleMouseOut,
+		handleFocus,
+		handleBlur
+	} = useInputStateHandlers(disabled)
 
 	return <div
 		className={cn({
 			[style]: style,
 			[variants[size]]: variants[size] && size,
 			[variants.disabled]: variants.disabled && disabled,
+			[variants.invalid]: variants.invalid && invalid,
 			[variants.hover]: variants.hover && hover,
 			[variants.focus]: variants.focus && focus,
 			[variants.filled]: variants.filled && value
@@ -69,23 +67,34 @@ export const Input: FC<InputProps> = ({
 		onMouseEnter={handleMouseIn}
 		onMouseLeave={handleMouseOut}
 	>
-		{label && (
-			<label
-				htmlFor={inputId}
-				className={cn({
-					[labelStyle]: labelStyle,
-					[labelVariants[size]]: labelVariants[size] && size,
-					[labelVariants.disabled]: labelVariants.disabled && disabled,
-					[labelVariants.hover]: labelVariants.hover && hover,
-					[labelVariants.focus]: labelVariants.focus && focus,
-					[labelVariants.filled]: labelVariants.filled && value
-				})}
-			>
-				{label}
-			</label>
-		)}
+		{renderLabel
+			? typeof renderLabel === 'function'
+				? renderLabel()
+				: renderLabel
+			: label && (
+					<label
+						htmlFor={inputId}
+						className={cn({
+							[labelStyle]: labelStyle,
+							[labelVariants[size]]: labelVariants[size] && size,
+							[labelVariants.disabled]: labelVariants.disabled && disabled,
+							[labelVariants.invalid]: labelVariants && invalid,
+							[labelVariants.hover]: labelVariants.hover && hover,
+							[labelVariants.focus]: labelVariants.focus && focus,
+							[labelVariants.filled]: labelVariants.filled && value
+						})}
+					>
+						{label}
+					</label>
+				)
+		}
 		{typeof children === 'function'
-			? children({ hover, focus, handleFocus, handleBlur })
+			? children({
+					id: inputId,
+					hover, focus,
+					handleFocus, handleBlur,
+					handleMouseIn, handleMouseOut
+				})
 			: children !== null
 				? children
 				: <div
@@ -93,6 +102,7 @@ export const Input: FC<InputProps> = ({
 						[fieldBoxStyle]: fieldBoxStyle,
 						[fieldBoxVariants[size]]: fieldBoxVariants[size] && size,
 						[fieldBoxVariants.disabled]: fieldBoxVariants.disabled && disabled,
+						[fieldBoxVariants.invalid]: fieldBoxVariants.invalid && invalid,
 						[fieldBoxVariants.hover]: fieldBoxVariants.hover && hover,
 						[fieldBoxVariants.focus]: fieldBoxVariants.focus && focus,
 						[fieldBoxVariants.filled]: fieldBoxVariants.filled && value
@@ -107,6 +117,7 @@ export const Input: FC<InputProps> = ({
 							[placeholderStyle]: placeholderStyle,
 							[placeholderVariants[size]]: placeholderVariants[size] && size,
 							[placeholderVariants.disabled]: placeholderVariants.disabled && disabled,
+							[placeholderVariants.invalid]: placeholderVariants.invalid,
 							[placeholderVariants.hover]: placeholderVariants.hover && hover,
 							[placeholderVariants.focus]: placeholderVariants.focus && focus,
 							[placeholderVariants.filled]: placeholderVariants.filled && value
@@ -124,6 +135,7 @@ export const Input: FC<InputProps> = ({
 							[inputStyle]: inputStyle,
 							[inputVariants[size]]: inputVariants[size] && size,
 							[inputVariants.disabled]: inputVariants.disabled && disabled,
+							[inputVariants.invalid]: inputVariants.invalid && invalid,
 							[inputVariants.hover]: inputVariants.hover && hover,
 							[inputVariants.focus]: inputVariants.focus && focus,
 							[inputVariants.filled]: inputVariants.filled && value

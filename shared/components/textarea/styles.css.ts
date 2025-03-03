@@ -11,6 +11,7 @@ export const textareaVariants = styleVariants({
   disabled: {
     cursor: 'not-allowed'
   },
+  invalid: {},
   hover: {},
   focus: {},
   filled: {},
@@ -30,6 +31,7 @@ export const textareaLabelVariants = styleVariants({
     color: 'var(--neutral-400)',
     pointerEvents: 'none'
   },
+  invalid: {},
   hover: {
     color: 'var(--neutral-800)'
   },
@@ -64,6 +66,7 @@ export const textareaFieldBoxVariants = styleVariants({
     border: '1px solid var(--zinc-200)',
     backgroundColor: 'var(--zinc-50)'
   },
+  invalid: {},
   hover: {
     boxShadow: '0 1px 3px var(--zinc-400)',
   },
@@ -99,6 +102,7 @@ export const textareaFieldVariants = styleVariants({
       color: 'var(--neutral-300)'
     }
   },
+  invalid: {},
   hover: {},
   focus: {},
   filled: {},
@@ -143,6 +147,7 @@ export const textareaPlaceholderVariants = styleVariants({
     fontSize: 'var(--font-lg)',
     padding: '10px 16px'
   },
+  invalid: {},
   hover: {},
   focus: {},
   filled: {
