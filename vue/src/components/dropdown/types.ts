@@ -1,5 +1,14 @@
-export type PopoverSize = 'small' | 'medium' | 'large'
-export type PopoverPlacement =
+import { Ref } from "vue"
+
+export type DropdownSize = 'small' | 'medium' | 'large'
+
+export type DropdownAgentScope = {
+	opened: Ref<boolean>
+	open: () => void
+	close: () => void
+}
+
+export type DropdownPlacement =
 	| 'left'
 	| 'left-top'
 	| 'left-bottom'

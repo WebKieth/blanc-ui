@@ -1,6 +1,7 @@
-import { defineComponent, ExtractPublicPropTypes, onBeforeUnmount, onMounted, ref, Teleport, watch } from 'vue'
+import { defineComponent, ExtractPublicPropTypes, onBeforeUnmount, onMounted, ref, SlotsType, StyleValue, Teleport, VNodeChild, watch } from 'vue'
+import cn from 'classnames'
 import { definePropType } from '../../utils'
-import { PopoverPlacement, PopoverSize } from './types'
+import { DropdownPlacement, DropdownSize, DropdownAgentScope } from './types'
 import { useDomNativeUtils } from '../../utils/use-dom-native-utils'
 import {
 	dropdownAgentStyle,
@@ -26,25 +27,35 @@ export const dropdownProps = {
 		type: Object,
 		default: dropdownBodyVariants
 	},
+	bodyStyleRules: {
+		type: definePropType<StyleValue>(Object),
+		default: undefined
+	},
 	gutter: {
 		type: Number,
 		default: 12
 	},
 	placement: {
-		type: definePropType<PopoverPlacement>(String),
+		type: definePropType<DropdownPlacement>(String),
 		default: 'bottom'
 	},
 	size: {
-		type: definePropType<PopoverSize>(String),
+		type: definePropType<DropdownSize>(String),
 		default: 'medium'
 	}
 }
 
 export type DropdownProps = ExtractPublicPropTypes<typeof dropdownProps>
 
+export const dropdownSlots: SlotsType<{
+	agent: (props: DropdownAgentScope) => VNodeChild | undefined
+	default: (props: DropdownAgentScope) => VNodeChild | undefined
+}> = {}
+
 export const Dropdown = defineComponent({
 	name: 'Dropdown',
 	props: dropdownProps,
+	slots: dropdownSlots,
 	setup(props, { slots }) {
 		const { collectParents, getScrollParent } = useDomNativeUtils()
 		let scrollParent: HTMLElement | null = null
@@ -70,7 +81,6 @@ export const Dropdown = defineComponent({
 			const { clientHeight: docClientHeight, clientWidth: docClientWidth } = document.body
 			let leftOffset
 			let topOffset
-			console.log((agent.value as HTMLElement).getBoundingClientRect())
 			switch (placement) {
 				case 'left':
 					leftOffset = agentX - bodyWidth - gutter
@@ -260,7 +270,12 @@ export const Dropdown = defineComponent({
 		const observeAndUpdatePosition = () => {
 			observer = new MutationObserver((mutationsList) => {
 				const tree = collectParents(root.value as HTMLElement)
-				const needUpdatePosition = mutationsList.some((mutation) => tree.some((el) => el.isSameNode(mutation.target)))
+				const needUpdatePosition = mutationsList
+					.some((mutation) =>
+						tree.some((el) =>
+							el.isSameNode(mutation.target)
+						)
+					)
 				if (needUpdatePosition) {
 					setPosition()
 				}
@@ -292,26 +307,27 @@ export const Dropdown = defineComponent({
 		return () => (
 			<div
 				ref={root}
-				class={props.rootStyle}
+				class={cn({[props.rootStyle]: props.rootStyle})}
 			>
 				<div
 					ref={agent}
-					class={props.agentStyle}
+					class={cn({[props.agentStyle]: props.agentStyle})}
 					onClick={open}
 				>
-					{slots.agent && slots.agent()}
+					{slots.agent && slots.agent({ opened, open, close })}
 				</div>
 				<Teleport to='body'>
 					<div
 						ref={body}
-						class={`
-							${props.bodyStyle}
-							${opened.value && props.bodyVariants.opened}
-							${props.bodyVariants[props.size]}
-							${props.bodyVariants[props.placement]}
-						`}
+						style={props.bodyStyleRules}
+						class={cn({
+							[props.bodyStyle]: props.bodyStyle,
+							[props.bodyVariants.opened]: props.bodyVariants.opened && opened.value,
+							[props.bodyVariants[props.size]]: props.bodyVariants[props.size] && props.size,
+							[props.bodyVariants[props.placement]]: props.bodyVariants[props.placement] && props.placement
+						})}
 					>
-						{slots.default && slots.default()}
+						{slots.default && slots.default({ opened, open, close })}
 					</div>
 				</Teleport>
 			</div>

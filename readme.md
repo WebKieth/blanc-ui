@@ -58,8 +58,8 @@ Then initialize plugins or providers you need to use and build your own componen
 | radio group | ready | storybooked |
 | radio | ready | storybooked |
 | icon | ready | storybooked |
-| calendar | ready | storybooked |
-| select | to do | to do |
+| calendar | in progress | storybooked |
+| select | in progress | storybooked |
 | spoiler | ready | storybooked |
 | datepicker | to do | to do |
 
@@ -89,7 +89,7 @@ Then initialize plugins or providers you need to use and build your own componen
 | input | ready | storybooked |
 | modal | ready | storybooked |
 | table | testing | storybooked |
-| textarea | to do | to do |
+| textarea | ready | storybooked |
 | toast | ready | storybooked |
 | radio group | backlog | backlog |
 | radio | backlog | backlog |

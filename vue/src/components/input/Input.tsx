@@ -98,8 +98,8 @@ export const inputProps = {
 export type InputProps = ExtractPublicPropTypes<typeof inputProps>
 
 export const inputEmitters: InputEmitters = {
-  input: (value: string) => typeof value === 'string',
-  change: (value: string) => typeof value === 'string'
+  input: (value) => typeof value === 'string',
+  change: (value) => typeof value === 'string'
 }
 
 export const Input = defineComponent({

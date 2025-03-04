@@ -14,7 +14,7 @@ export const dropdownBodyStyle = style({
 	zIndex: '3',
 	width: 'fit-content',
 	backgroundColor: 'var(--white)',
-	border: '1px solid var(--zinc-300)',
+	borderRadius: '6px',
 	boxShadow: '2px 2px 4px 2px rgba(24, 24, 24, 0.2)',
 	opacity: 0,
   pointerEvents: 'none',
