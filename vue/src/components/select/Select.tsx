@@ -1,4 +1,4 @@
-import { computed, defineComponent, useTemplateRef, watch } from "vue";
+import { computed, defineComponent, SlotsType, useTemplateRef, VNodeChild, watch } from "vue";
 import cn from 'classnames'
 import { definePropType } from "../../utils";
 import { Option, OptionId, SelectEmitters, SelectSize } from "./types";
@@ -75,11 +75,21 @@ export const selectEmitters: SelectEmitters = {
   search: (value) => typeof value === 'string',
   change: (value) => typeof value === 'object' || typeof value === 'string' || typeof value === 'undefined'
 }
+export type SelectOptionScope = {
+  option: Option,
+  selected: boolean
+  handleSelect: (option: Option) => void
+}
+export const selectSlots: SlotsType<{
+  placeholder: () => VNodeChild | undefined
+  option: (props: SelectOptionScope) => VNodeChild | undefined
+}> = {}
 
 export const Select = defineComponent({
   name: 'Select',
   props: selectProps,
   emits: selectEmitters,
+  slots: selectSlots,
   setup(props, { emit, slots }) {
     const $agent = useTemplateRef<HTMLDivElement>('agent')
 
@@ -223,17 +233,23 @@ export const Select = defineComponent({
                 })}
                 onClick={() => handleSelectOption(option, scope)}
               >
-                {Array.isArray(props.value)
-                  ? <Checkbox
-                      label={typeof option === 'string'
-                        ? option
-                        : option.value
-                      }
-                      value={isSelected(option)}
-                    />
-                  : typeof option === 'string'
-                    ? option
-                    : option.value
+                {slots.option
+                  ? slots.option({
+                      option,
+                      selected: isSelected(option),
+                      handleSelect: (option) => handleSelectOption(option, scope)
+                    })
+                  : Array.isArray(props.value)
+                    ? <Checkbox
+                        label={typeof option === 'string'
+                          ? option
+                          : option.value
+                        }
+                        value={isSelected(option)}
+                      />
+                    : typeof option === 'string'
+                      ? option
+                      : option.value
                 }
               </div>
             ))
