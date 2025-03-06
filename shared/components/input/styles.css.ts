@@ -22,8 +22,6 @@ export const inputVariants = styleVariants({
 
 export const inputLabelStyle = style({
   color: 'var(--neutral-700)',
-  display: 'flex',
-  alignItems: 'center',
 })
 
 export const inputLabelVariants = styleVariants({

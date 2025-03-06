@@ -151,7 +151,7 @@ export const Checkbox = defineComponent({
             onChange={handleChange}
             tabindex={-1}
           />
-          <Icon
+          <div
             class={cn({
               [props.iconStyle]: props.iconStyle,
               [props.iconVariants[props.size]]: props.iconVariants[props.size],
@@ -159,8 +159,12 @@ export const Checkbox = defineComponent({
               [props.iconVariants.checked]: props.value && props.iconVariants.checked,
               [props.iconVariants.unchecked]: !props.value && props.iconVariants.unchecked
             })}
-            name={props.value ? props.checkedIconName : props.uncheckedIconName}
-          />
+          >
+            <Icon
+              size={props.size}
+              name={props.value ? props.checkedIconName : props.uncheckedIconName}
+            />
+          </div>
         </div>
         <div class={cn({[props.textContainerStyle]: props.textContainerStyle})}>
           {(props.label || props.caption) ?

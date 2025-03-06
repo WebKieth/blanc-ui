@@ -109,7 +109,6 @@ export const Dropdown = defineComponent({
 					break
 
 				case 'left-bottom':
-					console.log(agentX, agentY)
 					leftOffset = agentX - bodyWidth - gutter
 					topOffset = agentY + agentHeight - gutter
 					if (leftOffset < 0) {
@@ -287,6 +286,7 @@ export const Dropdown = defineComponent({
 		}
 
 		watch(() => props.placement, () => setPosition())
+		watch(() => props.bodyStyleRules, () => setTimeout(() => setPosition()))
 
 		onMounted(() => {
 			setTimeout(() => setPosition())
