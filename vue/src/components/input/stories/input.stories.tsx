@@ -19,7 +19,7 @@ const meta: Meta<typeof Input> = {
       control: {
         type: 'select',
       },
-      options: ['number', 'string'],
+      options: ['number', 'text', 'password', 'date'],
       default: 'string'
     },
     disabled: {
@@ -33,7 +33,20 @@ const meta: Meta<typeof Input> = {
         type: 'text'
       },
       default: 'label'
+    },
+    caption: {
+      control: {
+        type: 'text'
+      },
+      default: 'caption'
     }
+  },
+  args: {
+    type: 'text',
+    size: 'medium',
+    disabled: false,
+    label: 'label',
+    caption: 'caption'
   }
 }
 
@@ -54,6 +67,7 @@ export const Basic: Story = {
           disabled={args.disabled}
           label={args.label}
           value={val.value}
+          caption={args.caption}
           placeholder='Basic placeholder'
           onInput={(value) => changeVal(value as string)}
         />
@@ -74,6 +88,7 @@ export const CustomPlaceholder: Story = {
           size={args.size}
           disabled={args.disabled}
           label={args.label}
+          caption={args.caption}
           value={val.value}
           onInput={(value) => changeVal(value as string)}
         >

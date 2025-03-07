@@ -157,3 +157,29 @@ export const textareaPlaceholderVariants = styleVariants({
     opacity: 50
   }
 })
+
+export const textareaCaptionStyle = style({
+  color: 'var(--neutral-700)',
+
+})
+
+export const textareaCaptionVariants = styleVariants({
+  small: {
+    fontSize: 'var(--font-xs)'
+  },
+  medium: {
+    fontSize: 'var(--font-sm)'
+  },
+  large: {
+    fontSize: 'var(--font-md)'
+  },
+  hover: {},
+  focus: {},
+  filled: {},
+  disabled: {
+    color: 'var(--neutral-400)'
+  },
+  invalid: {
+    color: 'var(--red-600)'
+  }
+})

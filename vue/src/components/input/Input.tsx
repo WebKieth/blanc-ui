@@ -1,5 +1,5 @@
 import { definePropType } from '../../utils'
-import { ExtractPublicPropTypes, computed, defineComponent, useId } from 'vue'
+import { ExtractPublicPropTypes, Ref, SlotsType, VNodeChild, computed, defineComponent, useId } from 'vue'
 import cn from 'classnames'
 import {
   inputFieldBoxStyle,
@@ -15,7 +15,9 @@ import {
   type InputType,
   type InputId,
   inputPlaceholderStyle,
-  inputPlaceholderVariants
+  inputPlaceholderVariants,
+  inputCaptionStyle,
+  inputCaptionVariants
 } from '@shared/components/input'
 import { InputEmitters } from '@shared/components/input/types'
 import { useInputStateHandlers } from '../../hooks'
@@ -61,6 +63,14 @@ export const inputProps = {
     type: Object,
     default: inputPlaceholderVariants
   },
+  captionStyle: {
+    type: String,
+    default: inputCaptionStyle
+  },
+  captionVariants: {
+    type: Object,
+    default: inputCaptionVariants
+  },
   id: {
     type: definePropType<InputId>(String),
     default: ''
@@ -70,6 +80,10 @@ export const inputProps = {
     default: 'text'
   },
   label: {
+    type: definePropType<string>(String),
+    default: ''
+  },
+  caption: {
     type: definePropType<string>(String),
     default: ''
   },
@@ -102,10 +116,28 @@ export const inputEmitters: InputEmitters = {
   change: (value) => typeof value === 'string'
 }
 
+export type InputDefaultScope = {
+  id: string
+  hover: Ref<boolean>
+  focus: Ref<boolean>
+  handleFocus: () => void
+  handleBlur: () => void
+}
+
+export const inputSlots: SlotsType<{
+  default: (props: InputDefaultScope) => VNodeChild | undefined
+  placeholder: () => VNodeChild | undefined
+  prefix: () => VNodeChild | undefined
+  postfix: () => VNodeChild | undefined
+  label: () => VNodeChild | undefined
+  caption: () => VNodeChild | undefined
+}> = {}
+
 export const Input = defineComponent({
   name: 'Input',
   props: inputProps,
   emits: inputEmitters,
+  slots: inputSlots,
   setup(props, { slots, attrs, emit }) {
     const id = props.id ? props.id : useId()
     const disabled = computed(() => props.disabled)
@@ -206,6 +238,22 @@ export const Input = defineComponent({
               />
               {slots.postfix && slots.postfix()}
             </div>
+        }
+        {slots.caption
+          ? slots.caption()
+          : props.caption
+            ? <div class={cn({
+                [props.captionStyle]: props.captionStyle,
+                [props.captionVariants[props.size]]: props.captionVariants[props.size] && props.size,
+                [props.captionVariants.disabled]: props.captionVariants.disabled && props.disabled,
+                [props.captionVariants.invalid]: props.captionVariants.invalid && props.invalid,
+                [props.captionVariants.filled]: props.captionVariants.filled && props.value,
+                [props.captionVariants.hover]: props.captionVariants.hover && hover.value,
+                [props.captionVariants.focus]: props.captionVariants.focus && focus.value
+              })}>
+                {props.caption}
+              </div>
+            : <></>
         }
       </div>
     )

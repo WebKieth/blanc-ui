@@ -26,10 +26,17 @@ const meta: Meta<typeof Textarea> = {
         type: 'text'
       },
       default: 'label'
+    },
+    caption: {
+      control: {
+        type: 'text'
+      },
+      default: 'caption'
     }
   },
   args: {
     label: 'label',
+    caption: 'caption',
     disabled: false,
     size: 'medium'
   }
@@ -51,6 +58,7 @@ export const Basic: Story = {
           disabled={args.disabled}
           label={args.label}
           value={val.value}
+          caption={args.caption}
           placeholder='Basic placeholder'
           onInput={(value) => changeVal(value as string)}
         />
@@ -71,6 +79,7 @@ export const CustomPlaceholder: Story = {
           disabled={args.disabled}
           label={args.label}
           value={val.value}
+          caption={args.caption}
           onInput={(value) => changeVal(value as string)}
         >
           {{
