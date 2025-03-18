@@ -149,7 +149,7 @@ export const Spoiler = defineComponent({
           {slots.expander
             ? slots.expander()
             : <Button
-                variant='secondary'
+                variant='info'
                 size={props.size}
                 onClick={() => handleToggle()}
               >

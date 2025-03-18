@@ -15,7 +15,6 @@ export type ButtonProps = {
 	active?: boolean
 	size?: ButtonSize
 	rounded?: boolean
-	danger?: boolean
 	disabled?: boolean
 	attributes?: ButtonHTMLAttributes<HTMLButtonElement>
 	children?: ReactNode

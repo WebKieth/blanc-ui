@@ -1,2 +1,2 @@
-export type ButtonVariant = 'primary' | 'secondary' | 'outlined' | 'clean'
+export type ButtonVariant = 'brand' | 'info' | 'warning' | 'success' | 'danger'
 export type ButtonSize = 'small' | 'medium' | 'large'

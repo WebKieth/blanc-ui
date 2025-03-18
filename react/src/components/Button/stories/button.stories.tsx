@@ -31,7 +31,7 @@ const meta: Meta<typeof Button> = {
 		}
 	},
 	args: {
-		variant: 'primary',
+		variant: 'brand',
 		size: 'medium',
 		children: 'label',
 		disabled: false,

@@ -43,7 +43,7 @@ export const Modal: FC<ModalProps> = ({
   headerButtonStyle = _headerButtonStyle,
   headerButtonIcon = 'ri-close-line',
   headerButtonSize = 'medium',
-  headerButtonVariant = 'secondary',
+  headerButtonVariant = 'info',
   renderHeaderTitle,
   renderHeaderButton
 }) => (

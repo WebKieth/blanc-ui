@@ -119,7 +119,7 @@ export const Spoiler: FC<SpoilerProps> = ({
             ? renderExpander({toggle: handleToggle})
             : renderExpander
           : <Button
-              variant='secondary'
+              variant='info'
               size={size}
               onClick={() => handleToggle()}
             >

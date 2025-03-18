@@ -24,7 +24,7 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
   buttonStyle = headerButtonStyle,
   buttonIcon = 'ri-close-line',
   buttonSize = 'medium',
-  buttonVariant = 'secondary',
+  buttonVariant = 'info',
   onClose = () => {},
 }) => (
   <div className={cn({[style]: style})}>

@@ -32,7 +32,7 @@ export const buttonProps = {
   },
   variant: {
     type: definePropType<ButtonVariant>(String),
-    default: 'primary'
+    default: 'brand'
   },
   active: {
     type: definePropType<boolean>(Boolean),
@@ -90,18 +90,16 @@ export const Button = defineComponent({
           cn({[props.style]: props.style}),
           {
             [cn({
-              [props.variants.rounded]: props.variants.rounded
+              [props.variants.rounded]: props.variants.rounded,
+              [props.variants.rounded_first]: isFirst,
+              [props.variants.rounded_middle]: isMiddle,
+              [props.variants.rounded_last]: isLast
             })]: props.rounded
           },
           {
             [cn({
-              [props.variants.danger]: props.variants.danger
-            })]: props.danger
-          },
-          {
-            [cn({
               [props.variants[props.variant]]: props.variants[props.variant]
-            })]: props.variants && !props.disabled
+            })]: props.variants
           },
           {
             [cn({

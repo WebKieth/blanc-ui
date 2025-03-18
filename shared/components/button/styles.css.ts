@@ -8,7 +8,7 @@ export const buttonStyle = style({
 })
 
 export const buttonVariants = styleVariants({
-	primary: {
+	brand: {
 		backgroundColor: 'var(--blue-500)',
 		color: 'var(--neutral-50)',
 		':hover': {
@@ -18,7 +18,7 @@ export const buttonVariants = styleVariants({
 			backgroundColor: 'var(--blue-700)'
 		},
 	},
-	secondary: {
+	info: {
 		backgroundColor: 'var(--neutral-300)',
 		color: 'var(--slate-950)',
 		':hover': {
@@ -28,7 +28,7 @@ export const buttonVariants = styleVariants({
 			backgroundColor: 'var(--neutral-500)'
 		}
 	},
-	outlined: {
+	warning: {
 		backgroundColor: 'var(--white)',
 		border: '1px solid var(--zinc-300)',
 		color: 'var(--slate-950)',
@@ -40,7 +40,7 @@ export const buttonVariants = styleVariants({
 			backgroundColor: 'var(--neutral-100)'
 		}
 	},
-	clean: {
+	success: {
 		backgroundColor: 'var(--white)',
 		color: 'var(--slate-950)',
 		':hover': {
@@ -70,25 +70,27 @@ export const buttonVariants = styleVariants({
 	disabled: {
 		cursor: 'not-allowed',
 	},
-	primary_disabled: {
+	brand_disabled: {
 		backgroundColor: 'var(--gray-200)',
 		color: 'var(--gray-500)'
 	},
-	secondary_disabled: {
+	info_disabled: {
 		backgroundColor: 'var(--gray-100)',
 		color: 'var(--gray-400)'
 	},
-	outlined_disabled: {
+	warning_disabled: {
 		backgroundColor: 'var(--white)',
 		border: '1px solid var(--zinc-100)',
 		color: 'var(--gray-400)'
 	},
-	clean_disabled: {
+	success_disabled: {
 		backgroundColor: 'var(--white)',
 		color: 'var(--gray-400)'
 	},
+	rounded_disabled: {},
+	danger_disabled: {},
 	active: {},
-	primary_active: {
+	brand_active: {
 		backgroundColor: 'var(--blue-700)',
 		color: 'var(--neutral-100)',
 		':hover': {
@@ -100,7 +102,7 @@ export const buttonVariants = styleVariants({
 			color: 'var(--neutral-100)',
 		}
 	},
-	secondary_active: {
+	info_active: {
 		backgroundColor: 'var(--neutral-600)',
 		color: 'var(--slate-50)',
 		':hover': {
@@ -112,7 +114,7 @@ export const buttonVariants = styleVariants({
 			color: 'var(--slate-50)',
 		}
 	},
-	outlined_active: {
+	warning_active: {
 		backgroundColor: 'var(--zinc-200)',
 		border: '1px solid var(--zinc-500)',
 		color: 'var(--slate-950)',
@@ -128,7 +130,7 @@ export const buttonVariants = styleVariants({
 			color: 'var(--slate-950)',
 		}
 	},
-	clean_active: {
+	success_active: {
 		backgroundColor: 'var(--slate-100)',
 		color: 'var(--slate-950)',
 		':hover': {
@@ -140,6 +142,8 @@ export const buttonVariants = styleVariants({
 			color: 'var(--slate-950)',
 		}
 	},
+	rounded_active: {},
+	danger_active: {},
 	inGroup: {
 		alignSelf: 'center'
 	},
@@ -160,16 +164,22 @@ export const buttonVariants = styleVariants({
 		borderRight: '1px solid var(--blue-200)',
 		borderRadius: 0
 	},
-	primary_first: {},
-	primary_middle: {},
-	primary_last: {},
-	secondary_first: {},
-	secondary_middle: {},
-	secondary_last: {},
-	outlined_first: {},
-	outlined_middle: {},
-	outlined_last: {},
-	clean_first: {},
-	clean_middle: {},
-	clean_last: {}
+	brand_first: {},
+	brand_middle: {},
+	brand_last: {},
+	info_first: {},
+	info_middle: {},
+	info_last: {},
+	warning_first: {},
+	warning_middle: {},
+	warning_last: {},
+	success_first: {},
+	success_middle: {},
+	success_last: {},
+	rounded_first: {},
+	danger_first: {},
+	rounded_middle: {},
+	danger_middle: {},
+	rounded_last: {},
+	danger_last: {},
 })
