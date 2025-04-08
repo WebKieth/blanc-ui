@@ -65,6 +65,7 @@ export const TableRow: FC<TableRowProps> = ({
 }) => {
   const tableProps = useTablePropsProvided()
   const [isExpanded, setIsExpanded] = useState(expanded)
+  const isRowExpanded = useMemo(() => isExpanded || expanded, [isExpanded, expanded])
   const toggleExpand: MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation()
     setIsExpanded(!isExpanded)
@@ -135,7 +136,7 @@ export const TableRow: FC<TableRowProps> = ({
           onClick={toggleExpand}
         >
           <Icon
-            name={isExpanded ? 'ri-arrow-down-s-line' : 'ri-arrow-right-s-line'}
+            name={isRowExpanded ? 'ri-arrow-down-s-line' : 'ri-arrow-right-s-line'}
             size={'small'}
           />
         </div>
@@ -154,14 +155,14 @@ export const TableRow: FC<TableRowProps> = ({
   }
 
   const renderSubRow = () => {
-    if (!subRow || !isExpanded) return null
+    if (!subRow || !isRowExpanded) return null
     return <div className={subRowStyle}>
       {subRow}
     </div>
   }
 
   const renderNodes = () => {
-    if (!childNodes || !currentRow?.nodes?.length || !isExpanded) return null
+    if (!childNodes || !currentRow?.nodes?.length || !isRowExpanded) return null
     if (childNodes) return childNodes
     return currentRow.nodes.map((row, index) => (
       <TableRow
