@@ -2,7 +2,7 @@ import { buttonStyle, buttonVariants } from "@shared/components/button";
 import { definePropType } from "../../utils";
 
 export const buttonProps = {
-  style: {
+  vStyle: {
     type: String,
     default: buttonStyle
   },

@@ -8,7 +8,7 @@ import {
 import { $buttonGroupProvided, ButtonGroupProvided } from '../buttonGroup/ButtonGroup'
 
 export const buttonProps = {
-  style: {
+  blancStyle: {
     type: String,
     default: buttonStyle
   },
@@ -69,8 +69,7 @@ export const Button = defineComponent({
         {...attrs}
         ref={$el}
         class={[
-          cn({[props.style]: props.style}),
-
+          cn({[props.blancStyle]: props.blancStyle}),
           {
             [cn({
               [props.variants.disabled]: props.variants.disabled
