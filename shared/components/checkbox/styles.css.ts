@@ -1,19 +1,19 @@
 import { style, styleVariants } from "@vanilla-extract/css"
 
-const boxSizes = {
-  small: {
-    width: '16px',
-    height: '16px',
-  },
-  medium: {
-    width: '20px',
-    height: '20px',
-  },
-  large: {
-    width: '24px',
-    height: '24px',
-  }
-}
+// const boxSizes = {
+//   small: {
+//     width: '16px',
+//     height: '16px',
+//   },
+//   medium: {
+//     width: '20px',
+//     height: '20px',
+//   },
+//   large: {
+//     width: '24px',
+//     height: '24px',
+//   }
+// }
 
 export const checkboxStyle = style({
   display: 'flex',
@@ -22,7 +22,9 @@ export const checkboxStyle = style({
 })
 
 export const checkboxFieldStyle = style({
-  position: 'relative'
+  position: 'relative',
+  width: '20px',
+  height: '20px',
 })
 
 export const checkboxFieldVariants = styleVariants({
@@ -47,10 +49,7 @@ export const checkboxFieldVariants = styleVariants({
     cursor: 'not-allowed',
     backgroundColor: 'var(--neutral-100)',
     border: '1px solid var(--neutral-200)'
-  },
-  unchecked_disabled: {},
-  checked_disabled: {},
-  ...boxSizes
+  }
 })
 export const checkboxIconStyle = style({
   position: 'absolute',
@@ -69,9 +68,6 @@ export const checkboxIconVariants = styleVariants({
   disabled: {
     color: 'var(--neutral-400)'
   },
-  checked_disabled: {},
-  unchecked_disabled: {},
-  ...boxSizes
 })
 
 export const checkboxTextContainerStyle = style({
@@ -81,7 +77,8 @@ export const checkboxTextContainerStyle = style({
 })
 
 export const checkboxLabelStyle = style({
-  fontWeight: '400'
+  fontWeight: '400',
+  fontSize: '1rem'
 })
 
 export const checkboxLabelVariants = styleVariants({
@@ -93,20 +90,12 @@ export const checkboxLabelVariants = styleVariants({
   },
   disabled: {
     color: 'var(--neutral-400)'
-  },
-  small: {
-    fontSize: 'var(--font-sm)'
-  },
-  medium: {
-    fontSize: 'var(--font-md)'
-  },
-  large: {
-    fontSize: 'var(--font-lg)'
   }
 })
 
 export const checkboxCaptionStyle = style({
-  fontWeight: '400'
+  fontWeight: '400',
+  fontSize: '0.75rem'
 })
 
 export const checkboxCaptionVariants = styleVariants({
@@ -118,15 +107,6 @@ export const checkboxCaptionVariants = styleVariants({
   },
   disabled: {
     color: 'var(--neutral-400)'
-  },
-  small: {
-    fontSize: 'var(--font-xs)'
-  },
-  medium: {
-    fontSize: 'var(--font-sm)'
-  },
-  large: {
-    fontSize: 'var(--font-md)'
   }
 })
 

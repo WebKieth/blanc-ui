@@ -56,7 +56,6 @@ export const Icon = defineComponent({
 
 		const viewbox = computed(() => svg.value?.getAttribute('viewBox'))
 
-
 		return () => (
 			IconComponent.value
 				? <IconComponent.value {...currentSize} />

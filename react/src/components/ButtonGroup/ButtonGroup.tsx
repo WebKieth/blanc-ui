@@ -1,7 +1,7 @@
 import { createContext, FC } from "react";
 import cn from "classnames"
 import { type ButtonGroupProps, type ProvidedButtonGroupProps } from "./types";
-import { buttonGroupStyle } from "../../../../shared/components/buttonGroup";
+import { buttonGroupStyle } from "@shared/components/buttonGroup";
 
 export const ButtonGroupContext = createContext<ProvidedButtonGroupProps | undefined>(undefined)
 
