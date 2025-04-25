@@ -3,10 +3,8 @@ import { ExtractPublicPropTypes, computed, defineComponent, inject, ref } from '
 import cn from 'classnames'
 import {
   buttonStyle,
-  buttonVariants,
-  type ButtonSize,
-  type ButtonVariant
-} from '../../../../shared/components/button'
+  buttonVariants
+} from '@shared/components/button'
 import { $buttonGroupProvided, ButtonGroupProvided } from '../buttonGroup/ButtonGroup'
 
 export const buttonProps = {
@@ -18,29 +16,13 @@ export const buttonProps = {
     type: Object,
     default: buttonVariants
   },
-  rounded: {
-    type: definePropType<boolean>(Boolean),
-    default: false
-  },
-  danger: {
-    type: definePropType<boolean>(Boolean),
-    default: false
-  },
   groupKey: {
     type: definePropType<string | number | symbol | null>(null),
     default: null
   },
-  variant: {
-    type: definePropType<ButtonVariant>(String),
-    default: 'brand'
-  },
   active: {
     type: definePropType<boolean>(Boolean),
     default: false
-  },
-  size: {
-    type: definePropType<ButtonSize>(String),
-    default: 'medium'
   },
   disabled: {
     type: definePropType<boolean>(Boolean),
@@ -54,7 +36,7 @@ export type ButtonEmitters = {
   click: (e: Event) => void
 }
 
-const buttonEmitters: ButtonEmitters = {
+export const buttonEmitters: ButtonEmitters = {
   click: (e) => e?.type === 'click'
 }
 
@@ -88,24 +70,7 @@ export const Button = defineComponent({
         ref={$el}
         class={[
           cn({[props.style]: props.style}),
-          {
-            [cn({
-              [props.variants.rounded]: props.variants.rounded,
-              [props.variants.rounded_first]: isFirst,
-              [props.variants.rounded_middle]: isMiddle,
-              [props.variants.rounded_last]: isLast
-            })]: props.rounded
-          },
-          {
-            [cn({
-              [props.variants[props.variant]]: props.variants[props.variant]
-            })]: props.variants
-          },
-          {
-            [cn({
-              [props.variants[props.size]]: props.variants[props.size]
-            })]: props.variants && props.size
-          },
+
           {
             [cn({
               [props.variants.disabled]: props.variants.disabled
@@ -118,32 +83,27 @@ export const Button = defineComponent({
           },
           {
             [cn({
-              [props.variants.disabled]: props.variants.disabled,
-              [props.variants[`${props.variant}_disabled`]]: props.variants[`${props.variant}_disabled`]
+              [props.variants.disabled]: props.variants.disabled
             })]: props.variants && props.disabled
           },
           {
             [cn({
               [props.variants.active]: props.variants.active,
-              [props.variants[`${props.variant}_active`]]: props.variants[`${props.variant}_active`]
           })]: props.variants && isActive.value
           },
           {
             [cn({
               [props.variants.first]: props.variants.first,
-              [props.variants[`${props.variant}_first`]]: props.variants[`${props.variant}_first`]
             })]: props.variants && isFirst.value
           },
           {
             [cn({
               [props.variants.middle]: props.variants.middle,
-              [props.variants[`${props.variant}_middle`]]: props.variants[`${props.variant}_middle`]
             })]: props.variants && isMiddle.value
           },
           {
             [cn({
               [props.variants.last]: props.variants.last,
-              [props.variants[`${props.variant}_last`]]: props.variants[`${props.variant}_last`]
             })]: props.variants && isLast.value
           }
         ]}

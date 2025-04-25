@@ -4,7 +4,7 @@ import { ButtonProps } from "./types"
 import {
   buttonStyle,
   buttonVariants
-} from "../../../../shared/components/button"
+} from "@shared/components/button"
 import { ButtonGroupContext } from "../ButtonGroup/ButtonGroup"
 
 
@@ -14,10 +14,7 @@ export const Button: FC<ButtonProps> = ({
   style = buttonStyle,
   variants = buttonVariants,
   groupKey,
-  variant = 'brand',
   active = false,
-  rounded = false,
-  size = 'medium',
   disabled = false,
   attributes = {},
   children = null,
@@ -73,31 +70,7 @@ export const Button: FC<ButtonProps> = ({
       style,
       {
         [cn({
-          [variants.rounded]: variants.rounded,
-          [variants.rounded_first]: isFirst,
-          [variants.rounded_middle]: isMiddle,
-          [variants.rounded_last]: isLast
-        })]: rounded
-      },
-      {
-        [cn({
-          [variants[variant]]: variants[variant]
-        })]: !disabled
-      },
-      {
-        [cn({
-          [variants[size]]: variants[size]
-        })]: size
-      },
-      {
-        [cn({
           [variants.disabled]: variants.disabled
-        })]: disabled
-      },
-      {
-        [cn({
-          [variants.disabled]: variants.disabled,
-          [variants[`${variant}_disabled`]]: variants[`${variant}_disabled`]
         })]: disabled
       },
       {
@@ -108,25 +81,21 @@ export const Button: FC<ButtonProps> = ({
       {
         [cn({
           [variants.active]: variants.active,
-          [variants[`${variant}_active`]]: variants[`${variant}_active`]
         })]: isActive
       },
       {
         [cn({
           [variants.first]: variants.first,
-          [variants[`${variant}_first`]]: variants[`${variant}_first`]
         })]: isFirst
       },
       {
         [cn({
           [variants.middle]: variants.middle,
-          [variants[`${variant}_middle`]]: variants[`${variant}_middle`]
         })]: isMiddle
       },
       {
         [cn({
           [variants.last]: variants.last,
-          [variants[`${variant}_last`]]: variants[`${variant}_last`]
         })]: isLast
       }
     )}

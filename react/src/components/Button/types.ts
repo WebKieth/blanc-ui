@@ -1,4 +1,3 @@
-import { ButtonSize, ButtonVariant } from "../../../../shared/components/button"
 import { StyleVariants } from "../../types"
 import { ButtonHTMLAttributes, ReactNode, Ref, SyntheticEvent } from "react"
 
@@ -10,11 +9,8 @@ export type ButtonStyleProps = {
 export type ButtonProps = {
 	ref?: Ref<HTMLButtonElement>
 	className?: string
-	variant?: ButtonVariant
 	groupKey?: string | number
 	active?: boolean
-	size?: ButtonSize
-	rounded?: boolean
 	disabled?: boolean
 	attributes?: ButtonHTMLAttributes<HTMLButtonElement>
 	children?: ReactNode
